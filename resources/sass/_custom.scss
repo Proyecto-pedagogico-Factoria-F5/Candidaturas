@@ -3,18 +3,24 @@ body {
     color: $first-color;
     line-height: $line-height-base;
 
+    .navbar-brand {
+        font-weight: 100;
+        text-transform: uppercase;
+        letter-spacing: 0.15rem;
+    }
+
     .section-title {
-        border-bottom           : 1px solid $second-color; 
-        font-size               : 2rem;
-        font-weight             : 100;
-        text-transform          : uppercase;
-        line-height             : 0.1em;
-        letter-spacing          : 0.15rem;
-        word-spacing            : 0.4rem;
+        border-bottom: 1px solid $second-color; 
+        font-size: 2rem;
+        font-weight: 100;
+        text-transform: uppercase;
+        line-height: 0.1em;
+        letter-spacing: 0.15rem;
+        word-spacing: 0.4rem;
     
         .section-title-line {
-            background          : $first-color;
-            padding             : 0 10px 0 0; 
+            background: $first-color;
+            padding: 0 10px 0 0; 
         }
     }
 
