@@ -6,7 +6,7 @@
             <div id="welcome-text">
                 {{-- <h1 class="section-title"><span class="section-title-line">Candidaturas</span></h1> --}}
                 <h1 class="section-title">Candidaturas</h1>
-                <p>Gestiona de forma sencilla todas tus candidaturas</p>
+                <p>Gestión de escuelas, promociones y candidaturas</p>
                 <div class="welcome-btns">
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
                     <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
