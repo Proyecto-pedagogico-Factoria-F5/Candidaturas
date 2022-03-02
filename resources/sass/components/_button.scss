@@ -1,0 +1,33 @@
+btn {
+    width: x;
+    height: x;
+    padding: x;
+    margin: x;  
+
+    frame {
+        border-radius: x;
+        border: 1px solid gray;
+
+        neutral {
+            background-color: $white;
+        }
+        main {
+            background-color: $main;
+        }
+        secondary {
+            background-color: $secondary;
+        }
+    }
+    no-frame {
+        neutral {
+            color: $black;
+        }
+        main {
+            color: $main;
+        }
+        secondary {
+            color: $secondary;
+        }
+    }
+    
+}
