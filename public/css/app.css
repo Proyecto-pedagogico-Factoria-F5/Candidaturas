@@ -14833,6 +14833,9 @@ body a, body .nav-link {
 body a:hover, body a:focus, body .nav-link:hover, body .nav-link:focus {
   color: #e64100;
 }
+body .text-info {
+  color: #FC4702 !important;
+}
 body .section-title {
   border-bottom: 1px solid #6C757D;
   font-size: 2rem;

@@ -17,6 +17,10 @@ body {
         }
     }
 
+    .text-info {
+        color: $brand-color !important;
+    }
+
     .section-title {
         border-bottom: 1px solid $first-color-light; 
         font-size: 2rem;
