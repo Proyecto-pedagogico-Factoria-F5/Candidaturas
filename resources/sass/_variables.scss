@@ -1,4 +1,17 @@
-$body-bg: #f8f9fa;
+// Body
+$body-bg            : #F9F9F9;
+$brand-color        : #FC4702;
+$brand-color-dark   : #e64100;
+$first-color        : #222222;
+$first-color-light  : #6C757D;
+$second-color       : #fffafa;  
+
+// Typography
+$principal-font     : 'Roboto', sans-serif;
+$font-size-base     : 1rem;
+$line-height-base   : 1.6;
+
+// Livewire styles variables
 $card-cap-bg: #ffffff;
 $input-group-addon-bg: #ffffff;
 $input-placeholder-color: #adb5bd;
@@ -14,3 +27,19 @@ $navbar-toggler-padding-0: 0;
 $navbar-dark-toggler-border-color: transparent;
 $navbar-light-toggler-border-color: transparent;
 $enable-validation-icons: false;
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  
+    $first-color  : #E5E5E5;
+    $second-color : #222222;  
+  
+}
+
+/* High contrast */
+@media (prefers-contrast: high) {
+
+    $first-color  : black;
+    $second-color : white; 
+
+}
