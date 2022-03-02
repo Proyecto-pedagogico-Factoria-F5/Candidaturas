@@ -1,17 +1,7 @@
-// Reset
-@import 'reset';
-
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
-
-// Fonts
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
-
-// Variables
 @import 'variables';
 
-// Custom styles
-@import 'welcome';
-@import 'custom';
-@import 'layout';
+@import '~bootstrap/scss/bootstrap';
 
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+@import '../css/app.css';
