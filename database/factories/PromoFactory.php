@@ -2,22 +2,23 @@
 
 namespace Database\Factories;
 
+use App\Models\Promo;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Promos>
- */
 class PromoFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = Promo::class;
+
     public function definition()
     {
         return [
-            //
+			'nombre_promo' => $this->faker->name,
+			'ubicación' => $this->faker->name,
+			'escuela_id' => $this->faker->name,
+			'fecha_de_inicio' => $this->faker->name,
+			'duración' => $this->faker->name,
+			'url' => $this->faker->name,
         ];
     }
 }

@@ -13,8 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('promo', function (Blueprint $table) {
+        Schema::create('promos', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre_promo');
+            $table->string('ubicación');
+            $table->string('escuela_id');
+            $table->date('fecha_de_inicio');
+            $table->string('duración');
+            $table->string('url');
             $table->timestamps();
         });
     }
