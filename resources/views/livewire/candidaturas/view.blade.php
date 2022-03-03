@@ -64,7 +64,7 @@
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
 									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a>							 
-									<a class="dropdown-item" onclick="confirm('Confirmar eliminación de candidatura con id {{$row->id}}? \n¡Esta acción no se puede deshacer!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Borrar </a>   
+									<a class="dropdown-item" onclick="confirm('¿Confirmas que quieres borrar la candidatura con id {{$row->id}}? \n¡Esta acción no se puede deshacer!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Borrar </a>   
 									</div>
 								</div>
 								</td>

@@ -60,7 +60,7 @@
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
 									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a>							 
-									<a class="dropdown-item" onclick="confirm('Confirm Delete Promo id {{$row->id}}? \nDeleted Promos cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Borrar </a>   
+									<a class="dropdown-item" onclick="confirm('¿Confirmas que quieres borrar la promo con id {{$row->id}}? \n¡Esta acción no se puede deshacer!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Borrar </a>   
 									</div>
 								</div>
 								</td>
