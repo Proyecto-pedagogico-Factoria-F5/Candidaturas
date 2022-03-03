@@ -4,11 +4,13 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
 use App\Models\School;
 
 class Schools extends Component
 {
     use WithPagination;
+    use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $nombre_escuela, $provincia, $imagen;
@@ -44,13 +46,13 @@ class Schools extends Component
         $this->validate([
 		'nombre_escuela' => 'required',
 		'provincia' => 'required',
-		'imagen' => 'required',
+		'imagen' => 'image|max:1024', // 1MB Max
         ]);
 
         School::create([ 
 			'nombre_escuela' => $this-> nombre_escuela,
 			'provincia' => $this-> provincia,
-			'imagen' => $this-> imagen
+			'imagen' => $this->imagen->store('assets', 'public'),
         ]);
         
         $this->resetInput();
@@ -75,7 +77,7 @@ class Schools extends Component
         $this->validate([
 		'nombre_escuela' => 'required',
 		'provincia' => 'required',
-		'imagen' => 'required',
+		'imagen' => 'image|max:1024', // 1MB Max
         ]);
 
         if ($this->selected_id) {
@@ -83,7 +85,7 @@ class Schools extends Component
             $record->update([ 
 			'nombre_escuela' => $this-> nombre_escuela,
 			'provincia' => $this-> provincia,
-			'imagen' => $this-> imagen
+			'imagen' => $this->imagen->store('assets', 'public'),
             ]);
 
             $this->resetInput();

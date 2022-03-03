@@ -27,4 +27,9 @@ class HomeController extends Controller
         $schools = School::all();
         return view('home', ['schools' => $schools]);
     }
+
+    public function register()
+    {
+        return view('auth.register');
+    }
 }
