@@ -34,6 +34,7 @@
 								<td>#</td> 
 								<th>Nombre</th>
 								<th>Provincia</th>
+								<th>Imagen</th>
 								<td>Acciones</td>
 							</tr>
 						</thead>
@@ -41,8 +42,9 @@
 							@foreach($schools as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->name }}</td>
-								<td>{{ $row->location }}</td>
+								<td>{{ $row->nombre_escuela }}</td>
+								<td>{{ $row->provincia }}</td>
+								<td>{{ $row->imagen }}</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

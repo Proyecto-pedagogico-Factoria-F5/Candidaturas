@@ -6,7 +6,7 @@
 				<div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
-							<h4><i class="fab fa-laravel text-info"></i>
+							<h4><i class="fas fa-graduation-cap text-info"></i>
 							Promos </h4>
 						</div>
 						<div wire:poll.60s>
@@ -16,7 +16,7 @@
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Promos">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar promo">
 						</div>
 						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
 						<i class="fa fa-plus"></i>  Añadir promo
@@ -33,11 +33,12 @@
 							<tr> 
 								<td>#</td> 
 								<th>Nombre</th>
-								<th>Población</th>
+								<th>Localidad</th>
 								{{-- <th>Escuela Id</th> --}}
 								<th>Fecha de inicio</th>
 								<th>Duración (h)</th>
 								<th>Url</th>
+								<th>Imagen</th>
 								<td>Acciones</td>
 							</tr>
 						</thead>
@@ -51,6 +52,7 @@
 								<td>{{ $row->fecha_de_inicio }}</td>
 								<td>{{ $row->duración }}</td>
 								<td>{{ $row->url }}</td>
+								<td>{{ $row->imagen }}</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

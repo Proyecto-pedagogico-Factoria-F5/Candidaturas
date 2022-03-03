@@ -25,7 +25,7 @@ class Promos extends Component
 						->orWhere('fecha_de_inicio', 'LIKE', $keyWord)
 						->orWhere('duración', 'LIKE', $keyWord)
 						->orWhere('url', 'LIKE', $keyWord)
-                        ->orWhere('imagen', 'LIKE', $keyWord)
+						->orWhere('imagen', 'LIKE', $keyWord)
 						->paginate(10),
         ]);
     }
@@ -44,7 +44,7 @@ class Promos extends Component
 		$this->fecha_de_inicio = null;
 		$this->duración = null;
 		$this->url = null;
-        $this->imagen = null;
+		$this->imagen = null;
     }
 
     public function store()
@@ -56,7 +56,7 @@ class Promos extends Component
 		'fecha_de_inicio' => 'required',
 		'duración' => 'required',
 		'url' => 'required',
-        'imagen' => 'required',
+		'imagen' => 'required',
         ]);
 
         Promo::create([ 
@@ -66,7 +66,7 @@ class Promos extends Component
 			'fecha_de_inicio' => $this-> fecha_de_inicio,
 			'duración' => $this-> duración,
 			'url' => $this-> url,
-            'imagen' => $this-> imagen 
+			'imagen' => $this-> imagen
         ]);
         
         $this->resetInput();
@@ -85,7 +85,7 @@ class Promos extends Component
 		$this->fecha_de_inicio = $record-> fecha_de_inicio;
 		$this->duración = $record-> duración;
 		$this->url = $record-> url;
-        $this->imagen = $record-> imagen;
+		$this->imagen = $record-> imagen;
 		
         $this->updateMode = true;
     }
@@ -99,7 +99,7 @@ class Promos extends Component
 		'fecha_de_inicio' => 'required',
 		'duración' => 'required',
 		'url' => 'required',
-        'imagen' => 'required',
+		'imagen' => 'required',
         ]);
 
         if ($this->selected_id) {
@@ -111,7 +111,7 @@ class Promos extends Component
 			'fecha_de_inicio' => $this-> fecha_de_inicio,
 			'duración' => $this-> duración,
 			'url' => $this-> url,
-            'imagen' => $this-> imagen
+			'imagen' => $this-> imagen
             ]);
 
             $this->resetInput();

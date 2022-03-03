@@ -10,6 +10,9 @@
         <li class="nav-item">
             <a href="{{ url('/schools') }}" class="nav-link"><i class="fab fas fa-school text-info"></i> Escuelas</a> 
         </li>
+        <li class="nav-item">
+            <a href="{{ url('/promos') }}" class="nav-link"><i class="fas fa-graduation-cap text-info"></i> Promos</a> 
+        </li>
     </ul>
     @endauth()
     

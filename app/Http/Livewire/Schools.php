@@ -11,7 +11,7 @@ class Schools extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $location;
+    public $selected_id, $keyWord, $nombre_escuela, $provincia, $imagen;
     public $updateMode = false;
 
     public function render()
@@ -21,7 +21,7 @@ class Schools extends Component
             'schools' => School::latest()
 						->orWhere('nombre_escuela', 'LIKE', $keyWord)
 						->orWhere('provincia', 'LIKE', $keyWord)
-                        ->orWhere('imagen', 'LIKE', $keyWord)
+						->orWhere('imagen', 'LIKE', $keyWord)
 						->paginate(10),
         ]);
     }
@@ -36,21 +36,21 @@ class Schools extends Component
     {		
 		$this->nombre_escuela = null;
 		$this->provincia = null;
-        $this->imagen = null;
+		$this->imagen = null;
     }
 
     public function store()
     {
         $this->validate([
-            'nombre_escuela' => 'required',
-            'provincia' => 'required',
-            'imagen' => 'required',
+		'nombre_escuela' => 'required',
+		'provincia' => 'required',
+		'imagen' => 'required',
         ]);
 
         School::create([ 
 			'nombre_escuela' => $this-> nombre_escuela,
 			'provincia' => $this-> provincia,
-            'imagen' => $this-> imagen
+			'imagen' => $this-> imagen
         ]);
         
         $this->resetInput();
@@ -65,7 +65,7 @@ class Schools extends Component
         $this->selected_id = $id; 
 		$this->nombre_escuela = $record-> nombre_escuela;
 		$this->provincia = $record-> provincia;
-        $this->imagen = $record-> imagen;
+		$this->imagen = $record-> imagen;
 		
         $this->updateMode = true;
     }
@@ -75,7 +75,7 @@ class Schools extends Component
         $this->validate([
 		'nombre_escuela' => 'required',
 		'provincia' => 'required',
-        'imagen' => 'required',
+		'imagen' => 'required',
         ]);
 
         if ($this->selected_id) {
@@ -83,7 +83,7 @@ class Schools extends Component
             $record->update([ 
 			'nombre_escuela' => $this-> nombre_escuela,
 			'provincia' => $this-> provincia,
-            'imagen' => $this-> imagen
+			'imagen' => $this-> imagen
             ]);
 
             $this->resetInput();
