@@ -1,44 +1,72 @@
 .cards-container {
-    width: 80%;
+    /* width: 80%; */
     margin: 0 auto;
+    padding: 0;
+    box-shadow: 1px 2px;
+    display: flex;
+    justify-content: space-evenly;
 
-    & > div {
+    #card {
+        align-items: center;
+        border-radius: 0.5rem !important;
+        /* text-align: center !important; */
+        overflow: hidden !important;
+            
+        & > img {
+            width: 100%;
+            max-height: 80% !important;
+        }
+
+        #title {
+            background-color: $brand-color; 
+            font-size: 1rem;  
+            font-weight: 400;
+            color: #ffffff;
+        }
+
+        /* .location {
+            color: $first-color; 
+        }
+
+        .description {
+            color: $brand-color; 
+        } */
+    }
+}
+
+/* .cards-container {
+    width: 70%;
+    margin: 2% auto;
+    padding: 0;
+    box-shadow: 1px 2px;
+    border-radius: 0.5rem !important;
+    overflow: hidden !important;
+
+    .card {
+        width: 70%;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-
-        #card {
-            width: 20rem !important;
-            box-shadow: 1px 2px;
-            border-radius: 0.5rem !important;
-            text-align: center !important;
-            color: #ffffff !important;
-            height: 12rem !important;
-            display: flex;
+        text-align: center !important;
             
-            img {
-                width: 100%;
-                max-height: 80% !important;
-            }
-        
-            .name  {
-                background-color: $brand-color; 
-                align-items: center !important;
-                font-size: 1.3rem !important;  
-                font-weight: 400;
-                color: #ffffff;
-                padding: 4% !important;  
-                border-bottom-left-radius: 0.5rem !important;
-                border-bottom-right-radius: 0.5rem !important;
-            }
-        
-            .location {
-                color: $first-color; 
-            }
-        
-            .description {
-                color: $brand-color; 
-            }
+        & > img {
+            width: 100%;
+            max-height: 80% !important;
+        }
+
+        .title {
+            background-color: $brand-color; 
+            font-size: $font-size-base;  
+            font-weight: 400;
+            color: #ffffff;
+        }
+
+        .location {
+            color: $first-color; 
+        }
+
+        .description {
+            color: $brand-color; 
         }
     }
-}
+} */

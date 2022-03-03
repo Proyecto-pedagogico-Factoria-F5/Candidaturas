@@ -15,7 +15,7 @@ class PromoController extends Controller
      */
     public function index()
     {
-        return view('promos-view';
+        return view('promos-view');
     }
 
     /**
