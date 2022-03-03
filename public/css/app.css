@@ -14846,15 +14846,6 @@ h3 {
   border-color: #FC4702;
   box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
 }
-.create-container .form-container form .create-masterclass-btns {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-.create-container .form-container form .create-masterclass-btns .form-check {
-  margin-bottom: 1rem !important;
-}
 
 .btn-primary, .btn-info {
   color: #fffafa;
@@ -14926,14 +14917,23 @@ body .section-title .section-title-line {
   background: #F9F9F9;
   padding: 0 10px 0 0;
 }
-body .form-control {
-  height: auto;
-}
-body .form-control:focus {
+body form .form-control:focus {
   color: #222222;
   background-color: #fffafa;
   border-color: rgba(252, 71, 2, 0.25);
   outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
+}
+body form .form-check-input {
+  background: #fffafa;
+  border-color: #6C757D;
+  height: 1rem;
+  width: 1rem;
+}
+body form .form-check-input:checked {
+  background-color: #FC4702;
+}
+body form .form-check-input:hover, body form .form-check-input:active, body form .form-check-input:focus {
   box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
 }
 body footer {
