@@ -12,14 +12,14 @@
 @import 'variables';
 
 // Custom styles
+// ----Components
 @import './components/cards';
-@import './components/button';
-@import './components/fonts';
-@import './components/icon';
-@import './components/input';
 
+// ----Views
 @import 'welcome';
 @import 'create';
+
+// ----Structure
 @import 'buttons';
 @import 'custom';
 @import 'nav';
