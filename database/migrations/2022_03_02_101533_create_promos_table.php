@@ -13,12 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('schools', function (Blueprint $table) {
+        Schema::create('promos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_escuela');
-            $table->string('provincia');
+            $table->string('nombre_promo');
+            $table->string('ubicación');
+            $table->string('escuela_id');
+            $table->date('fecha_de_inicio');
+            $table->string('duración');
+            $table->string('url');
             $table->string('imagen');
-
             $table->timestamps();
         });
     }
@@ -30,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('schools');
+        Schema::dropIfExists('promo');
     }
 };
