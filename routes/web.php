@@ -20,7 +20,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/schools-view', [App\Http\Controllers\HomeController::class, 'index'])->name('schools-view');
+Route::get('/promos-view', [App\Http\Controllers\PromoController::class, 'index'])->name('promos-view');
 
 //Route Hooks - Do not delete//
 	Route::view('candidaturas', 'livewire.candidaturas.index')->middleware('auth');
