@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Components;
 
 use Livewire\Component;
+use App\Models\School;
 
 class CardSchool extends Component
 {

@@ -6,7 +6,7 @@
 	<div class="row justify-content-center">
 		<div class="col-md-12">
 			<h5>ESCUELAS</h5><hr>
-			@livewire('card-school')					
+			@livewire('components.card-school')					
 		</div>
 	</div>
 </div>
