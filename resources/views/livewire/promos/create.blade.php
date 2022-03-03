@@ -9,7 +9,7 @@
                 </button>
             </div>
            <div class="modal-body">
-				<form>
+                <form wire:submit.prevent="save">
                     <div class="form-group">
                         <label for="schools-select">Escoger escuela</label>
                         <select class="form-control form-select" name="schools-select" aria-label="Schools select">
@@ -40,17 +40,13 @@
                         <label for="duración">Duración (h)</label>
                         <input wire:model="duración" type="text" class="form-control" id="duración" placeholder="Duración (h)" required>@error('duración') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
-                    {{-- <div class="form-group">
-                        <label for="imagen">Imagen</label>
-                        <input wire:model="imagen" type="file" class="form-control" id="imagen" name="image" placeholder="Imagen" required>@error('imagen') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div> --}}
                     <div class="form-group">
                         <label for="imagen">Imagen</label>
-                        <input wire:model="imagen" type="text" class="form-control" id="imagen" name="image" placeholder="Imagen" required>@error('imagen') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="imagen" type="file" class="form-control" id="imagen" name="image" placeholder="Imagen" required>@error('imagen') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="url">Url</label>
-                        <input wire:model="url" type="text" class="form-control" id="url" placeholder="Url">@error('url') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="url" type="text" class="form-control" id="url" placeholder="Url" required>@error('url') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                 </form>
             </div>

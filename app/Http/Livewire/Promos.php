@@ -4,11 +4,15 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
 use App\Models\Promo;
+use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class Promos extends Component
 {
     use WithPagination;
+	use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $nombre_promo, $ubicación, $escuela_id, $fecha_de_inicio, $duración, $url, $imagen;
@@ -56,7 +60,7 @@ class Promos extends Component
 		'fecha_de_inicio' => 'required',
 		'duración' => 'required',
 		'url' => 'required',
-		'imagen' => 'required',
+		'imagen' => 'image|max:1024', // 1MB Max
         ]);
 
         Promo::create([ 
@@ -66,7 +70,7 @@ class Promos extends Component
 			'fecha_de_inicio' => $this-> fecha_de_inicio,
 			'duración' => $this-> duración,
 			'url' => $this-> url,
-			'imagen' => $this-> imagen
+			'imagen' => $this->imagen->store('assets', 'public'),
         ]);
         
         $this->resetInput();
