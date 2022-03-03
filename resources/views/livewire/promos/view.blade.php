@@ -32,13 +32,13 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
+								<th>Escuela id</th>
 								<th>Nombre</th>
 								<th>Localidad</th>
-								{{-- <th>Escuela Id</th> --}}
 								<th>Fecha de inicio</th>
 								<th>Duración (h)</th>
-								<th>Url</th>
 								<th>Imagen</th>
+								<th>Url</th>
 								<td>Acciones</td>
 							</tr>
 						</thead>
@@ -46,13 +46,13 @@
 							@foreach($promos as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
+								<td>{{ $row->escuela_id }}</td>
 								<td>{{ $row->nombre_promo }}</td>
 								<td>{{ $row->ubicación }}</td>
-								<td>{{ $row->escuela_id }}</td>
 								<td>{{ $row->fecha_de_inicio }}</td>
 								<td>{{ $row->duración }}</td>
-								<td>{{ $row->url }}</td>
 								<td>{{ $row->imagen }}</td>
+								<td>{{ $row->url }}</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
