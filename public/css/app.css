@@ -14867,6 +14867,9 @@ body .add-section .btn-add {
 body .add-section .btn-add > svg {
   fill: #fffafa;
 }
+body .form-control {
+  height: auto;
+}
 body .form-control:focus {
   color: #222222;
   background-color: #fffafa;
