@@ -15,7 +15,8 @@ class PromoController extends Controller
      */
     public function index()
     {
-        //
+        $promos = Promo::all();
+        return view('promos-view', ['promos' => $promos]);
     }
 
     /**

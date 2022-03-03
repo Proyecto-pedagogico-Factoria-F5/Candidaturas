@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         $schools = School::all();
-        return view('home', ['schools' => $schools]);
+        return view('schools-view', ['schools' => $schools]);
     }
 
     public function register()

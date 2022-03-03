@@ -22,6 +22,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/schools-view', [App\Http\Controllers\HomeController::class, 'index'])->name('schools-view');
+Route::get('/promos-view', [App\Http\Controllers\PromoController::class, 'index'])->name('promos-view');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/register', [HomeController::class, 'register'])->name('register');
 
