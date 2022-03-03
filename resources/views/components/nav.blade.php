@@ -28,7 +28,7 @@
                     <a class="dropdown-item" href="{{ url('/schools') }}"><i class="fas fa-school text-info"></i> Escuelas</a>
                     <a class="dropdown-item" href="{{ url('/schools') }}"><i class="fas fa-edit text-info"></i> Administrar escuelas</a> 
                     <a class="dropdown-item" href="{{ url('/promos') }}"><i class="fas fa-graduation-cap text-info"></i> Promos</a> 
-                    <a class="dropdown-item" href="{{ url('/promos') }}"><i class="fas fa-edit-cap text-info"></i> Administrar promos</a> 
+                    <a class="dropdown-item" href="{{ url('/promos') }}"><i class="fas fa-edit text-info"></i> Administrar promos</a> 
                     <a class="dropdown-item dropdown-last-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
