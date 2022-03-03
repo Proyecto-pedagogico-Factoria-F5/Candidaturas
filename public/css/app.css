@@ -14792,18 +14792,19 @@ h3 {
 #welcome-bg #welcome-container #welcome-text p {
   color: #fffafa;
 }
-#welcome-bg #welcome-container #welcome-text .welcome-btns .nav-link {
-  background: #fffafa;
-  color: #6C757D;
-  border: 2px solid #fffafa;
-  border-radius: 10px;
-  margin: 1rem 1rem 0 0;
-  padding: 0.6rem 1em;
-  display: inline-flex;
+#welcome-bg #welcome-container #welcome-text .card {
+  border-radius: 1rem;
 }
-#welcome-bg #welcome-container #welcome-text .welcome-btns .nav-link:hover {
-  border: 2px solid #FC4702;
-  color: #FC4702;
+#welcome-bg #welcome-container #welcome-text .card .card-body {
+  padding: 2rem;
+}
+#welcome-bg #welcome-container #welcome-text .card .card-body .row {
+  display: flex;
+  justify-content: space-between;
+}
+#welcome-bg #welcome-container #welcome-text .card .card-body .row .btn-link {
+  text-align: left;
+  padding: 1rem 0 0 0;
 }
 #welcome-bg #welcome-container #welcome-img > svg {
   fill: #fffafa;
