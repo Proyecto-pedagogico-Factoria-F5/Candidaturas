@@ -44,6 +44,10 @@
 			</div>
 		</div>
 	</div>
+{{-- 	@livewire('card-school');
+ --}}		<livewire:card-school />
+
 </div>
+
 </div>
 @endsection
