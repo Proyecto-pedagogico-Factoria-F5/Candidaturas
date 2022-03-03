@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Models;
 
@@ -7,17 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Candidatura extends Model
 {
-    use HasFactory;
+	use HasFactory;
+	
+    public $timestamps = true;
 
-    protected $fillable = [
-        'nombre',
-        'apellidos',
-        'email',
-        'teléfono',
-        'cuenta_usuario',
-        'descripción',
-        'fecha_de_registro', //función?
-        'fecha_de_nacimiento',
-        'nacionalidad',
-    ];
+    protected $table = 'candidaturas';
+
+    protected $fillable = ['nombre','apellidos','email','teléfono','cuenta_usuario','descripción','fecha_de_registro','fecha_de_nacimiento','nacionalidad'];
+	
 }
