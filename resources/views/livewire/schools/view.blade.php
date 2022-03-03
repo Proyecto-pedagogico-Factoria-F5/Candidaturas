@@ -16,7 +16,7 @@
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Schools">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar escuela">
 						</div>
 						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
 						<i class="fa fa-plus"></i>  Añadir Escuela
@@ -33,7 +33,7 @@
 							<tr> 
 								<td>#</td> 
 								<th>Nombre</th>
-								<th>Ubicación</th>
+								<th>Provincia</th>
 								<td>Acciones</td>
 							</tr>
 						</thead>
