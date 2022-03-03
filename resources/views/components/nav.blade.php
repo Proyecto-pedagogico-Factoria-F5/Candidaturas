@@ -25,7 +25,8 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ url('/schools') }}"><i class="fas fa-school text-info"></i> Escuelas</a>
+                    <a class="dropdown-item" href="{{ url('/register') }}"><i class="fas fa-users text-info"></i> Dar de alta</a>
+                    <a class="dropdown-item" href="{{ url('/home') }}"><i class="fas fa-school text-info"></i> Escuelas</a>
                     <a class="dropdown-item" href="{{ url('/schools') }}"><i class="fas fa-edit text-info"></i> Administrar escuelas</a> 
                     <a class="dropdown-item" href="{{ url('/promos') }}"><i class="fas fa-graduation-cap text-info"></i> Promos</a> 
                     <a class="dropdown-item" href="{{ url('/promos') }}"><i class="fas fa-edit text-info"></i> Administrar promos</a> 
