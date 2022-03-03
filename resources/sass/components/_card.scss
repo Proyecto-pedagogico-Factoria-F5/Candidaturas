@@ -1,7 +1,5 @@
 #card {
     width: 20rem !important;
-   /*  padding: x;
-    margin: x;  */
     box-shadow: 1px 2px;
     border-radius: 0.5rem !important;
     text-align: center !important;
@@ -15,6 +13,7 @@
     }
 
     .name  {
+        background-color: $brand-color; 
         align-items: center !important;
         font-size: 1.3rem !important;  
         font-weight: 400;
@@ -25,24 +24,10 @@
     }
 
     .location {
-/*         font-size: x; 
- */        color: #000000; 
-/*         margin: x;  
- */    }
+        color: $first-color; 
+    }
+
     .description {
-/*         font-size: x; 
- */        color:#FC4702 /* $main */; 
-/*         margin: x;  
- */    }
-   
+        color: $brand-color; 
+    }
 }
-
-
-
-
-.name  {
-    /*         font-size: x; 
-     */     color: #ffffff;
-            background-color: #FC4702/*  $main */; 
-            padding: 2% !important;  
-        }
