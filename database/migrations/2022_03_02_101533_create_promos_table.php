@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('fecha_de_inicio');
             $table->string('duración');
             $table->string('url');
+            $table->string('imagen');
             $table->timestamps();
         });
     }
