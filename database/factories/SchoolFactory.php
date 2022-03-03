@@ -13,9 +13,9 @@ class SchoolFactory extends Factory
     public function definition()
     {
         return [
-			'name' => $this->faker->name,
-			'location' => $this->faker->name,
-            'image' => $this->faker->image('https://picsum.photos/400/300'),
+			'nombre_escuela' => $this->faker->name,
+			'provincia' => $this->faker->name,
+            'imagen' => $this->faker->image('https://picsum.photos/400/300'),
         ];
     }
 }

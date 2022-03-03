@@ -19,8 +19,8 @@ class Schools extends Component
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.schools.view', [
             'schools' => School::latest()
-						->orWhere('name', 'LIKE', $keyWord)
-						->orWhere('location', 'LIKE', $keyWord)
+						->orWhere('nombre_escuela', 'LIKE', $keyWord)
+						->orWhere('provincia', 'LIKE', $keyWord)
                         ->orWhere('imagen', 'LIKE', $keyWord)
 						->paginate(10),
         ]);
@@ -34,21 +34,23 @@ class Schools extends Component
 	
     private function resetInput()
     {		
-		$this->name = null;
-		$this->location = null;
+		$this->nombre_escuela = null;
+		$this->provincia = null;
         $this->imagen = null;
     }
 
     public function store()
     {
         $this->validate([
-		'name' => 'required',
-		'location' => 'required',
+            'nombre_escuela' => 'required',
+            'provincia' => 'required',
+            'imagen' => 'required',
         ]);
 
         School::create([ 
-			'name' => $this-> name,
-			'location' => $this-> location
+			'nombre_escuela' => $this-> nombre_escuela,
+			'provincia' => $this-> provincia,
+            'imagen' => $this-> imagen
         ]);
         
         $this->resetInput();
@@ -61,8 +63,8 @@ class Schools extends Component
         $record = School::findOrFail($id);
 
         $this->selected_id = $id; 
-		$this->name = $record-> name;
-		$this->location = $record-> location;
+		$this->nombre_escuela = $record-> nombre_escuela;
+		$this->provincia = $record-> provincia;
         $this->imagen = $record-> imagen;
 		
         $this->updateMode = true;
@@ -71,16 +73,17 @@ class Schools extends Component
     public function update()
     {
         $this->validate([
-		'name' => 'required',
-		'location' => 'required',
+		'nombre_escuela' => 'required',
+		'provincia' => 'required',
         'imagen' => 'required',
         ]);
 
         if ($this->selected_id) {
 			$record = School::find($this->selected_id);
             $record->update([ 
-			'name' => $this-> name,
-			'location' => $this-> location
+			'nombre_escuela' => $this-> nombre_escuela,
+			'provincia' => $this-> provincia,
+            'imagen' => $this-> imagen
             ]);
 
             $this->resetInput();

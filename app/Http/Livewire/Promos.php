@@ -66,7 +66,7 @@ class Promos extends Component
 			'fecha_de_inicio' => $this-> fecha_de_inicio,
 			'duración' => $this-> duración,
 			'url' => $this-> url,
-            'imagen' => $this->imagen 
+            'imagen' => $this-> imagen 
         ]);
         
         $this->resetInput();

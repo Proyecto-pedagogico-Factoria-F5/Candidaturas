@@ -13,6 +13,6 @@ class School extends Model
 
     protected $table = 'schools';
 
-    protected $fillable = ['name','location', 'image'];
+    protected $fillable = ['nombre_escuela','provincia','imagen'];
 	
 }
