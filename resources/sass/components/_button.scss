@@ -12,10 +12,10 @@ btn {
             background-color: $white;
         }
         main {
-            background-color: $main;
+            background-color: $brand-color;
         }
         secondary {
-            background-color: $secondary;
+            background-color: $first-color-light;
         }
     }
     no-frame {
@@ -23,10 +23,10 @@ btn {
             color: $black;
         }
         main {
-            color: $main;
+            color: $brand-color;
         }
         secondary {
-            color: $secondary;
+            color: $first-color-light;
         }
     }
     
