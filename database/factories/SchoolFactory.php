@@ -15,7 +15,7 @@ class SchoolFactory extends Factory
         return [
 			'nombre_escuela' => $this->faker->name,
 			'provincia' => $this->faker->name,
-            'imagen' => $this->faker->image('https://picsum.photos/400/300'),
+			'imagen' => $this->faker->name,
         ];
     }
 }

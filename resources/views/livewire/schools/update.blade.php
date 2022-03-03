@@ -12,12 +12,16 @@
                 <form>
 					<input type="hidden" wire:model="selected_id">
             <div class="form-group">
-                <label for="name"></label>
-                <input wire:model="name" type="text" class="form-control" id="name" placeholder="Name">@error('name') <span class="error text-danger">{{ $message }}</span> @enderror
+                <label for="nombre_escuela"></label>
+                <input wire:model="nombre_escuela" type="text" class="form-control" id="nombre_escuela" placeholder="Nombre Escuela">@error('nombre_escuela') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
-                <label for="location"></label>
-                <input wire:model="location" type="text" class="form-control" id="location" placeholder="Location">@error('location') <span class="error text-danger">{{ $message }}</span> @enderror
+                <label for="provincia"></label>
+                <input wire:model="provincia" type="text" class="form-control" id="provincia" placeholder="Provincia">@error('provincia') <span class="error text-danger">{{ $message }}</span> @enderror
+            </div>
+            <div class="form-group">
+                <label for="imagen"></label>
+                <input wire:model="imagen" type="text" class="form-control" id="imagen" placeholder="Imagen">@error('imagen') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
 
                 </form>
