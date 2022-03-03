@@ -14736,12 +14736,12 @@ h3 {
   width: 80%;
   margin: 0 auto;
 }
-.cards-container .cards-container > div {
+.cards-container > div {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
-.cards-container .cards-container > div #card {
+.cards-container > div #card {
   width: 20rem !important;
   box-shadow: 1px 2px;
   border-radius: 0.5rem !important;
@@ -14750,11 +14750,11 @@ h3 {
   height: 12rem !important;
   display: flex;
 }
-.cards-container .cards-container > div #card img {
+.cards-container > div #card img {
   width: 100%;
   max-height: 80% !important;
 }
-.cards-container .cards-container > div #card .name {
+.cards-container > div #card .name {
   background-color: #FC4702;
   align-items: center !important;
   font-size: 1.3rem !important;
@@ -14764,10 +14764,10 @@ h3 {
   border-bottom-left-radius: 0.5rem !important;
   border-bottom-right-radius: 0.5rem !important;
 }
-.cards-container .cards-container > div #card .location {
+.cards-container > div #card .location {
   color: #222222;
 }
-.cards-container .cards-container > div #card .description {
+.cards-container > div #card .description {
   color: #FC4702;
 }
 
