@@ -21,6 +21,7 @@ class Schools extends Component
             'schools' => School::latest()
 						->orWhere('name', 'LIKE', $keyWord)
 						->orWhere('location', 'LIKE', $keyWord)
+                        ->orWhere('imagen', 'LIKE', $keyWord)
 						->paginate(10),
         ]);
     }
@@ -35,6 +36,7 @@ class Schools extends Component
     {		
 		$this->name = null;
 		$this->location = null;
+        $this->imagen = null;
     }
 
     public function store()
@@ -61,6 +63,7 @@ class Schools extends Component
         $this->selected_id = $id; 
 		$this->name = $record-> name;
 		$this->location = $record-> location;
+        $this->imagen = $record-> imagen;
 		
         $this->updateMode = true;
     }
@@ -70,6 +73,7 @@ class Schools extends Component
         $this->validate([
 		'name' => 'required',
 		'location' => 'required',
+        'imagen' => 'required',
         ]);
 
         if ($this->selected_id) {
