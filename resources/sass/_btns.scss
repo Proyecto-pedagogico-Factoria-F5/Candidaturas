@@ -20,8 +20,7 @@
     }
 
     &:not(:disabled):not(.disabled):active, 
-    &:not(:disabled):not(.disabled).active, 
-    &.dropdown-toggle {
+    &:not(:disabled):not(.disabled).active {
         color: $second-color;
         background-color: $brand-color-dark;
         border-color: $brand-color-dark;
