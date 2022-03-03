@@ -2,20 +2,7 @@
     <span class="navbar-toggler-icon"></span>
 </button>
 
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <!-- Left Side Of Navbar -->
-    @auth()
-    <ul class="navbar-nav mr-auto">
-        <!--Nav Bar Hooks - Do not delete!!-->
-        <li class="nav-item">
-            <a href="{{ url('/schools') }}" class="nav-link"><i class="fab fas fa-school text-info"></i> Escuelas</a> 
-        </li>
-        <li class="nav-item">
-            <a href="{{ url('/promos') }}" class="nav-link"><i class="fas fa-graduation-cap text-info"></i> Promos</a> 
-        </li>
-    </ul>
-    @endauth()
-    
+<div class="collapse navbar-collapse" id="navbarSupportedContent">    
     <!-- Right Side Of Navbar -->
     <ul class="navbar-nav ml-auto">
         <!-- Authentication Links -->
@@ -38,7 +25,10 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
+                    <a class="dropdown-item" href="{{ url('/schools') }}"><i class="fas fa-school text-info"></i> Escuelas</a>
+                    <a class="dropdown-item" href="{{ url('/schools') }}"><i class="fas fa-edit text-info"></i> Administrar escuelas</a> 
+                    <a class="dropdown-item" href="{{ url('/promos') }}"><i class="fas fa-graduation-cap text-info"></i> Promos</a> 
+                    <a class="dropdown-item dropdown-last-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
                         {{ __('Cerrar sesión') }}
