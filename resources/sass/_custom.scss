@@ -50,6 +50,7 @@ body {
         }
 
         .form-check-input {
+            appearance: auto; /* DON'T DELETE, important! */
             background: $second-color;
             border-color: $first-color-light;  
             height: 1rem;
