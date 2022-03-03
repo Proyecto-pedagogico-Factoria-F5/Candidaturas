@@ -36,28 +36,6 @@ body {
         }
     }
 
-    .add-section {
-        display: flex;
-        float: right;
-        justify-content: center;
-        align-items: center;
-
-        .nav-link {
-            color: $first-color-light;
-        }
-
-        .btn-add {
-            background: $brand-color;
-            border-radius: 8px;
-            padding: 0.2rem 0.275rem;
-            box-shadow: 0 2px 2px 0.1rem rgba($first-color, 0.2);
-
-            & > svg {
-                fill: $second-color;
-            }
-        }
-    }
-
     .form-control {
         height: auto;
 
@@ -67,54 +45,6 @@ body {
             border-color: rgba($brand-color, 0.25);
             outline: 0;
             box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
-        }
-    }
-
-    .btn-primary, .btn-info {
-        color: $second-color;
-        background-color: $brand-color;
-        border-color: $brand-color;
-
-        &:hover, &:active {
-            color: $second-color;
-            background-color: $brand-color-dark;
-            border-color: $brand-color-dark;
-        }
-
-        &:focus {
-            background-color: $brand-color-dark;
-            border-color: rgba($brand-color, 0.25);
-            box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
-        }
-
-        &:active:focus {
-            box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
-        }
-
-        &:not(:disabled):not(.disabled):active, 
-        &:not(:disabled):not(.disabled).active, 
-        &.dropdown-toggle {
-            color: $second-color;
-            background-color: $brand-color-dark;
-            border-color: $brand-color-dark;
-        }
-
-        &:not(:disabled):not(.disabled):active:focus, 
-        &:not(:disabled):not(.disabled).active:focus,
-        &.dropdown-toggle:focus {
-            box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
-        }
-    }
-    
-    .btn-check:focus + .btn, .btn:focus {
-        box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
-    }
-
-    .btn-link {
-        color: $brand-color;
-
-        &:hover {
-            color: $brand-color-dark;
         }
     }
 

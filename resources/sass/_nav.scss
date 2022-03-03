@@ -9,6 +9,10 @@
             color: $second-color;
             text-decoration: none;
             background-color: $brand-color;
+
+            .text-info {
+                color: $second-color !important;
+            }
         }
     }
 

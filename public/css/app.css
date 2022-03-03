@@ -14817,6 +14817,44 @@ h3 {
   margin-bottom: 1rem !important;
 }
 
+.btn-primary, .btn-info {
+  color: #fffafa;
+  background-color: #FC4702;
+  border-color: #FC4702;
+}
+.btn-primary:hover, .btn-primary:active, .btn-info:hover, .btn-info:active {
+  color: #fffafa;
+  background-color: #e64100;
+  border-color: #e64100;
+}
+.btn-primary:focus, .btn-info:focus {
+  background-color: #e64100;
+  border-color: rgba(252, 71, 2, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
+}
+.btn-primary:active:focus, .btn-info:active:focus {
+  box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary.dropdown-toggle, .btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled).active, .btn-info.dropdown-toggle {
+  color: #fffafa;
+  background-color: #e64100;
+  border-color: #e64100;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary.dropdown-toggle:focus, .btn-info:not(:disabled):not(.disabled):active:focus, .btn-info:not(:disabled):not(.disabled).active:focus, .btn-info.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
+}
+
+.btn-check:focus + .btn, .btn:focus {
+  box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
+}
+
+.btn-link {
+  color: #FC4702;
+}
+.btn-link:hover {
+  color: #e64100;
+}
+
 body {
   background: #F9F9F9;
   color: #222222;
@@ -14849,24 +14887,6 @@ body .section-title .section-title-line {
   background: #F9F9F9;
   padding: 0 10px 0 0;
 }
-body .add-section {
-  display: flex;
-  float: right;
-  justify-content: center;
-  align-items: center;
-}
-body .add-section .nav-link {
-  color: #6C757D;
-}
-body .add-section .btn-add {
-  background: #FC4702;
-  border-radius: 8px;
-  padding: 0.2rem 0.275rem;
-  box-shadow: 0 2px 2px 0.1rem rgba(34, 34, 34, 0.2);
-}
-body .add-section .btn-add > svg {
-  fill: #fffafa;
-}
 body .form-control {
   height: auto;
 }
@@ -14876,41 +14896,6 @@ body .form-control:focus {
   border-color: rgba(252, 71, 2, 0.25);
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
-}
-body .btn-primary, body .btn-info {
-  color: #fffafa;
-  background-color: #FC4702;
-  border-color: #FC4702;
-}
-body .btn-primary:hover, body .btn-primary:active, body .btn-info:hover, body .btn-info:active {
-  color: #fffafa;
-  background-color: #e64100;
-  border-color: #e64100;
-}
-body .btn-primary:focus, body .btn-info:focus {
-  background-color: #e64100;
-  border-color: rgba(252, 71, 2, 0.25);
-  box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
-}
-body .btn-primary:active:focus, body .btn-info:active:focus {
-  box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
-}
-body .btn-primary:not(:disabled):not(.disabled):active, body .btn-primary:not(:disabled):not(.disabled).active, body .btn-primary.dropdown-toggle, body .btn-info:not(:disabled):not(.disabled):active, body .btn-info:not(:disabled):not(.disabled).active, body .btn-info.dropdown-toggle {
-  color: #fffafa;
-  background-color: #e64100;
-  border-color: #e64100;
-}
-body .btn-primary:not(:disabled):not(.disabled):active:focus, body .btn-primary:not(:disabled):not(.disabled).active:focus, body .btn-primary.dropdown-toggle:focus, body .btn-info:not(:disabled):not(.disabled):active:focus, body .btn-info:not(:disabled):not(.disabled).active:focus, body .btn-info.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
-}
-body .btn-check:focus + .btn, body .btn:focus {
-  box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
-}
-body .btn-link {
-  color: #FC4702;
-}
-body .btn-link:hover {
-  color: #e64100;
 }
 body footer {
   background: #FC4702;
@@ -14946,6 +14931,9 @@ body footer .footer-container .social-media > :not(last-child) {
   color: #fffafa;
   text-decoration: none;
   background-color: #FC4702;
+}
+.dropdown-menu .dropdown-item.active .text-info, .dropdown-menu .dropdown-item:active .text-info {
+  color: #fffafa !important;
 }
 .dropdown-menu .dropdown-last-item {
   border-top: 1px solid #6C757D;
