@@ -48,6 +48,22 @@ body {
         }
     }
 
+    .form-check-input {
+        appearance: auto; /* DON'T DELETE, important! */
+        background: $second-color;
+        border-color: $first-color-light;  
+        height: 1rem;
+        width: 1rem;
+                           
+        &:checked {
+            background-color: $brand-color;
+        }
+    
+        &:hover, &:active, &:focus {
+            box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
+        }
+    }
+
     footer {
         background: $brand-color;
         color: $second-color;
