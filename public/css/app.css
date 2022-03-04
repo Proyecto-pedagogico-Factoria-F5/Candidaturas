@@ -14733,21 +14733,25 @@ h3 {
 /* Dark mode */
 /* High contrast */
 .cards-container {
-  width: 31%;
+  width: 80%;
+  display: flex;
+  justify-content: center !important;
+  margin: 0 auto;
+}
+.cards-container #card {
+  background-color: #FC4702 !important;
+  border-radius: 0.5rem !important;
+  align-items: center;
+  text-align: center !important;
+  box-shadow: inset 0 -3em 3em rgba(94, 94, 94, 0.1), 0.3em 0.3em 1em rgba(92, 92, 92, 0.3);
+  width: 18rem;
   margin: 3.5% !important;
   padding: 0 !important;
   overflow: hidden;
-  border-radius: 0.5rem !important;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  background-color: #FC4702 !important;
-  box-shadow: inset 0 -3em 3em rgba(94, 94, 94, 0.1), 0.3em 0.3em 1em rgba(92, 92, 92, 0.3);
-}
-.cards-container #card {
-  align-items: center;
-  text-align: center !important;
-  padding: 0 !important;
+  justify-content: center;
 }
 .cards-container #card > img {
   width: -webkit-fit-content;
