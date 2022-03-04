@@ -9,7 +9,6 @@
 			<div class="row container_01">
 				@livewire('components.card-school')					
 			</div> 
-		
 		</div>
 	</div>
 </div>
