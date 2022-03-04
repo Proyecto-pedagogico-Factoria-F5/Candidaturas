@@ -66,6 +66,12 @@ body {
         }
     }
 
+    table {
+        .table-img {
+            max-width: 5rem;
+        }
+    }
+
     footer {
         background: $brand-color;
         color: $second-color;
