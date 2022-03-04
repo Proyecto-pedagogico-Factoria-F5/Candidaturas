@@ -7,9 +7,6 @@
                 {{-- <h1 class="section-title"><span class="section-title-line">Candidaturas</span></h1> --}}
                 <h1 class="section-title">Candidaturas</h1>
                 <p>Gestión de escuelas, promociones y candidaturas</p>
-                {{-- <div class="welcome-btns">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
-                </div> --}}
                 <div class="card"> 
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">

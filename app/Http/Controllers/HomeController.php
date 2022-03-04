@@ -24,12 +24,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $schools = School::all();
-        return view('schools-view', ['schools' => $schools]);
+        return view('schools-view');
     }
 
     public function register()
     {
         return view('auth.register');
+    }
+
+    public function profile()
+    {
+        return view('profile');
     }
 }

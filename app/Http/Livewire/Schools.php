@@ -52,7 +52,7 @@ class Schools extends Component
         School::create([ 
 			'nombre_escuela' => $this-> nombre_escuela,
 			'provincia' => $this-> provincia,
-			'imagen' => $this->imagen->store('assets', 'public'),
+			'imagen' => $this->imagen->store('uploads', 'public'),
         ]);
         
         $this->resetInput();
@@ -85,7 +85,7 @@ class Schools extends Component
             $record->update([ 
 			'nombre_escuela' => $this-> nombre_escuela,
 			'provincia' => $this-> provincia,
-			'imagen' => $this->imagen->store('assets', 'public'),
+			'imagen' => $this->imagen->store('uploads', 'public'),
             ]);
 
             $this->resetInput();

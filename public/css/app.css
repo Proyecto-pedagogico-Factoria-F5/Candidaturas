@@ -14733,42 +14733,49 @@ h3 {
 /* Dark mode */
 /* High contrast */
 .cards-container {
-  width: 80%;
-  margin: 0 auto;
+  margin: 6rem 0 0 0;
 }
-.cards-container > div {
+.cards-container .card {
+  border-radius: 15px;
+  overflow: hidden;
+  margin: 0 0.5rem 4rem 0.5rem;
+  padding: 0;
+  height: 15rem;
+  width: 25rem;
+  box-shadow: inset 0 -3em 3em rgba(94, 94, 94, 0.1), 0.3em 0.3em 1em rgba(92, 92, 92, 0.3);
+}
+.cards-container .card img, .cards-container .card .card-img-top {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  height: 75%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.cards-container .card .card-body {
+  background: #FC4702;
+  text-align: center;
+  height: 25%;
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: center;
 }
-.cards-container > div #card {
-  width: 20rem !important;
-  box-shadow: 1px 2px;
-  border-radius: 0.5rem !important;
-  text-align: center !important;
-  color: #ffffff !important;
-  height: 12rem !important;
-  display: flex;
+.cards-container .card .card-body > *:not(:first-child) {
+  margin-top: 0.6rem;
 }
-.cards-container > div #card img {
-  width: 100%;
-  max-height: 80% !important;
-}
-.cards-container > div #card .name {
-  background-color: #FC4702;
-  align-items: center !important;
-  font-size: 1.3rem !important;
+.cards-container .card .card-body .card-title {
+  color: #fffafa;
   font-weight: 400;
-  color: #ffffff;
-  padding: 4% !important;
-  border-bottom-left-radius: 0.5rem !important;
-  border-bottom-right-radius: 0.5rem !important;
+  margin: 0;
 }
-.cards-container > div #card .location {
+.cards-container .card .card-body .card-btns {
+  text-align: center;
+}
+.cards-container .card .card-body .card-btns .btn {
   color: #222222;
-}
-.cards-container > div #card .description {
-  color: #FC4702;
+  font-weight: bold;
+  margin: 1rem;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
 #welcome-bg {
@@ -14941,6 +14948,9 @@ body form .form-check-input:checked {
 body form .form-check-input:hover, body form .form-check-input:active, body form .form-check-input:focus {
   box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
 }
+body table .table-img {
+  max-width: 5rem;
+}
 body footer {
   background: #FC4702;
   color: #fffafa;
@@ -14964,20 +14974,27 @@ body footer .footer-container .social-media > :not(last-child) {
   margin: 0 1.2rem 0 0;
 }
 
-.dropdown-menu {
+nav {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+nav .dropdown-menu {
   margin: 0;
   padding: 0;
 }
-.dropdown-menu .dropdown-item {
+nav .dropdown-menu .dropdown-item {
   padding: 0.5rem 2rem 0.5rem 1rem;
 }
-.dropdown-menu .dropdown-item.active, .dropdown-menu .dropdown-item:active {
+nav .dropdown-menu .dropdown-item.active, nav .dropdown-menu .dropdown-item:active {
   color: #fffafa;
   text-decoration: none;
   background-color: #FC4702;
 }
-.dropdown-menu .dropdown-item.active .text-info, .dropdown-menu .dropdown-item:active .text-info {
+nav .dropdown-menu .dropdown-item.active .text-info, nav .dropdown-menu .dropdown-item:active .text-info {
   color: #fffafa !important;
+}
+nav .dropdown-menu .dropdown-last-item {
+  border-top: 1px solid #6C757D;
 }
 
 #app {
@@ -14988,51 +15005,36 @@ body footer .footer-container .social-media > :not(last-child) {
   flex: 1 1 auto;
   flex-direction: column;
 }
-
-main {
-  display: flex;
-  flex: 1 0 auto;
-}
-
-.header-container, main > div, .footer-container {
-  max-width: 90% !important;
-  width: 90% !important;
+#app .header-container, #app main > div, #app .footer-container {
+  max-width: 90%;
+  width: 90%;
   margin: 0 auto;
   padding: 0;
 }
-
-main > div {
+#app main {
+  display: flex;
+  flex: 1 0 auto;
+}
+#app main > div {
   padding: 8rem 0 !important;
 }
-
-footer {
+#app footer {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
-footer .footer-container {
+#app footer .footer-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-footer .footer-container > div {
+#app footer .footer-container > div {
   display: inline-flex;
 }
-footer .footer-container #credits > h6 {
+#app footer .footer-container #credits > h6 {
   line-height: inherit;
   margin: 0 0.5rem 0 0;
 }
-footer .footer-container #credits > a {
+#app footer .footer-container #credits > a {
   display: inline-flex;
   align-items: center;
-}
-
-toolbar {
-  padding: x;
-  margin: x;
-}
-toolbar header {
-  background-color: #FC4702;
-}
-toolbar footer {
-  background-color: #FC4702;
 }
