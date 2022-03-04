@@ -14979,9 +14979,6 @@ body footer .footer-container .social-media > :not(last-child) {
 .dropdown-menu .dropdown-item.active .text-info, .dropdown-menu .dropdown-item:active .text-info {
   color: #fffafa !important;
 }
-.dropdown-menu .dropdown-last-item {
-  border-top: 1px solid #6C757D;
-}
 
 #app {
   min-height: 100vh;
