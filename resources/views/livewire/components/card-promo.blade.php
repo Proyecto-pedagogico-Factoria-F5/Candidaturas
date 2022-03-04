@@ -1,6 +1,7 @@
-<div>
+<div >
   @foreach ($promos as $promo)
-    <div id="card" class="card" style="width: 18rem;">
+  <div class="cards-container">
+    <div id="card">
       <img class="card-img-top" src="..." alt="Card image cap">
       <div class="card-body">
         <h2 class="card-title">{{ $promo->ubicación }}</h2>
@@ -11,5 +12,8 @@
         <h1 href="#" class="card-link">{{ $promo->nombre_promo }}</h1>
       </div>
     </div>
+  </div>
   @endforeach  
 </div>
+
+{{-- style="width: 18rem;" --}}

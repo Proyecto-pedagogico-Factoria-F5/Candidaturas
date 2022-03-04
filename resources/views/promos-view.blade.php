@@ -4,9 +4,11 @@
 
 <div class="container-fluid">
 	<div class="row justify-content-center">
-		<div class="col-md-12">
-			<h5>PROMOCIONES</h5><hr>
-			@livewire('components.card-promo')					
+		<div class="container">
+			<h1 class="display-6 mb-5 section-title"><span class="section-title-line">Promociones</span></h1>
+			<div class="col-md-3">
+			    @livewire('components.card-promo')		
+		    </div>			
 		</div>
 	</div>
 </div>
