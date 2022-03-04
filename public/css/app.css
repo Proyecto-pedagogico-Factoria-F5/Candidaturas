@@ -14829,92 +14829,6 @@ h3 {
         }
     }
 } */
-.btn-primary, .btn-info {
-  color: #fffafa;
-  background-color: #FC4702;
-  border-color: #FC4702;
-}
-.btn-primary:hover, .btn-primary:active, .btn-info:hover, .btn-info:active {
-  color: #fffafa;
-  background-color: #e64100;
-  border-color: #e64100;
-}
-.btn-primary:focus, .btn-info:focus {
-  background-color: #e64100;
-  border-color: rgba(252, 71, 2, 0.25);
-  box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
-}
-.btn-primary:active:focus, .btn-info:active:focus {
-  box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
-}
-.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled).active {
-  color: #fffafa;
-  background-color: #e64100;
-  border-color: #e64100;
-}
-.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary.dropdown-toggle:focus, .btn-info:not(:disabled):not(.disabled):active:focus, .btn-info:not(:disabled):not(.disabled).active:focus, .btn-info.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
-}
-
-.btn-check:focus + .btn, .btn:focus {
-  box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
-}
-
-.btn-link {
-  color: #FC4702;
-}
-.btn-link:hover {
-  color: #e64100;
-}
-
-title {
-  font-size: x;
-}
-title home {
-  color: #fff;
-}
-title section {
-  color: #6C757D;
-}
-
-link {
-  font-size: x;
-  color: #FC4702;
-}
-
-icon light {
-  color: #fff;
-}
-icon main {
-  color: #FC4702;
-}
-icon secondary {
-  color: #6C757D;
-}
-
-input {
-  width: x;
-  height: x;
-  border-radius: x;
-  padding: x;
-  margin: x;
-}
-input light {
-  background-color: x;
-}
-
-checkbox {
-  width: x;
-  height: x;
-  border-radius: x;
-  padding: x;
-  margin: x;
-  border: 1px solid gray;
-}
-checkbox light {
-  background-color: x;
-}
-
 #welcome-bg {
   background: rgba(252, 71, 2, 0.5);
   max-width: 100% !important;
@@ -14936,18 +14850,19 @@ checkbox light {
 #welcome-bg #welcome-container #welcome-text p {
   color: #fffafa;
 }
-#welcome-bg #welcome-container #welcome-text .welcome-btns .nav-link {
-  background: #fffafa;
-  color: #6C757D;
-  border: 2px solid #fffafa;
-  border-radius: 10px;
-  margin: 1rem 1rem 0 0;
-  padding: 0.6rem 1em;
-  display: inline-flex;
+#welcome-bg #welcome-container #welcome-text .card {
+  border-radius: 1rem;
 }
-#welcome-bg #welcome-container #welcome-text .welcome-btns .nav-link:hover {
-  border: 2px solid #FC4702;
-  color: #FC4702;
+#welcome-bg #welcome-container #welcome-text .card .card-body {
+  padding: 2rem;
+}
+#welcome-bg #welcome-container #welcome-text .card .card-body .row {
+  display: flex;
+  justify-content: space-between;
+}
+#welcome-bg #welcome-container #welcome-text .card .card-body .row .btn-link {
+  text-align: left;
+  padding: 1rem 0 0 0;
 }
 #welcome-bg #welcome-container #welcome-img > svg {
   fill: #fffafa;
@@ -14990,14 +14905,43 @@ checkbox light {
   border-color: #FC4702;
   box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
 }
-.create-container .form-container form .create-masterclass-btns {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 2rem;
+
+.btn-primary, .btn-info {
+  color: #fffafa;
+  background-color: #FC4702;
+  border-color: #FC4702;
 }
-.create-container .form-container form .create-masterclass-btns .form-check {
-  margin-bottom: 1rem !important;
+.btn-primary:hover, .btn-primary:active, .btn-info:hover, .btn-info:active {
+  color: #fffafa;
+  background-color: #e64100;
+  border-color: #e64100;
+}
+.btn-primary:focus, .btn-info:focus {
+  background-color: #e64100;
+  border-color: rgba(252, 71, 2, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
+}
+.btn-primary:active:focus, .btn-info:active:focus {
+  box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled).active {
+  color: #fffafa;
+  background-color: #e64100;
+  border-color: #e64100;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary.dropdown-toggle:focus, .btn-info:not(:disabled):not(.disabled):active:focus, .btn-info:not(:disabled):not(.disabled).active:focus, .btn-info.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
+}
+
+.btn-check:focus + .btn, .btn:focus {
+  box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
+}
+
+.btn-link {
+  color: #FC4702;
+}
+.btn-link:hover {
+  color: #e64100;
 }
 
 body {
@@ -15032,17 +14976,14 @@ body .section-title .section-title-line {
   background: #F9F9F9;
   padding: 0 10px 0 0;
 }
-body .form-control {
-  height: auto;
-}
-body .form-control:focus {
+body form .form-control:focus {
   color: #222222;
   background-color: #fffafa;
   border-color: rgba(252, 71, 2, 0.25);
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
 }
-body .form-check-input {
+body form .form-check-input {
   -webkit-appearance: auto;
      -moz-appearance: auto;
           appearance: auto;
@@ -15052,10 +14993,10 @@ body .form-check-input {
   height: 1rem;
   width: 1rem;
 }
-body .form-check-input:checked {
+body form .form-check-input:checked {
   background-color: #FC4702;
 }
-body .form-check-input:hover, body .form-check-input:active, body .form-check-input:focus {
+body form .form-check-input:hover, body form .form-check-input:active, body form .form-check-input:focus {
   box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
 }
 body footer {
