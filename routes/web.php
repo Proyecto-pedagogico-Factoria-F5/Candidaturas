@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PromoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/schools-view', [App\Http\Controllers\HomeController::class, 'index'])->name('schools-view');
-Route::get('/promos-view', [App\Http\Controllers\PromoController::class, 'index'])->name('promos-view');
+Route::get('/schools-view', [HomeController::class, 'index'])->name('schools-view');
+Route::get('/promos-view', [PromoController::class, 'index'])->name('promos-view');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/register', [HomeController::class, 'register'])->name('register');
 
