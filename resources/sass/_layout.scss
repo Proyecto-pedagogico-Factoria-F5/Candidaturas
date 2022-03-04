@@ -10,6 +10,7 @@
 main {
     display: flex;
     flex: 1 0 auto;
+   
 }
 
 .header-container, main > div, .footer-container {
@@ -53,6 +54,8 @@ footer {
 
 
 .container_01{
-    flex-wrap: wrap;
-    /* flex-direction: row !important; */
+    margin: 0 auto !important;
+    display: flex !important;
+    justify-content: center !important;
+  
 }
