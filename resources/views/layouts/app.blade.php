@@ -8,7 +8,7 @@
         
         <x-header />
 
-        <main class="py-2">
+        <main>
             @yield('content')
         </main>
 
