@@ -2,10 +2,9 @@
     margin: 6rem auto 0 auto;
 
     .card {
-        
+        margin: 2.8rem;
         border-radius: 15px;
         overflow: hidden;
-        margin: 0 0.5rem 4rem 0.5rem;
         padding: 0;
         width: 25rem;
         box-shadow: inset 0 -3em 3em rgba(94, 94, 94, 0.1),
@@ -50,7 +49,6 @@
             .card-subtitle {
                 color: $first-color;  
                 font-weight: 600;
-              /*   fonnt-size:; */
                 margin: 0;
             }
 

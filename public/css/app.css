@@ -14736,9 +14736,9 @@ h3 {
   margin: 6rem auto 0 auto;
 }
 .cards-container .card {
+  margin: 2.8rem;
   border-radius: 15px;
   overflow: hidden;
-  margin: 0 0.5rem 4rem 0.5rem;
   padding: 0;
   width: 25rem;
   box-shadow: inset 0 -3em 3em rgba(94, 94, 94, 0.1), 0.3em 0.3em 1em rgba(92, 92, 92, 0.3);
@@ -14790,7 +14790,6 @@ h3 {
 .cards-container .card .card-body .card-subtitle {
   color: #222222;
   font-weight: 600;
-  /*   fonnt-size:; */
   margin: 0;
 }
 .cards-container .card .card-body .card-description {
