@@ -2,8 +2,14 @@
 <div class="container-fluid">
 	<div class="row justify-content-center">
 		<div class="col-md-12">
-			<div class="card">
-				<div class="card-header">
+	
+				
+			<div class="table-responsive ">
+				<div>
+					<table class="table table-bordered table-sm ">
+	
+
+		<div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fas fa-graduation-cap text-info"></i>
@@ -24,12 +30,12 @@
 					</div>
 				</div>
 				
-				<div class="card-body">
+				
 						@include('livewire.promos.create')
 						@include('livewire.promos.update')
-				<div class="table-responsive">
-					<table class="table table-bordered table-sm">
-						<thead class="thead">
+				
+{{-- 					<table class="table table-bordered table-sm">
+ --}}						<thead  class="thead card-header">
 							<tr> 
 								<td>#</td> 
 								<th>Escuela id</th>
@@ -46,12 +52,12 @@
 							@foreach($promos as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->escuela_id }}</td>
+								<td>{{ $promo_school }}</td>
 								<td>{{ $row->nombre_promo }}</td>
 								<td>{{ $row->ubicación }}</td>
 								<td>{{ $row->fecha_de_inicio }}</td>
 								<td>{{ $row->duración }}</td>
-								<td>{{ $row->imagen }}</td>
+								<td><img class="table-img" src="{{ asset('storage').'/'.$row->imagen }}" alt="{{ $row->nombre_promo }}" </td>
 								<td>{{ $row->url }}</td>
 								<td width="90">
 								<div class="btn-group">
@@ -70,7 +76,7 @@
 					{{ $promos->links() }}
 					</div>
 				</div>
-			</div>
+	{{-- 		</div>
 		</div>
-	</div>
-</div>
+	</div> --}}
+
