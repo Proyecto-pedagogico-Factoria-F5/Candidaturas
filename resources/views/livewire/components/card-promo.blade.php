@@ -1,7 +1,7 @@
 @foreach ($promos as $promo)
  
   <div class="card col-lg-4 col-md-6 col-xs-12">
-    <a href="{{ url('/candidaturas-view') }}">
+    <a href="{{ url('/candidaturas') }}">
       <img class="card-img-top" src="{{ asset('storage').'/'.$promo->imagen }}" alt="{{ $promo->name }}">
       <div class="card-main">
         <h5 class="card-title">{{ $promo->nombre_promo }}</h2>
