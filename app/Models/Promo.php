@@ -21,6 +21,7 @@ class Promo extends Model
         'duración',
         'url',
         'imagen',
+        'código'
     ];
 
 }

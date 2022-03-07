@@ -24,8 +24,7 @@ return new class extends Migration
             $table->date('fecha_de_registro');
             $table->date('fecha_de_nacimiento');
             $table->string('nacionalidad');
-            
-
+            $table->string('promo_id');
             $table->timestamps();
         });
     }

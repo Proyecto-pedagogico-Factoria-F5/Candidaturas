@@ -13,6 +13,6 @@ class Candidatura extends Model
 
     protected $table = 'candidaturas';
 
-    protected $fillable = ['nombre','apellidos','email','teléfono','cuenta_usuario','descripción','fecha_de_registro','fecha_de_nacimiento','nacionalidad'];
+    protected $fillable = ['nombre','apellidos','email','teléfono','cuenta_usuario','descripción','fecha_de_registro','fecha_de_nacimiento','nacionalidad','promo_id'];
 	
 }
