@@ -13,37 +13,48 @@
                 </li>
             @endif
             
-            {{-- @if (Route::has('register'))
+            
+
+            @if (Route::has('register'))
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('register') }}">{{ __('Dar de alta') }}</a>
                 </li>
-            @endif --}}
+            @endif
+           
+            
+
         @else
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('/register') }}"><i class="fas fa-users text-info"></i> Dar de alta</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="{{ url('/home') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <a class="nav-link dropdown-toggle" href="{{ url('/schools-view') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     <i class="fas fa-school text-info"></i> Escuelas
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="{{ url('/home') }}">
+                    <a class="dropdown-item" href="{{ url('/schools-view') }}">
                         Listado
                     </a>
                     <a class="dropdown-item" href="{{ url('/schools') }}"><i class="fas fa-edit text-info"></i> Administrar escuelas</a> 
                 </div>
             </li>
-            {{-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="{{ url('/promos') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            
+
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="{{ url('/promos-view') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     <i class="fas fa-graduation-cap text-info"></i> Promos
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="{{ url('/promos') }}">
+                    <a class="dropdown-item" href="{{ url('/promos-view') }}">
                         Listado
                     </a>
                     <a class="dropdown-item" href="{{ url('/promos') }}"><i class="fas fa-edit text-info"></i> Administrar promos</a>
                 </div>
-            </li>   --}}
+            </li>  
+            
+
+            
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     <i class="fas fa-user-shield text-info"></i> {{ Auth::user()->name }}

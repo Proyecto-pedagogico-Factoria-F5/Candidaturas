@@ -11,9 +11,11 @@ body {
 
     a, .nav-link {
         color: $brand-color;
+        text-decoration: none;
 
         &:hover, &:focus {
             color: $brand-color-dark;
+            text-decoration: none;
         }
     }
 
