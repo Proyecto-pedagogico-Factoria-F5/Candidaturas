@@ -1,14 +1,16 @@
 .cards-container {
     margin: 6rem auto 0 auto;
-
+    
     .card {
         margin: 2.8rem;
         border-radius: 15px;
         overflow: hidden;
         padding: 0;
         width: 25rem;
-        box-shadow: inset 0 -3em 3em rgba(94, 94, 94, 0.1),
-                          0.3em 0.3em 1em rgba(92, 92, 92, 0.3);
+        box-shadow: inset 0 -3em 3em rgba($first-color, 0.1),
+                   0.2em 0.2em 0.7em rgba($first-color, 0.3);
+       /*   box-shadow: inset 0 -3em 3em rgba(94, 94, 94, 0.1),
+                           0.3em 0.3em 1em rgba(92, 92, 92, 0.3); */
             
         img, .card-img-top {
             border-top-left-radius: 15px;
@@ -25,7 +27,8 @@
             justify-content: center;
             margin: 0;
             background: $brand-color;
-            
+            box-shadow: inset 0 -3em 4em rgba($first-color, 0.23);
+                 
             .card-title {
                 color: $second-color;  
                 font-weight: 400;
@@ -85,7 +88,9 @@
         }
 
         &:active {
-            opacity: 70%;
+            opacity: 87%;
+            box-shadow: inset 0 -3em 3em rgba($first-color, 0.1),
+            0.2em 0.2em 0.7em rgba($first-color, 0.3);
         }
     }
 }
