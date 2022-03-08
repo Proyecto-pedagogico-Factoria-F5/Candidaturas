@@ -14988,8 +14988,17 @@ body form .form-check-input:checked {
 body form .form-check-input:hover, body form .form-check-input:active, body form .form-check-input:focus {
   box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
 }
+body table {
+  /* & > * {
+      padding-left: 12rem !important;
+  } */
+}
 body table .table-img {
   max-width: 5rem;
+}
+body table > td {
+  padding: 32rem !important;
+  vertical-align: middle;
 }
 body footer {
   background: #FC4702;

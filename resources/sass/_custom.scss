@@ -72,6 +72,15 @@ body {
         .table-img {
             max-width: 5rem;
         }
+
+        /* & > * {
+            padding-left: 12rem !important;
+        } */
+
+        > td {
+            padding: 32rem !important;
+            vertical-align: middle;
+        }
     }
 
     footer {
