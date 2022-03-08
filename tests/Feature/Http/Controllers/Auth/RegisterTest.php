@@ -25,12 +25,9 @@ class RegisterTest extends TestCase
     $response = $this->post(route('register'), [
         'name' => 'ignacio moreno',
         'email' => 'imoreno.im69@gmail.com',
-        'password' => 'Imorefris1',
-        'password_confirmation' => 'Imorefris1',
+        'password' => 'Imorefris1'
     ]);
 
-    $response->assertRedirect(route('home'));
-
-
+    $response->assertRedirect(url('/'));
 }
 }
