@@ -13,6 +13,15 @@ class Promo extends Model
 
     protected $table = 'promos';
 
-    protected $fillable = ['nombre_promo','ubicación','escuela_id','fecha_de_inicio','duración','url','imagen'];
+    protected $fillable = [
+        'nombre_promo',
+        'ubicación',
+        'escuela_id',
+        'fecha_de_inicio',
+        'duración',
+        'url',
+        'imagen',
+        'código',
+    ];
 	
 }

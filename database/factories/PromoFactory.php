@@ -20,6 +20,7 @@ class PromoFactory extends Factory
 			'duración' => $this->faker->name,
 			'url' => $this->faker->name,
 			'imagen' => $this->faker->name,
+			'código' => $this->faker->name,
         ];
     }
 }

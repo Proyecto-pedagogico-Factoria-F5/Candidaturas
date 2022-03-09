@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('duración');
             $table->string('url');
             $table->string('imagen');
+            $table->string('código');
             $table->timestamps();
         });
     }
