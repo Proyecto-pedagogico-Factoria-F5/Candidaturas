@@ -2,22 +2,18 @@
 
 namespace Database\Factories;
 
+use App\Models\Token;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\token>
- */
 class TokenFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = Token::class;
+
     public function definition()
     {
         return [
-            'token' => $this->faker->name,
+			'token' => $this->faker->name,
         ];
     }
 }

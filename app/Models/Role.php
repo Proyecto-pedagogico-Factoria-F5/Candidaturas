@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Models;
 
@@ -7,16 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    use HasFactory;
+	use HasFactory;
+	
     public $timestamps = true;
 
     protected $table = 'roles';
 
-    protected $fillable = [
-        'puesto',
-        
-        ];
-
+    protected $fillable = ['puesto'];
+	
 }
-
-
