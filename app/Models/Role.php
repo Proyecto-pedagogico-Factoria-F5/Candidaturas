@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Models;
 
@@ -7,17 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    use HasFactory;
-    protected $fillable = [
-        'nombre',
-        'email',
-        'teléfono',
-        'puesto',
-        'escuela',
-        'promo',
-        'imagen',
+	use HasFactory;
+	
+    public $timestamps = true;
 
-    ];
+    protected $table = 'roles';
+
+    protected $fillable = ['nombre','email','teléfono','puesto','escuela','promo','imagen'];
+	
 }
-
-

@@ -2,22 +2,18 @@
 
 namespace Database\Factories;
 
+use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Role>
- */
 class RoleFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = Role::class;
+
     public function definition()
     {
         return [
-            'nombre' => $this->faker->name,
+			'nombre' => $this->faker->name,
 			'email' => $this->faker->name,
 			'teléfono' => $this->faker->name,
 			'puesto' => $this->faker->name,
