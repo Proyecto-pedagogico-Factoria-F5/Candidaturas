@@ -11,7 +11,7 @@ class Candidaturas extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $nombre, $apellidos, $email, $teléfono, $cuenta_usuario, $descripción, $fecha_de_registro, $fecha_de_nacimiento, $nacionalidad;
+    public $selected_id, $keyWord, $nombre, $apellidos, $email, $teléfono, $cuenta_usuario, $puntos, $descripción, $fecha_de_registro, $fecha_de_nacimiento, $nacionalidad, $promo_id;
     public $updateMode = false;
 
     public function render()
@@ -24,10 +24,12 @@ class Candidaturas extends Component
 						->orWhere('email', 'LIKE', $keyWord)
 						->orWhere('teléfono', 'LIKE', $keyWord)
 						->orWhere('cuenta_usuario', 'LIKE', $keyWord)
+						->orWhere('puntos', 'LIKE', $keyWord)
 						->orWhere('descripción', 'LIKE', $keyWord)
 						->orWhere('fecha_de_registro', 'LIKE', $keyWord)
 						->orWhere('fecha_de_nacimiento', 'LIKE', $keyWord)
 						->orWhere('nacionalidad', 'LIKE', $keyWord)
+						->orWhere('promo_id', 'LIKE', $keyWord)
 						->paginate(10),
         ]);
     }
@@ -45,10 +47,12 @@ class Candidaturas extends Component
 		$this->email = null;
 		$this->teléfono = null;
 		$this->cuenta_usuario = null;
+		$this->puntos = null;
 		$this->descripción = null;
 		$this->fecha_de_registro = null;
 		$this->fecha_de_nacimiento = null;
 		$this->nacionalidad = null;
+		$this->promo_id = null;
     }
 
     public function store()
@@ -59,10 +63,12 @@ class Candidaturas extends Component
 		'email' => 'required',
 		'teléfono' => 'required',
 		'cuenta_usuario' => 'required',
+		'puntos' => 'required',
 		'descripción' => 'required',
 		'fecha_de_registro' => 'required',
 		'fecha_de_nacimiento' => 'required',
 		'nacionalidad' => 'required',
+		'promo_id' => 'required',
         ]);
 
         Candidatura::create([ 
@@ -71,10 +77,12 @@ class Candidaturas extends Component
 			'email' => $this-> email,
 			'teléfono' => $this-> teléfono,
 			'cuenta_usuario' => $this-> cuenta_usuario,
+			'puntos' => $this-> puntos,
 			'descripción' => $this-> descripción,
 			'fecha_de_registro' => $this-> fecha_de_registro,
 			'fecha_de_nacimiento' => $this-> fecha_de_nacimiento,
-			'nacionalidad' => $this-> nacionalidad
+			'nacionalidad' => $this-> nacionalidad,
+			'promo_id' => $this-> promo_id,
         ]);
         
         $this->resetInput();
@@ -92,10 +100,12 @@ class Candidaturas extends Component
 		$this->email = $record-> email;
 		$this->teléfono = $record-> teléfono;
 		$this->cuenta_usuario = $record-> cuenta_usuario;
+		$this->puntos = $record-> puntos;
 		$this->descripción = $record-> descripción;
 		$this->fecha_de_registro = $record-> fecha_de_registro;
 		$this->fecha_de_nacimiento = $record-> fecha_de_nacimiento;
 		$this->nacionalidad = $record-> nacionalidad;
+		$this->promo_id = $record-> promo_id;
 		
         $this->updateMode = true;
     }
@@ -108,10 +118,12 @@ class Candidaturas extends Component
 		'email' => 'required',
 		'teléfono' => 'required',
 		'cuenta_usuario' => 'required',
+		'puntos' => 'required',
 		'descripción' => 'required',
 		'fecha_de_registro' => 'required',
 		'fecha_de_nacimiento' => 'required',
 		'nacionalidad' => 'required',
+		'promo_id' => 'required',
         ]);
 
         if ($this->selected_id) {
@@ -122,10 +134,12 @@ class Candidaturas extends Component
 			'email' => $this-> email,
 			'teléfono' => $this-> teléfono,
 			'cuenta_usuario' => $this-> cuenta_usuario,
+			'puntos' => $this-> puntos,
 			'descripción' => $this-> descripción,
 			'fecha_de_registro' => $this-> fecha_de_registro,
 			'fecha_de_nacimiento' => $this-> fecha_de_nacimiento,
-			'nacionalidad' => $this-> nacionalidad
+			'nacionalidad' => $this-> nacionalidad,
+			'promo_id' => $this-> promo_id,
             ]);
 
             $this->resetInput();

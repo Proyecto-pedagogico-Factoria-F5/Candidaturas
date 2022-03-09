@@ -13,7 +13,7 @@ class Promos extends Component
 	use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $nombre_promo, $ubicación, $escuela_id, $fecha_de_inicio, $duración, $url, $imagen;
+    public $selected_id, $keyWord, $nombre_promo, $ubicación, $escuela_id, $fecha_de_inicio, $duración, $url, $imagen, $código;
     public $updateMode = false;
 
     public function render()

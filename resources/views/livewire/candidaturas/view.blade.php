@@ -7,7 +7,7 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fab fa-laravel text-info"></i>
-							Candidaturas </h4>
+							Candidatura Listing </h4>
 						</div>
 						<div wire:poll.60s>
 							<code><h5>{{ now()->format('H:i:s') }} UTC</h5></code>
@@ -19,7 +19,7 @@
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Candidaturas">
 						</div>
 						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Añadir candidatura
+						<i class="fa fa-plus"></i>  Add Candidaturas
 						</div>
 					</div>
 				</div>
@@ -34,14 +34,14 @@
 								<td>#</td> 
 								<th>Nombre</th>
 								<th>Apellidos</th>
-								<th>Fecha de nacimiento</th>
-								<th>Nacionalidad</th>
 								<th>Email</th>
 								<th>Teléfono</th>
-								<th>Cuenta de usuario</th>
+								<th>Cuenta Usuario</th>
 								<th>Descripción</th>
-								<th>Fecha de registro</th>
-								<td>Acciones</td>
+								<th>Fecha De Registro</th>
+								<th>Fecha De Nacimiento</th>
+								<th>Nacionalidad</th>
+								<td>ACTIONS</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -50,21 +50,21 @@
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->nombre }}</td>
 								<td>{{ $row->apellidos }}</td>
-								<td>{{ $row->fecha_de_nacimiento }}</td>
-								<td>{{ $row->nacionalidad }}</td>
 								<td>{{ $row->email }}</td>
 								<td>{{ $row->teléfono }}</td>
 								<td>{{ $row->cuenta_usuario }}</td>
 								<td>{{ $row->descripción }}</td>
 								<td>{{ $row->fecha_de_registro }}</td>
+								<td>{{ $row->fecha_de_nacimiento }}</td>
+								<td>{{ $row->nacionalidad }}</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Acciones
+									Actions
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
-									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a>							 
-									<a class="dropdown-item" onclick="confirm('¿Confirmas que quieres borrar la candidatura con id {{$row->id}}? \n¡Esta acción no se puede deshacer!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Borrar </a>   
+									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>							 
+									<a class="dropdown-item" onclick="confirm('Confirm Delete Candidatura id {{$row->id}}? \nDeleted Candidaturas cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>   
 									</div>
 								</div>
 								</td>

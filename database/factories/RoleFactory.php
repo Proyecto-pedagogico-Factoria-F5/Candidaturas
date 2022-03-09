@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -10,11 +11,11 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class RoleFactory extends Factory
 {
 
-    protected $model = Promo::class;
+    protected $model = Role::class;
     public function definition()
     {
         return [
-            'nombre_promo' => $this->faker->name,
+            'puesto' => $this->faker->name,
         ];
     }
 }

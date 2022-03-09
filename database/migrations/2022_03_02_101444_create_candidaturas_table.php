@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('teléfono');
             $table->string('cuenta_usuario');
+            $table->string('puntos');
             $table->longText('descripción');
             $table->date('fecha_de_registro');
             $table->date('fecha_de_nacimiento');
