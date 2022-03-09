@@ -31,27 +31,80 @@ Feature // Footer
 Feature // Listado de datos 
     - Cards Escuelas con datos de escuelas
     - Cards Escuelas  >  links a vista Promos de Escuela (id)
-
-
-F// Vista Promos (listado) (/promos-view)
-  * vista-promos
     - Cards Promos con datos de promos
     - Cards Promos  >  links a vista Candidaturas de Promos (id)
-
-
-F// Vista Candidaturas (listado y administrar)
-    - Tabla con datos de candidaturas
-    - Botón añadir candidaturas  >  modal formulario añadir candidaturas
-    - Botón acciones : editar  >  modal formulario editar candidaturas
-    - Botón acciones : borrar  >  Alert confirmación eliminar candidaturas
-    - Input check
-    - Botón enviar mail  >  Alert / Modal confirmación
-    - Botón ordenar según categoría  >  vista listado candidaturas ordenadas por categoría
-
-
-F// Vista Perfil de usuario 
     - Card datos usuario
     - Botón editar usuario  >  link / modal formulario editar usuario
+    - Tabla con datos de Escuelas
+    - Tabla con datos de Promos
+    - Tabla con datos de candidaturas
+    - Tabla con datos de usuarios
+
+
+Feature // Editar datos 
+    - Botón acciones : editar  >  modal formulario editar candidaturas
+    - Botón acciones : editar  >  modal formulario editar escuela
+    - Botón acciones : editar  >  modal formulario editar promo
+    - Botón acciones : editar  >  modal formulario editar usuario
+
+Feature // Eliminar datos 
+    - Botón acciones : borrar  >  Alert confirmación eliminar escuela
+    - Botón acciones : borrar  >  Alert confirmación eliminar promo
+    - Botón acciones : borrar  >  Alert confirmación eliminar usuario
+    - Botón acciones : borrar  >  Alert confirmación eliminar candidaturas
+
+
+Feature // Añadir datos 
+    - Botón añadir usuario  >  modal formulario añadir usuario
+    - Botón añadir escuela  >  modal formulario añadir escuela
+    - Botón añadir candidaturas  >  modal formulario añadir candidaturas
+    - Botón añadir promo  >  modal formulario añadir promo
+
+    - Botón registrar  >  vista listado escuelas / promos / mi perfil (vista anterior) (+id)
+    - Botón cancelar  >  vista listado escuelas / promos / mi perfil (vista anterior)
+
+    - Botón seleccionar archivo  >  input con nombre de archivo seleccionado
+    - Botón guardar  >  vista administrar candidatura (+id)
+    - Botón cancelar  >  vista administrar candidatura
+
+    - Botón seleccionar archivo  >  input con nombre de archivo seleccionado
+    - Botón guardar  >  vista administrar escuelas (+id)
+    - Botón cancelar  >  vista administrar escuelas
+
+    - Botón seleccionar archivo  >  input con nombre de archivo seleccionado
+    - Botón guardar  >  vista administrar promos (+id)
+    - Botón cancelar  >  vista administrar promos
+
+
+Feature // Vista formulario editar 
+    - inputs con datos de usuario cargados
+    - Botón seleccionar archivo  >  input con nombre de archivo seleccionado
+    - Botón guardar  >  vista administrar usuario (nuevos datos)
+    - Botón cancelar  >  vista administrar usuario
+    - inputs con datos de escuela cargados
+    - Botón seleccionar archivo  >  input con nombre de archivo seleccionado
+    - Botón guardar  >  vista administrar escuelas (nuevos datos)
+    - Botón cancelar  >  vista administrar escuelas
+    - inputs con datos de promo cargados
+    - Botón seleccionar archivo  >  input con nombre de archivo seleccionado
+    - Botón guardar  >  vista administrar promos (nuevos datos)
+    - Botón cancelar  >  vista administrar promos
+    - inputs con datos de candidatura cargados
+    - Botón seleccionar archivo  >  input con nombre de archivo seleccionado
+    - Botón guardar  >  vista administrar candidatura (nuevos datos)
+    - Botón cancelar  >  vista administrar candidatura
+
+
+Feature // Alert confirmación eliminar
+    - Botón aceptar  >  vista listado usuario (-id)
+    - Botón cancelar  >  vista listado usuario
+    - Botón aceptar  >  vista listado escuelas (-id)
+    - Botón cancelar  >  vista listado escuelas
+    - Botón aceptar  >  vista listado promos (-id)
+    - Botón cancelar  >  vista listado promos
+    - Botón aceptar  >  vista listado candidatura (-id)
+    - Botón cancelar  >  vista listado candidatura
+
 
 Feature // Búsqueda filtrada
     - Barra búsqueda  >  vista listado usuarios (etiqueta de filtro)
@@ -60,142 +113,52 @@ Feature // Búsqueda filtrada
     - Barra búsqueda  >  vista listado candidaturas (etiqueta de filtro)
 
 
-Feature // Envío mail
+Feature // Envío mail candidaturas
+    - Vista listado candidaturas : Botón enviar mail  >  Alert / Modal confirmación
+    - Alert confirmación envío mail : Botón aceptar  >  vista lista de candidaturas
 
 
-    - Tabla con datos de Escuelas
-    - Botón añadir escuela  >  modal formulario añadir escuela
-    - Botón acciones : editar  >  modal formulario editar escuela
-    - Botón acciones : borrar  >  Alert confirmación eliminar escuela
-
-
-// Vista Administrar promos (tabla)
-    - Tabla con datos de Promos
-    - Botón añadir escuela  >  modal formulario añadir promo
-    - Botón acciones : editar  >  modal formulario editar promo
-    - Botón acciones : borrar  >  Alert confirmación eliminar promo
-
-
-// Vista Administrar usuarios (tabla)
-    - Tabla con datos de usuarios
-    - Botón añadir usuario  >  modal formulario añadir usuario
-    - Botón acciones : editar  >  modal formulario editar usuario
-    - Botón acciones : borrar  >  Alert confirmación eliminar usuario
-    - Input check
-    - Botón enviar mail  >  Alert / Modal confirmación
-
-
-// Vista formulario dar de alta usuario
-    - Botón registrar  >  vista listado escuelas / promos / mi perfil (vista anterior) (+id)
-    - Botón cancelar  >  vista listado escuelas / promos / mi perfil (vista anterior)
-
-
-// Modal formulario añadir candidatura
-    - Botón seleccionar archivo  >  input con nombre de archivo seleccionado
-    - Botón guardar  >  vista administrar candidatura (+id)
-    - Botón cancelar  >  vista administrar candidatura
-
-
-// Modal formulario añadir escuela
-    - Botón seleccionar archivo  >  input con nombre de archivo seleccionado
-    - Botón guardar  >  vista administrar escuelas (+id)
-    - Botón cancelar  >  vista administrar escuelas
-
-
-// Modal formulario añadir promos
-    - Botón seleccionar archivo  >  input con nombre de archivo seleccionado
-    - Botón guardar  >  vista administrar promos (+id)
-    - Botón cancelar  >  vista administrar promos
-
-
-// Vista formulario editar usuario
-    - inputs con datos de usuario cargados
-    - Botón seleccionar archivo  >  input con nombre de archivo seleccionado
-    - Botón guardar  >  vista administrar usuario (nuevos datos)
-    - Botón cancelar  >  vista administrar usuario
-
-
-// Modal formulario editar escuelas
-    - inputs con datos de escuela cargados
-    - Botón seleccionar archivo  >  input con nombre de archivo seleccionado
-    - Botón guardar  >  vista administrar escuelas (nuevos datos)
-    - Botón cancelar  >  vista administrar escuelas
-
-
-// Modal formulario editar promos
-    - inputs con datos de promo cargados
-    - Botón seleccionar archivo  >  input con nombre de archivo seleccionado
-    - Botón guardar  >  vista administrar promos (nuevos datos)
-    - Botón cancelar  >  vista administrar promos
-
-
-// Modal formulario editar candidatura
-    - inputs con datos de candidatura cargados
-    - Botón seleccionar archivo  >  input con nombre de archivo seleccionado
-    - Botón guardar  >  vista administrar candidatura (nuevos datos)
-    - Botón cancelar  >  vista administrar candidatura
-
-
-// Alert confirmación eliminar usuario
-    - Botón aceptar  >  vista listado usuario (-id)
-    - Botón cancelar  >  vista listado usuario
-
-
-// Alert confirmación eliminar escuela
-    - Botón aceptar  >  vista listado escuelas (-id)
-    - Botón cancelar  >  vista listado escuelas
-
-
-// Alert confirmación eliminar promo
-    - Botón aceptar  >  vista listado promos (-id)
-    - Botón cancelar  >  vista listado promos
-
-
-// Alert confirmación eliminar candidatura
-    - Botón aceptar  >  vista listado candidatura (-id)
-    - Botón cancelar  >  vista listado candidatura
-
-
-// Alert confirmación envío mail
-    - Botón aceptar  >  vista lista de candidaturas
+Feature //Filtrado de datos
+    - Vista listado candidaturas : Input check  >  Filtrado candidaturas
+    - Botón ordenar según categoría  >  vista listado candidaturas ordenadas por categoría
 
 
 -----------------   BACK_END   -----------------
 
-F// Rutas y navegación
+Feature // Rutas y navegación
     - Rutas  >  links a vistas (conexión)
     - Login filtrado por roles
 
 
-F// CRUD usuarios
+Feature // CRUD usuarios
     - Listado de usuarios
     - Formulario añadir Usuario
     - Modal editar Usuario
     - Alert eliminar Usuario
 
 
-F// CRUD Escuelas
+Feature // CRUD Escuelas
     - Listado de Escuelas
     - Modal añadir Escuela
     - Modal editar Escuela
     - Alert eliminar Escuela
 
 
-F// CRUD Promos
+Feature // CRUD Promos
     - Listado de Promos
     - Modal añadir Promo
     - Modal editar Promo
     - Alert eliminar Promo
 
 
-F// CRUD Candidaturas  
+Feature // CRUD Candidaturas  
     - Listado de Candidaturas
     - Modal añadir Candidatura
     - Modal editar Candidatura
     - Alert eliminar Candidatura
 
 
-U// Filtrado de datos
+Unit // Filtrado de datos
     - Vista listado de candidaturas  >  datos candidaturas ORDENADOS SEGÚN CRITERIO
     - Vista listado de candidaturas  >  datos candidaturas COLUMNAS FIJADAS
     - Filtrado de promociones de Escuela
@@ -203,7 +166,7 @@ U// Filtrado de datos
     - Filtrado de promociones de usuario
 
 
-F// Volcado de datos (llamada API)
+Feature // Volcado de datos (llamada API)
     - Vista listado de candidaturas  >  datos candidaturas de promo desde TypeForm
     - Vista listado de candidaturas  >  datos candidaturas de promo desde FreeCodeCamp
 
