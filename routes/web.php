@@ -23,7 +23,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/register', [HomeController::class, 'register'])->name('register');
+//Route::get('/register', [HomeController::class, 'register'])->name('register');
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 
 Route::get('/schools-view', [HomeController::class, 'index'])->name('schools-view');

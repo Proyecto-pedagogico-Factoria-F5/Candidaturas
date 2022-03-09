@@ -8,17 +8,7 @@ use Tests\TestCase;
 
 class Factory extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_example()
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
+    
     /** @test */
     public function login_displays_validation_errors()
     {
