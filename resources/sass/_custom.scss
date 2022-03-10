@@ -11,9 +11,11 @@ body {
 
     a, .nav-link {
         color: $brand-color;
+        text-decoration: none;
 
         &:hover, &:focus {
             color: $brand-color-dark;
+            text-decoration: none;
         }
     }
 
@@ -69,6 +71,15 @@ body {
     table {
         .table-img {
             max-width: 5rem;
+        }
+
+        /* & > * {
+            padding-left: 12rem !important;
+        } */
+
+        > td {
+            padding: 32rem !important;
+            vertical-align: middle;
         }
     }
 
