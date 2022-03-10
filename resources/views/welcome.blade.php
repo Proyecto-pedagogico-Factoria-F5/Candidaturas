@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', __('Welcome'))
+@section('title', __('Inicio'))
 @section('content')
 <div class="container-fluid">
 <div class="row justify-content-center">
@@ -10,16 +10,19 @@
               <h5>  
             @guest
 				
-				{{ __('Welcome to') }} {{ config('app.name', 'Laravel') }} !!! </br>
-				Please contact admin to get your Login Credentials or click "Login" to go to your Dashboard.
+				{{ __('Te damos la bienvenida a ') }} {{ config('app.name') }} !!! </br>
+				Por favor contacta con tu administrador para recibir tus credenciales o inicia sesión para acceder a tu perfil.
                 
 			@else
-					Hi {{ Auth::user()->name }}, Welcome back to {{ config('app.name', 'Laravel') }}.
+					¡Hola, {{ Auth::user()->name }}!
             @endif	
 				</h5>
             </div>
+
+
         </div>
     </div>
 </div>
+  
 </div>
 @endsection

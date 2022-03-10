@@ -1,7 +1,25 @@
-@import 'variables';
+// Reset
+@import 'reset';
 
+// Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
-@import '../css/app.css';
+// Variables
+@import 'variables';
+
+// Custom styles
+@import './components/cards';
+@import './components/buttons';
+@import './components/fonts';
+@import './components/icon';
+@import './components/input';
+
+@import 'welcome';
+@import 'create';
+@import 'custom';
+@import 'nav';
+@import 'layout';

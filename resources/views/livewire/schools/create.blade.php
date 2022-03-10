@@ -3,27 +3,30 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createDataModalLabel">Create New School</h5>
+                <h5 class="modal-title" id="createDataModalLabel">Crear nueva escuela</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true close-btn">×</span>
                 </button>
             </div>
            <div class="modal-body">
 				<form>
-            <div class="form-group">
-                <label for="name"></label>
-                <input wire:model="name" type="text" class="form-control" id="name" placeholder="Name">@error('name') <span class="error text-danger">{{ $message }}</span> @enderror
-            </div>
-            <div class="form-group">
-                <label for="location"></label>
-                <input wire:model="location" type="text" class="form-control" id="location" placeholder="Location">@error('location') <span class="error text-danger">{{ $message }}</span> @enderror
-            </div>
-
+                    <div class="form-group">
+                        <label for="nombre_escuela">Nombre</label>
+                        <input wire:model="nombre_escuela" type="text" class="form-control" id="nombre_escuela" placeholder="Nombre" required>@error('nombre_escuela') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="provincia">Provincia</label>
+                        <input wire:model="provincia" type="text" class="form-control" id="provincia" placeholder="Provincia" required>@error('provincia') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="imagen">Imagen</label>
+                        <input wire:model="imagen" type="file" class="form-control" id="imagen" name="image" placeholder="Imagen" required>@error('imagen') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
-                <button type="button" wire:click.prevent="store()" class="btn btn-primary close-modal">Save</button>
+                <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Cancelar</button>
+                <button type="button" wire:click.prevent="store()" class="btn btn-primary close-modal">Guardar</button>
             </div>
         </div>
     </div>

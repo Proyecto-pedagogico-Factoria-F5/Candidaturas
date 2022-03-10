@@ -1,0 +1,85 @@
+body {
+    background: $body-bg;
+    color: $first-color;
+    line-height: $line-height-base;
+
+    .navbar-brand {
+        font-weight: 100;
+        text-transform: uppercase;
+        letter-spacing: 0.15rem;
+    }
+
+    a, .nav-link {
+        color: $brand-color;
+
+        &:hover, &:focus {
+            color: $brand-color-dark;
+        }
+    }
+
+    .text-info {
+        color: $brand-color !important;
+    }
+
+    .section-title {
+        border-bottom: 1px solid $first-color-light; 
+        font-size: 2rem;
+        font-weight: 100;
+        text-transform: uppercase;
+        line-height: 0.1em;
+        letter-spacing: 0.15rem;
+        word-spacing: 0.4rem;
+    
+        .section-title-line {
+            background: $body-bg;
+            padding: 0 10px 0 0; 
+        }
+    }
+
+    .form-control {
+        height: auto;
+
+        &:focus {
+            color: $first-color;
+            background-color: $second-color;
+            border-color: rgba($brand-color, 0.25);
+            outline: 0;
+            box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
+        }
+    }
+
+    footer {
+        background: $brand-color;
+        color: $second-color;
+
+        .footer-container {
+            #credits {
+
+                & > h6 {
+                    line-height: inherit;
+                    margin: 0 0.5rem 0 0;
+                }
+
+                & > a {
+                    color: $second-color;
+                    text-decoration: none;
+                    display: inline-flex;
+                    align-items: center;
+
+                    & > svg {
+                        fill: $second-color;
+                        stroke: $second-color;
+                        margin: 0 0.2rem 0 0;
+                    }
+                }
+            }
+
+            .social-media {
+
+                & > :not(last-child) {
+                    margin: 0 1.2rem 0 0;
+                }
+            }
+        }
+    }
+}
