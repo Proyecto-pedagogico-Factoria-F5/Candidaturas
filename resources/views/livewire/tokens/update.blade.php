@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
        <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updateModalLabel">Update Token</h5>
+                <h5 class="modal-title" id="updateModalLabel">Editar token</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span wire:click.prevent="cancel()" aria-hidden="true">×</span>
                 </button>
@@ -11,16 +11,17 @@
             <div class="modal-body">
                 <form>
 					<input type="hidden" wire:model="selected_id">
-            <div class="form-group">
-                <label for="token_typeform"></label>
-                <input wire:model="token_typeform" type="text" class="form-control" id="token_typeform" placeholder="Token Typeform">@error('token_typeform') <span class="error text-danger">{{ $message }}</span> @enderror
-            </div>
+                    
+                    <div class="form-group">
+                        <label for="token_typeform"></label>
+                        <input wire:model="token_typeform" type="text" class="form-control" id="token_typeform" placeholder="Token de Typeform">@error('token_typeform') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
 
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" wire:click.prevent="update()" class="btn btn-primary" data-dismiss="modal">Save</button>
+                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" wire:click.prevent="update()" class="btn btn-primary" data-dismiss="modal">Guardar</button>
             </div>
        </div>
     </div>
