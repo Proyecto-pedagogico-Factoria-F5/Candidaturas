@@ -23,9 +23,18 @@
 
         @else
 
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/register') }}"><i class="fas fa-users text-info"></i> Dar de alta</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="{{ url('/register') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <i class="fas fa-users text-info"></i> Usuarios
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="{{ url('/register') }}">
+                        <i class="fas fa-user-plus text-info"></i> Dar de alta
+                    </a>
+                    <a class="dropdown-item" href="{{ url('/profile') }}"><i class="fas fa-user-edit text-info"></i> Administrar usuarios</a> 
+                </div>
             </li>
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="{{ url('/schools-view') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     <i class="fas fa-school text-info"></i> Escuelas
