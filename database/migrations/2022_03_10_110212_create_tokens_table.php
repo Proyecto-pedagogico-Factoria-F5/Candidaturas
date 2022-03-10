@@ -13,16 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('promos', function (Blueprint $table) {
+        Schema::create('tokens', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_promo');
-            $table->string('ubicación');
-            $table->string('escuela_id');
-            $table->date('fecha_de_inicio');
-            $table->string('duración');
-            $table->string('url');
-            $table->string('imagen');
-            $table->string('código');
+            $table->string('token_typeform');
             $table->timestamps();
         });
     }
@@ -34,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('promo');
+        Schema::dropIfExists('tokens');
     }
 };

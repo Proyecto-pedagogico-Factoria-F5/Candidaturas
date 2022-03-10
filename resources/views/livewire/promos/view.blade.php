@@ -3,22 +3,40 @@
 <div class="container-fluid">
 	<div class="row justify-content-center">
 		<div class="col-md-12">
-	
 				
 			<div class="table-responsive ">
 				<div>
-					
 					<div class="card-header">
-
 						<div style="display: flex; justify-content: space-between; align-items: center;">
+							
+							{{-- Title --}}
+							<div class="float-left">
+								<h4>
+									<i class="fas fa-graduation-cap text-info"></i> Promos
+								</h4>
+							</div>
 
-		{{-- Title --}}	 	<div class="float-left">  <h4><i class="fas fa-graduation-cap text-info"></i>	Promos </h4>   </div>
-		{{-- Hour --}}	 	<div wire:poll.60s>  <code><h5>{{ now()->format('H:i:s') }} UTC</h5></code>  </div>
+							{{-- Hour --}}
+							<div wire:poll.60s>
+								<code><h5>{{ now()->format('H:i:s') }} UTC</h5></code>
+							</div>
+
 						  	@if (session()->has('message'))
-		{{-- Title --}}      	<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
-						  	@endif
-		{{-- Search bar --}}<div>  <input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar promo">  </div>
-		{{-- Button --}} 	<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">  <i class="fa fa-plus"></i>  Añadir promo  </div>
+
+							{{-- Request result message --}}
+						    <div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
+						  	
+							@endif
+
+							{{-- Search bar --}}
+							<div>
+								<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar promo">
+							</div>
+
+							{{-- Button --}} 
+							<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal"> 
+								<i class="fa fa-plus"></i>  Añadir promo 
+							</div>
 
 						</div>	
 					</div>
@@ -37,6 +55,7 @@
 								<th>Fecha de inicio</th>
 								<th>Duración (h)</th>
 								<th>Imagen</th>
+								<th>Código</th>								
 								<th>Url</th>
 								<td>Acciones</td>
 							</tr>
@@ -51,6 +70,7 @@
 								<td>{{ $row->fecha_de_inicio }}</td>
 								<td>{{ $row->duración }}</td>
 								<td><img class="table-img" src="{{ asset('storage').'/'.$row->imagen }}" alt="{{ $row->nombre_promo }}"></td>
+								<td>{{ $row->código }}</td>
 								<td>{{ $row->url }}</td>
 								<td width="90">
 									<div class="btn-group">
@@ -73,3 +93,6 @@
 
 				</div>
 			</div>
+		</div>
+	</div>
+</div>
