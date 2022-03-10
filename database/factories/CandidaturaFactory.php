@@ -18,10 +18,12 @@ class CandidaturaFactory extends Factory
 			'email' => $this->faker->name,
 			'teléfono' => $this->faker->name,
 			'cuenta_usuario' => $this->faker->name,
+			'puntos' => $this->faker->name,
 			'descripción' => $this->faker->name,
 			'fecha_de_registro' => $this->faker->name,
 			'fecha_de_nacimiento' => $this->faker->name,
 			'nacionalidad' => $this->faker->name,
+			'promo_id' => $this->faker->name,
         ];
     }
 }

@@ -13,21 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('candidaturas', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('apellidos');
             $table->string('email')->unique();
             $table->string('teléfono');
-            $table->string('cuenta_usuario');
-            $table->string('puntos');
-            $table->longText('descripción');
-            $table->date('fecha_de_registro');
-            $table->date('fecha_de_nacimiento');
-            $table->string('nacionalidad');
-            $table->string('promo_id');
-            
-
+            $table->string('puesto');
+            $table->string('escuela');
+            $table->string('promo');
+            $table->string('imagen');
             $table->timestamps();
         });
     }
@@ -39,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('candidaturas');
+        Schema::dropIfExists('roles');
     }
 };
