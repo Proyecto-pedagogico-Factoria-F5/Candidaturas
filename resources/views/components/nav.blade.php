@@ -13,11 +13,12 @@
                 </li>
             @endif
             
-            {{-- @if (Route::has('register'))
+            {{-- @if((User::user()->count() == 0)) --}}
+            {{-- @if (Route::has('register')) --}}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('register') }}">{{ __('Dar de alta') }}</a>
                 </li>
-            @endif --}}
+            @endif
         @else
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('/register') }}"><i class="fas fa-users text-info"></i> Dar de alta</a>
