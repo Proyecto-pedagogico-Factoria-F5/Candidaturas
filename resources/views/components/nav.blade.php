@@ -14,7 +14,7 @@
             @endif
             
             {{-- @if((User::user()->count() == 0)) --}}
-            {{-- @if (Route::has('register')) --}}
+            @if (Route::has('register'))
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('register') }}">{{ __('Dar de alta') }}</a>
                 </li>
