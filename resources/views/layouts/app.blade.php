@@ -51,12 +51,12 @@
 						<li class="nav-item">
                             <a href="{{ url('/schools') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Schools</a> 
                         </li>
-						<li class="nav-item">
+						<!-- <li class="nav-item">
                             <a href="{{ url('/promos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Promos</a> 
                         </li>
 						<li class="nav-item">
                             <a href="{{ url('/schools') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Schools</a> 
-                        </li>
+                        </li> -->
                     </ul>
 					@endauth()
 					
