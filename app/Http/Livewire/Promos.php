@@ -60,7 +60,7 @@ class Promos extends Component
 		'fecha_de_inicio' => 'required',
 		'duración' => 'required',
 		'url' => 'required',
-		'imagen' => 'required',
+		'imagen' => 'image|max:1024', // 1MB Max
 		'código' => 'required',
         ]);
 
@@ -71,7 +71,7 @@ class Promos extends Component
 			'fecha_de_inicio' => $this-> fecha_de_inicio,
 			'duración' => $this-> duración,
 			'url' => $this-> url,
-			'imagen' => $this-> imagen,
+			'imagen' => $this->imagen->store('uploads', 'public'),
 			'código' => $this-> código
         ]);
         
@@ -106,7 +106,7 @@ class Promos extends Component
 		'fecha_de_inicio' => 'required',
 		'duración' => 'required',
 		'url' => 'required',
-		'imagen' => 'required',
+		'imagen' => 'image|max:1024', // 1MB Max
 		'código' => 'required',
         ]);
 
@@ -119,7 +119,7 @@ class Promos extends Component
 			'fecha_de_inicio' => $this-> fecha_de_inicio,
 			'duración' => $this-> duración,
 			'url' => $this-> url,
-			'imagen' => $this-> imagen,
+			'imagen' => $this->imagen->store('uploads', 'public'),
 			'código' => $this-> código
             ]);
 
