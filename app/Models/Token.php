@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Models;
 
@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Token extends Model
 {
-    use HasFactory;
-    protected $fillable = [
-        'token_typeform',
-        
-    ];
+	use HasFactory;
+	
+    public $timestamps = true;
+
+    protected $table = 'tokens';
+
+    protected $fillable = ['token_typeform'];
+	
 }
