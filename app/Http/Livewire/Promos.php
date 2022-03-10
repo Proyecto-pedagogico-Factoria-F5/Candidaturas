@@ -11,7 +11,7 @@ class Promos extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $nombre_promo, $ubicación, $escuela_id, $fecha_de_inicio, $duración, $url, $imagen;
+    public $selected_id, $keyWord, $nombre_promo, $ubicación, $escuela_id, $fecha_de_inicio, $duración, $url, $imagen, $código;
     public $updateMode = false;
 
     public function render()
@@ -26,6 +26,7 @@ class Promos extends Component
 						->orWhere('duración', 'LIKE', $keyWord)
 						->orWhere('url', 'LIKE', $keyWord)
 						->orWhere('imagen', 'LIKE', $keyWord)
+						->orWhere('código', 'LIKE', $keyWord)
 						->paginate(10),
         ]);
     }
@@ -45,6 +46,7 @@ class Promos extends Component
 		$this->duración = null;
 		$this->url = null;
 		$this->imagen = null;
+		$this->código = null;
     }
 
     public function store()
@@ -57,6 +59,7 @@ class Promos extends Component
 		'duración' => 'required',
 		'url' => 'required',
 		'imagen' => 'required',
+		'código' => 'required',
         ]);
 
         Promo::create([ 
@@ -66,7 +69,8 @@ class Promos extends Component
 			'fecha_de_inicio' => $this-> fecha_de_inicio,
 			'duración' => $this-> duración,
 			'url' => $this-> url,
-			'imagen' => $this-> imagen
+			'imagen' => $this-> imagen,
+			'código' => $this-> código
         ]);
         
         $this->resetInput();
@@ -86,6 +90,7 @@ class Promos extends Component
 		$this->duración = $record-> duración;
 		$this->url = $record-> url;
 		$this->imagen = $record-> imagen;
+		$this->código = $record-> código;
 		
         $this->updateMode = true;
     }
@@ -100,6 +105,7 @@ class Promos extends Component
 		'duración' => 'required',
 		'url' => 'required',
 		'imagen' => 'required',
+		'código' => 'required',
         ]);
 
         if ($this->selected_id) {
@@ -111,7 +117,8 @@ class Promos extends Component
 			'fecha_de_inicio' => $this-> fecha_de_inicio,
 			'duración' => $this-> duración,
 			'url' => $this-> url,
-			'imagen' => $this-> imagen
+			'imagen' => $this-> imagen,
+			'código' => $this-> código
             ]);
 
             $this->resetInput();

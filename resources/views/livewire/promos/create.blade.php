@@ -38,6 +38,10 @@
                 <label for="imagen"></label>
                 <input wire:model="imagen" type="text" class="form-control" id="imagen" placeholder="Imagen">@error('imagen') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
+            <div class="form-group">
+                <label for="código"></label>
+                <input wire:model="código" type="text" class="form-control" id="código" placeholder="Código">@error('código') <span class="error text-danger">{{ $message }}</span> @enderror
+            </div>
 
                 </form>
             </div>

@@ -39,6 +39,7 @@
 								<th>Duración</th>
 								<th>Url</th>
 								<th>Imagen</th>
+								<th>Código</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -53,6 +54,7 @@
 								<td>{{ $row->duración }}</td>
 								<td>{{ $row->url }}</td>
 								<td>{{ $row->imagen }}</td>
+								<td>{{ $row->código }}</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
