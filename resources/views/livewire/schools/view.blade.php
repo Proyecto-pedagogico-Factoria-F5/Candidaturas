@@ -44,7 +44,7 @@
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->nombre_escuela }}</td>
 								<td>{{ $row->provincia }}</td>
-								<td>{{ $row->imagen }}</td>
+								<td><img class="table-img" src="{{ asset('storage').'/'.$row->imagen }}" alt="{{ $row->name }}" /></td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

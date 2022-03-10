@@ -21,20 +21,21 @@
             p {
                 color: $second-color;
             }
-        
-            .welcome-btns {
-                .nav-link {
-                    background: $second-color;
-                    color: $first-color-light;
-                    border: 2px solid $second-color;
-                    border-radius: 10px;
-                    margin: 1rem 1rem 0 0;
-                    padding: 0.6rem 1em;
-                    display: inline-flex;
 
-                    &:hover {
-                        border: 2px solid $brand-color;
-                        color: $brand-color;
+            .card {
+                border-radius: 1rem;
+                
+                .card-body {
+                    padding: 2rem;
+
+                    .row {
+                        display: flex;
+                        justify-content: space-between;
+        
+                        .btn-link {
+                            text-align: left;
+                            padding: 1rem 0 0 0;
+                        }
                     }
                 }
             }
