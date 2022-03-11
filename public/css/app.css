@@ -14927,6 +14927,10 @@ h3 {
   box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
 }
 
+.form-group input#imagen {
+  padding: 0.2rem;
+}
+
 .btn-primary, .btn-info, .show > .btn-info.dropdown-toggle {
   color: #fffafa;
   background-color: #FC4702;
