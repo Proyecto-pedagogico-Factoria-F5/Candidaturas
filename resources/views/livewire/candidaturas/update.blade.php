@@ -40,12 +40,20 @@
                         <input wire:model="cuenta_usuario" type="text" class="form-control" id="cuenta_usuario" placeholder="Cuenta de usuario">@error('cuenta_usuario') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
+                        <label for="puntos"></label>
+                        <input wire:model="puntos" type="text" class="form-control" id="puntos" placeholder="Puntos">@error('puntos') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="descripción">Descripción</label>
                         <input wire:model="descripción" type="text" class="form-control" id="descripción" placeholder="Descripción">@error('descripción') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="fecha_de_registro">Fecha de registro</label>
                         <input wire:model="fecha_de_registro" type="text" class="form-control" id="fecha_de_registro" placeholder="Fecha de registro">@error('fecha_de_registro') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="promo_id"></label>
+                        <input wire:model="promo_id" type="text" class="form-control" id="promo_id" placeholder="Promo Id">@error('promo_id') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>  
                 </form>
             </div>

@@ -7,7 +7,7 @@
 <title>@hasSection('title') @yield('title') | @endif {{ config('app.name') }}</title>
 
 <!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="{{ asset('storage/assets/search-heart.svg') }}">
+<link rel="icon" type="image/x-icon" href="{{ asset('storage/assets/favicon.svg') }}">
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>

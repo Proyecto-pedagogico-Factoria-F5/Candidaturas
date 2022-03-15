@@ -3,8 +3,7 @@ Groupal pedagogic project for Factoría F5
 
 ## Installation
 ```
-npm install
-npm run dev
+npm install && npm run dev
 composer install
 composer update
 composer require laravel/ui
@@ -17,7 +16,6 @@ php artisan ui bootstrap --auth
 - Elena Garzón Mieres
 - Sara González Sánchez
 - Ignacio Moreno Frisón
-
 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
