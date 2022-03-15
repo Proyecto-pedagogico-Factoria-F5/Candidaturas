@@ -37,6 +37,9 @@
                     <ul class="navbar-nav mr-auto">
 						<!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+                            <a href="{{ url('/profiles') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Profiles</a> 
+                        </li>
+						<li class="nav-item">
                             <a href="{{ url('/tokens') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Tokens</a> 
                         </li>
 						<li class="nav-item">
