@@ -18,24 +18,17 @@ class LoginTest extends TestCase
     public function test_user_can_login()
     {
         //Given
-            // faker user register data
-            $new_user = factory(User::class)->create([
+            $new_user = User::factory(1)->create([
                 'name' => 'Peter',
                 'email' => 'peter@example.com',
                 'password' => '00000000'
-            ]);
-
+            ])->toArray();
+            
         //When
-            // post route registered
-            post('/user/register', $new_user);
-            // post route login
-            $response = get('/user/login', $new_user);
+            $response = $this->post(route('login'), ['new_user' => $new_user]);
 
         //Then
-            // return view home / Promos
-            // check user registration in table
-            $response->assertStatus(200)
-                     ->assertView('/user/login');
-        
+            $response->assertRedirect(url('/'))
+                     ->assertSee($new_user[1]);
     }
 }
