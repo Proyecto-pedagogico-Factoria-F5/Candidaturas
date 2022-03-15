@@ -14,13 +14,19 @@
                 </li>
             @endif
             
+<<<<<<< HEAD
             {{-- @if((User::user()->count() == 0)) --}}
+=======
+>>>>>>> origin/testing
             @if (Route::has('register'))
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Dar de alta') }}</a>
+                    <a class="nav-link"  href="{{ url('/register') }}">{{ __('Dar de alta') }}</a>
                 </li>
             @endif
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/testing
         @else
 
             <!--Nav Bar Hooks - Do not delete!!-->
@@ -64,6 +70,7 @@
                     </a>
                     <a class="dropdown-item" href="{{ url('/promos') }}"><i class="fas fa-edit text-info"></i> Administrar promos</a>
                 </div>
+<<<<<<< HEAD
             </li>
 
             {{-- Candidaturas --}}
@@ -74,6 +81,9 @@
             </li>
             
             {{-- Profile --}}
+=======
+            </li> --}}
+>>>>>>> origin/testing
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     <i class="fas fa-user-shield text-info"></i> {{ Auth::user()->name }}
