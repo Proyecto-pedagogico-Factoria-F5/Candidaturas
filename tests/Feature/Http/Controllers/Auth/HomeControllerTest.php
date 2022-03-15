@@ -16,12 +16,13 @@ class HomeControllerTest extends TestCase
         
         $user = \App\Models\User::factory(User::class)->make();
 
-        $response = $this->post(route('login'), [
+        $response = $this->post(url('login'), [
+            'name'=>$user-> name,
             'email' => $user->email,
             'password' => 'password'
         ]);
 
-        //$response->assertRedirect(url('/'));
+        $response->assertRedirect(url('/'));
         //$this->assertAuthenticatedAs($user);
         
     }

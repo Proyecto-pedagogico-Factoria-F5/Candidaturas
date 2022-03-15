@@ -17,6 +17,7 @@ class RegisterTest extends TestCase
         'email' => 'imoreno.im69@gmail.com',
         'password' => 'Imorefris1'
     ]);
+    
 
     $response->assertRedirect(url('/'));
 }
