@@ -14931,6 +14931,12 @@ h3 {
   padding: 0.2rem;
 }
 
+.dropdown-item:active {
+  color: #fffafa;
+  background-color: #e64100;
+  border-color: #e64100;
+}
+
 .btn-primary, .btn-info, .show > .btn-info.dropdown-toggle {
   color: #fffafa;
   background-color: #FC4702;
