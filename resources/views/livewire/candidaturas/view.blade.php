@@ -21,7 +21,9 @@
 						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
 						<i class="fa fa-plus"></i> Añadir candidatura
 						</div>
-					</div>
+						<button class="btn btn-sm btn-info" onclick="mail"> 
+						<i class="fa fa-plus"></i> Enviar Email</button>
+						</div>
 				</div>
 				
 				<div class="card-body">
