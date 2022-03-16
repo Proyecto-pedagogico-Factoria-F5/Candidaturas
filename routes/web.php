@@ -35,3 +35,4 @@ Route::get('/promos-view', [PromoController::class, 'index'])->name('promos-view
 	Route::view('candidaturas', 'livewire.candidaturas.index')->middleware('auth');
 	Route::view('promos', 'livewire.promos.index')->middleware('auth');
 	Route::view('schools', 'livewire.schools.index')->middleware('auth');
+	Route::get('/send/email',[StudentController::class, 'mail']);
