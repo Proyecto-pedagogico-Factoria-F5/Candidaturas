@@ -43,12 +43,8 @@ class CrudSchoolTest extends TestCase
         $user = User::factory()->create();
         $school = School::factory()->create([
             'nombre_escuela' => 'Curso de Factoría F5 FullStack',
-			'ubicación' => 'Madrid',
-			'escuela_id' => '1',
-			'fecha_de_inicio' => '2022-03-03',
-			'duración' => '850h',
-			'url' => 'rompemosloscodigos.com',
-			'imagen' => 'Curso.jpg',
+			'provincia' => 'Madrid',
+			'imagen' => 'uploads/mbEwEwo3SoMqFzgsDFUQcSHhkHV6QrKeF65REeSp.jpg',
         ])->toArray();
         
         // When
@@ -59,37 +55,53 @@ class CrudSchoolTest extends TestCase
         // Then 
         $response->assertStatus(200)
                  ->assertSeeText('Curso de Factoría F5 FullStack')
-                 ->assertViewIs('livewire.shcools.index');
+                 ->assertViewIs('livewire.schools.index');
     }
 
     
+   /*  public function test_school_create_form_fails()
+    {
+        // Given 
+        $user = User::factory()->create();
+        
+        // When
+        $response = $this->actingAs($user)
+             ->withSession(['banned' => false])
+             ->post('/schools.store', [
+                'nombre_escuela' => 'Curso FullStack',
+                'provincia' => 'Madrid',
+             ]);
+       
+        // Then 
+        $response->assertStatus(422);
+    }
+     */
+
     public function test_school_create()
     {
         // Given 
         $user = User::factory()->create();
-        $school = School::factory()->make([
-            'nombre_school' => 'Curso FullStack',
-			'ubicación' => 'Madrid',
-			'escuela_id' => '1',
-			'fecha_de_inicio' => '2022-03-03',
-			'duración' => '850h',
-			'url' => 'rompemosloscodigos.com',
-			'imagen' => 'Curso.jpg',
+        $school = School::factory()->create([
+            'nombre_escuela' => 'Curso FullStack',
+			'provincia' => 'Madrid',
         ])->toArray();
-        
-        // When
-        $this->actingAs($user)
-             ->withSession(['banned' => false])
-             ->post('/schools.store', $school = ['school']);
-             
-        $response = $this->actingAs($user)
-                        ->withSession(['banned' => false])
-                        ->get('/schools');
        
-        // Then 
-        $response->assertStatus(200)
-                 ->assertSeeText('Curso FullStack')
-                 ->assertViewIs('/schools');
-    }
-    
+        // When
+        $response = $this->actingAs($user)
+             ->withSession(['banned' => false])
+             ->post('#createDataModal', function ($modal) use($message) {
+                $modal->assertSee('livewire.schools.create')
+                ->type('nombre_escuela', $message->nombre_escuela)
+                ->type('provincia', $message->provincia)
+                ->press('@subscribe-button');
+                });
+             
+                
+                // Then 
+        $response->assertStatus(201)
+                ->assertSessionHasNoErrors()
+                /* ->assertSeeText('Curso FullStack')
+                ->assertViewIs('/schools') */;
+                assertEquals('$school->nombre_escuela', $message->nombre_escuela);
+            }
 }

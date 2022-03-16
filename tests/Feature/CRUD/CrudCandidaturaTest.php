@@ -18,7 +18,7 @@ class CrudCandidaturaTest extends TestCase
     {
         // Given
         $user = User::factory()->create();
-        $candidatura = Promo::factory()->create([
+        $candidatura = Candidatura::factory()->create([
             'nombre' => 'Peter',
         ])->toArray();
         
