@@ -21,7 +21,7 @@
 						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
 						<i class="fa fa-plus"></i> Añadir candidatura
 						</div>
-						<button class="btn btn-sm btn-info" onclick="mail"> 
+						<a href="{{url('/send/email')}}" class="btn btn-sm btn-info"> 
 						<i class="fa fa-plus"></i> Enviar Email</button>
 						</div>
 				</div>

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PromoController;
+use App\Http\Controllers\StudentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

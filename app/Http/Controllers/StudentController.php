@@ -9,8 +9,9 @@ use App\Models\Candidatura;
 
 class StudentController extends Controller
 {
-    public function mail($id)
+    public function mail()
 	{
+		$id=1;		
 	 $student_detail = [
         'first_name' =>  Candidatura::find($id)->name,
         'last_name' =>  Candidatura::find($id)->last_name,
