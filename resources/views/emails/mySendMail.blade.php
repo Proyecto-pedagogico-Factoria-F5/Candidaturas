@@ -5,9 +5,9 @@
 </head>
 <body>
     <div>
-	 <p>{{ $student_detail['first_name'] }}</p>
-	 <p>{{ $student_detail['last_name'] }}</p>
-	 <p>{{ $student_detail['address'] }}</p>
+	 <p>{{ $student_detail['nombre'] }}</p>
+	 <p>{{ $student_detail['apellidos'] }}</p>
+	 <p>{{ $student_detail['email'] }}</p>
 	 <p>Thank you</p>
     </div>
 </body>
