@@ -13,7 +13,14 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'previous' => '&laquo; Anterior',
     'next' => 'Siguiente &raquo;',
 
 ];
+=======
+    'previous' => '&laquo; Previous',
+    'next' => 'Next &raquo;',
+
+];
+>>>>>>> feature/mail
