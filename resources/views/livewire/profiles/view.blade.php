@@ -34,7 +34,8 @@
 								<td>#</td> 
 								<th>Nombre</th>
 								<th>Email</th>
-								<th>Teléfono</th>
+								<th>Password</th>
+							    <th>Teléfono</th>
 								<th>Puesto</th>
 								<th>Role</th>
 								<th>Escuela</th>
@@ -49,6 +50,7 @@
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->nombre }}</td>
 								<td>{{ $row->email }}</td>
+								<td>{{ $row->password }}</td>
 								<td>{{ $row->teléfono }}</td>
 								<td>{{ $row->puesto }}</td>
 								<td>{{ $row->role }}</td>

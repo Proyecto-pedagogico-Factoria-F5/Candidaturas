@@ -11,7 +11,7 @@ class Profiles extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $nombre, $email, $teléfono, $puesto, $role, $escuela, $promo, $imagen;
+    public $selected_id, $keyWord, $nombre, $email, $password, $teléfono, $puesto, $role, $escuela, $promo, $imagen;
     public $updateMode = false;
 
     public function render()
@@ -21,6 +21,7 @@ class Profiles extends Component
             'profiles' => Profile::latest()
 						->orWhere('nombre', 'LIKE', $keyWord)
 						->orWhere('email', 'LIKE', $keyWord)
+						->orWhere('password', 'LIKE', $keyWord)
 						->orWhere('teléfono', 'LIKE', $keyWord)
 						->orWhere('puesto', 'LIKE', $keyWord)
 						->orWhere('role', 'LIKE', $keyWord)
@@ -41,6 +42,7 @@ class Profiles extends Component
     {		
 		$this->nombre = null;
 		$this->email = null;
+		$this->password = null;
 		$this->teléfono = null;
 		$this->puesto = null;
 		$this->role = null;
@@ -65,6 +67,7 @@ class Profiles extends Component
         Profile::create([ 
 			'nombre' => $this-> nombre,
 			'email' => $this-> email,
+			'password' => $this-> password,
 			'teléfono' => $this-> teléfono,
 			'puesto' => $this-> puesto,
 			'role' => $this-> role,
@@ -85,6 +88,7 @@ class Profiles extends Component
         $this->selected_id = $id; 
 		$this->nombre = $record-> nombre;
 		$this->email = $record-> email;
+		$this->password = $record-> password;
 		$this->teléfono = $record-> teléfono;
 		$this->puesto = $record-> puesto;
 		$this->role = $record-> role;
@@ -100,6 +104,7 @@ class Profiles extends Component
         $this->validate([
 		'nombre' => 'required',
 		'email' => 'required',
+		'password' => 'required',
 		'teléfono' => 'required',
 		'puesto' => 'required',
 		'role' => 'required',
@@ -113,6 +118,7 @@ class Profiles extends Component
             $record->update([ 
 			'nombre' => $this-> nombre,
 			'email' => $this-> email,
+			'password' => $this-> password,
 			'teléfono' => $this-> teléfono,
 			'puesto' => $this-> puesto,
 			'role' => $this-> role,
