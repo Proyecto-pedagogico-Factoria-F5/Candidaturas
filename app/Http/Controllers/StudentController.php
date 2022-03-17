@@ -13,11 +13,11 @@ class StudentController extends Controller
 	{
 		$id=1;		
 	 $student_detail = [
-        'first_name' =>  Candidatura::find($id)->name,
-        'last_name' =>  Candidatura::find($id)->last_name,
+        'nombre' =>  Candidatura::find($id)->nombre,
+        'apellidos' =>  Candidatura::find($id)->apellidos,
 		'email' => Candidatura::find($id)->email,
 		];
-	   Mail::to ($student_detail ['email'])->send(new MySendMail($student_detail));
+	   Mail::to ($student_detail['email'])->send(new MySendMail($student_detail));
 	   
 	   return 'Email has been sent';
 	}
