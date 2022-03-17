@@ -17,7 +17,7 @@ class StudentController extends Controller
         'apellidos' =>  Candidatura::find($id)->apellidos,
 		'email' => Candidatura::find($id)->email,
 		];
-	   Mail::to ($student_detail ['email'])->send(new MySendMail($student_detail));
+	   Mail::to ($student_detail['email'])->send(new MySendMail($student_detail));
 	   
 	   return 'Email has been sent';
 	}
