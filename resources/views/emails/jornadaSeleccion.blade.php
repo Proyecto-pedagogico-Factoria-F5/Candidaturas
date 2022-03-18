@@ -37,13 +37,13 @@
 	 <p>Un saludo,</p>
 
 		<img src="" alt="logo_factoria_f5.jpg">
-<p>{{ $current_school['nombre_escuela'] }}</p>
-	 <p>{{ $current_promo['nombre_promo'] }}</p>
-	 <p>Copyright © 2021 Factoría F5
+        <p>{{ $current_school['nombre_escuela'] }}</p>
+	    <p>{{ $current_promo['nombre_promo'] }}</p>
+	    <p>Copyright © 2021 Factoría F5
 		Todos los derechos reservados.
 		Nuestra dirección de correo es:
 		{{ $current_admin['email'] }}</p>
-    </div>
+      </div>
 
 </body>
 </html>
