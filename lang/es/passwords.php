@@ -13,7 +13,6 @@ return [
     |
     */
 
-<<<<<<< HEAD
     'reset' => '¡Tu contraseña se ha reestablecido!',
     'sent' => '¡Se ha enviado un enlace al email para reestablecer la contraseña!',
     'throttled' => 'Por favor, espera antes de volver a intentarlo.',
@@ -21,12 +20,3 @@ return [
     'user' => "No se encuentra ningún usuario con ese email.",
 
 ];
-=======
-    'reset' => 'Tu contraseña ha sido restablecida!',
-    'sent' => 'Hemos enviado por correo electrónico el enlace para restablecer la contraseña!',
-    'throttled' => 'Por favor, espere antes de reintentar.',
-    'token' => 'Este token de restablecimiento de contraseña no es válido.',
-    'user' => "No podemos encontrar un usuario con esa dirección de correo electrónico.",
-
-];
->>>>>>> feature/mail
