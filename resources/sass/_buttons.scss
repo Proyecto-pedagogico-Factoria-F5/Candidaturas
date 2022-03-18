@@ -1,3 +1,9 @@
+.dropdown-item:active {
+    color: $second-color;
+    background-color: $brand-color-dark;
+    border-color: $brand-color-dark;
+}
+
 .btn-primary, .btn-info, .show > .btn-info.dropdown-toggle {
     color: $second-color;
     background-color: $brand-color;
