@@ -87,11 +87,36 @@
 </div>
 
 
+
 <script>
+
 
 // FREECODECAMP
 
 const urlFreeCodeCamp = 'https://api.freecodecamp.org/api/users/get-public-profile?username='
+
+/* var userPoints = [];
+
+async function getPoints(id, i){
+
+    var myHeaders = new Headers();
+    myHeaders.append("Cookie", "_csrf=XgWIagMZB3DIJKmiNWw2_yBX; csrf_token=CJzGy40i-Yn-nkwiiJx3JjVtrhFBioB91v_8; connect.sid=s%3AOYbepHrYbtwH5AdlKH_z1IiVBjGdhbMo.YuGP9bE7xSFH9UMpfUx5eREwD2PWGitHqJH315CrPqo");
+
+    var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow',
+    };
+
+    let response = await fetch(urlFreeCodeCamp+id, requestOptions);
+    let result = await response.json();
+
+	userPoints.push(result.entities.user[id].points);
+
+} */
+
+
+var userPoints;
 
 //const idUserFreeCodeCamp = 'fcc6d1f6012-533f-4a6f-8949-b766711c8f5a'
 //const idUserFreeCodeCamp = 'fcc86accbf5-9a37-4319-8de8-498906c33515'
@@ -110,17 +135,20 @@ async function getPoints(id){
     let response = await fetch(urlFreeCodeCamp+id, requestOptions);
     let result = await response.json();
 
-    let freeCodePoints = await result.entities.user[id].points;
-    console.log('FreeCodeCamp: Actualmente tiene ' + freeCodePoints + ' puntos')
-    return freeCodePoints;
+	userPoints = await result.entities.user[id].points;
+    //let freeCodePoints = await result.entities.user[id].points;
+    //console.log('FreeCodeCamp: Actualmente tiene ' + freeCodePoints + ' puntos')
+    //return freeCodePoints;
 }
+
+
 
 
 // TYPEFORM
 
 const urlTypeFormPromos = 'https://api.typeform.com/forms';
+const tokenTypeForm = 'tfp_AcE6kGFiV4xg6BLHiqJXYhb8BrFHdSFvbsi8TNWiHnF6_3pabg7dmiTSY43';
 
-const tokenTypeForm = 'tfp_BsmM66GTu1TP1iyScqsHrXn6DWN7DcwbYjXbgDjiBtkZ_3pYMiWSoCZ2jAz';
 
 async function getCandidatures(idPromo){
 
@@ -143,6 +171,31 @@ async function getCandidatures(idPromo){
     return typeFormCandidatures;
 }
 
+
+
+var arrayFreeCodeIds = [];
+
+async function getFreeCodeIds(){
+
+	const idPromo = 'pY7hQ52y'  //Este dato se puede sacar de TypeForm
+	const FREECODE = 3;
+
+	let typeFormPromos = await getCandidatures(idPromo);
+
+	typeFormPromos.forEach(user => {   
+
+		user.answers.forEach(element => {  
+			
+			if(user.answers.indexOf(element) == FREECODE) {
+				arrayFreeCodeIds.push(element.text);
+			} 				
+		}); 	
+	});
+}
+
+
+
+
 async function showCandidatures(){
 
     const idPromo = 'pY7hQ52y'  //Este dato se puede sacar de TypeForm
@@ -154,23 +207,19 @@ async function showCandidatures(){
     const DESCRIPTION = 4;
 
     let typeFormPromos = await getCandidatures(idPromo);
-	
-	//var freeCodeCampId;
-	var freeCodeCampPoints = await getPoints('fcc86accbf5-9a37-4319-8de8-498906c33515');
-	//var freeCodeCampPoints = 'fcc86accbf5-9a37-4319-8de8-498906c33515';
-	
+
+	var row;
 	var rowsCandidates = [];
-
+	var contIdPoints = 0;
 	
-
 	typeFormPromos.forEach(user => {   
-
-		var row = '<tr><td></td>';
+	
+		row = '<tr><td></td>';
 		
 		user.answers.forEach(element => {  
-			
+					
 			if(user.answers.indexOf(element) == NAME) {
-				row += '<td>'+ element.text + '</td>';
+				row+= '<td>'+ element.text + '</td>';
 			}    
 			if(user.answers.indexOf(element) == SURNAME) {
 				row+= '<td>'+ element.text + '</td>';
@@ -183,12 +232,10 @@ async function showCandidatures(){
 			if(user.answers.indexOf(element) == FREECODE) {
 				row+= '<td>Teléfono</td>'; 
 				row+= '<td>'+ element.text + '</td>';
-				//freeCodeCampId = element.text;
 			} 
-			if(user.answers.indexOf(element) == DESCRIPTION) { 
-				//freeCodeCampPoints = await getPoints(freeCodeCampId);
-				//freeCodeCampPoints = await getPoints('fcc86accbf5-9a37-4319-8de8-498906c33515');
-				row+= '<td>' + freeCodeCampPoints + '</td>'; 
+			if(user.answers.indexOf(element) == DESCRIPTION) { 				
+				row+= '<td id="points'+contIdPoints+'">Points</td>';
+				contIdPoints++;
 				row+= '<td>'+ element.text + '</td>';
 				row+= '<td>Fecha registro</td>'; 
 				row+= '<td>Promo id</td>'; 
@@ -198,37 +245,56 @@ async function showCandidatures(){
 
 		rowsCandidates.push(row);		
     });
-
+	
 	$('#tbody').append(rowsCandidates);
 	return rowsCandidates;
 }
 
 showCandidatures();
 
-/* async function getRows() {
-	let data = await showCandidatures();
-
-	$('#tbody').append(data);
-} */
-
-/* let pepe = getRows();
-
-console.log(pepe); */
-
-/* $('#tbody').append(pepe);
-
- */
 
 
-//setInterval(async function() {showCandidatures()},30000);
 
-/* setInterval(function() { 
-	table.ajax.reload(function(){
-	$(".paginate_button > a").on("focus",function(){
-	$(this).blur();
+
+/* async function pepe(){
+	await getFreeCodeIds();
+	luis = 0;
+	
+	arrayFreeCodeIds.forEach(element => {
+		async function jose(){
+			
+			await getPoints(element, luis);
+			console.log(userPoints);
+
+			console.log('FreeCodeId '+ luis + ':' + element);
+			console.log('Points user '+ luis + ':' + userPoints[luis]);
+			document.getElementById('points'+luis).innerHTML=userPoints[luis];
+						
+			luis++;
+		};
+		jose();
 	});
-	}, false);
-}, 3000); */
+
+	
+}
+pepe(); */
+
+async function pepe(){
+	await getFreeCodeIds();
+	let i=0;
+	arrayFreeCodeIds.forEach(element => {
+		async function jose(){
+			await getPoints(element);
+			console.log('FreeCodeId '+ i + ':' + element);
+			console.log('Points user '+ i + ':' + userPoints);
+
+			document.getElementById('points'+i).innerHTML=userPoints;
+			i++;
+		};
+		jose();
+	});
+}
+pepe();
 
 
 </script>
