@@ -3,12 +3,13 @@
 <div class="container-fluid">
 	<div class="row justify-content-center">
 		<div class="col-md-12">
-			<div class="card">
-				<div class="card-header">
+			<div class="card admin-card">
+				<div class="card-header admin-card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
-							<h4><i class="fab fa-laravel text-info"></i>
-							Candidaturas  </h4>
+							<h4>
+								<i class="fas fa-user-graduate text-info"></i> Candidaturas
+							</h4>
 						</div>
 						<div wire:poll.60s>
 							<code><h5>{{ now()->format('H:i:s') }} UTC</h5></code>
@@ -24,7 +25,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="card-body">
+				<div class="card-body admin-card-body">
 					@include('livewire.candidaturas.create')
 					@include('livewire.candidaturas.update')
 					<div class="table-responsive" wire:ignore>
@@ -147,7 +148,7 @@ async function getPoints(id){
 // TYPEFORM
 
 const urlTypeFormPromos = 'https://api.typeform.com/forms';
-const tokenTypeForm = 'tfp_AcE6kGFiV4xg6BLHiqJXYhb8BrFHdSFvbsi8TNWiHnF6_3pabg7dmiTSY43';
+const tokenTypeForm = 'tfp_8vtaPeZuDzHFE4wfX6dpUVKGkbZxfiYwSpREdTyf9SCU_3ss54XXT7bF7yV';
 
 
 async function getCandidatures(idPromo){

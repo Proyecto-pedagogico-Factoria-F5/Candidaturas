@@ -14904,6 +14904,29 @@ h3 {
     margin-bottom: 4rem;
   }
 }
+.admin-card .admin-card-header h4, .admin-card .admin-card-header h5 {
+  margin-bottom: 0;
+}
+.admin-card .admin-card-header code {
+  color: #FC4702;
+}
+.admin-card .admin-card-header code h5 {
+  font-size: 0.9rem;
+}
+.admin-card .admin-card-body {
+  padding: 0;
+}
+.admin-card .admin-card-body table {
+  margin-bottom: 0;
+}
+.admin-card .admin-card-body table thead {
+  background-color: #6C757D;
+  color: #fffafa;
+}
+.admin-card .admin-card-body table th, .admin-card .admin-card-body table td {
+  vertical-align: middle;
+}
+
 .create-container {
   margin: 0 auto;
 }

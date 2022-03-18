@@ -2,12 +2,12 @@
 <div class="container-fluid">
 	<div class="row justify-content-center">
 		<div class="col-md-12">
-			<div class="card">
-				<div class="card-header">
+			<div class="card admin-card">
+				<div class="card-header admin-card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4>
-								<i class="fab fa-laravel text-info"></i> Roles
+								<i class="fab fa-key text-info"></i> Roles
 							</h4>
 						</div>
 						<div wire:poll.60s>
@@ -25,7 +25,7 @@
 					</div>
 				</div>
 				
-				<div class="card-body">
+				<div class="card-body admin-card-body">
 						@include('livewire.roles.create')
 						@include('livewire.roles.update')
 				<div class="table-responsive">

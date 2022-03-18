@@ -36,11 +36,11 @@
                     </a>
 
                     <a class="dropdown-item" href="{{ url('/profiles') }}">
-                        <i class="fab fa-laravel text-info"></i> Profiles
+                        <i class="fas fa-user-edit text-info"></i> Profiles
                     </a> 
                    
                     <a class="dropdown-item" href="{{ url('/roles') }}">
-                        <i class="fas fa-user-edit text-info"></i> Administrar roles
+                        <i class="fas fa-key text-info"></i> Administrar roles
                     </a> 
                 </div>
             </li>
@@ -74,13 +74,13 @@
             {{-- Candidaturas --}}
             <li class="nav-item">
                 <a href="{{ url('/candidaturas') }}" class="nav-link">
-                    <i class="fab fa-laravel text-info"></i> Candidaturas
+                    <i class="fas fa-user-graduate text-info"></i> Candidaturas
                 </a> 
             </li>
 
             {{-- Coders --}}
             <li class="nav-item">
-                <a href="{{ url('/coders') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Coders</a> 
+                <a href="{{ url('/coders') }}" class="nav-link"><i class="fas fa-laptop-code text-info"></i> Coders</a> 
             </li>
             
             {{-- Profile --}}
