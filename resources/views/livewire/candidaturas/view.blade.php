@@ -19,14 +19,14 @@
 						<div>
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar candidaturas">
 						</div>
-						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
+						{{-- <div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
 							<i class="fa fa-plus"></i> Añadir candidatura
-						</div>
+						</div> --}}
 					</div>
 				</div>
 				<div class="card-body">
-					@include('livewire.candidaturas.create')
-					@include('livewire.candidaturas.update')
+					{{-- @include('livewire.candidaturas.create')
+					@include('livewire.candidaturas.update') --}}
 					<div class="table-responsive" wire:ignore>
 						<table class="table table-bordered table-sm">
 							<thead class="thead">
@@ -46,9 +46,7 @@
 									<th>Acciones</th>
 								</tr>
 							</thead>
-							<tbody id="tbody">
-
-							</tbody>
+							<tbody id="tbody"></tbody>
 							{{-- <tbody>
 								@foreach($candidaturas as $row)
 								<tr>
@@ -90,36 +88,11 @@
 
 <script>
 
-
-// FREECODECAMP
+// FREECODECAMP ************************************************************************************************
 
 const urlFreeCodeCamp = 'https://api.freecodecamp.org/api/users/get-public-profile?username='
 
-/* var userPoints = [];
-
-async function getPoints(id, i){
-
-    var myHeaders = new Headers();
-    myHeaders.append("Cookie", "_csrf=XgWIagMZB3DIJKmiNWw2_yBX; csrf_token=CJzGy40i-Yn-nkwiiJx3JjVtrhFBioB91v_8; connect.sid=s%3AOYbepHrYbtwH5AdlKH_z1IiVBjGdhbMo.YuGP9bE7xSFH9UMpfUx5eREwD2PWGitHqJH315CrPqo");
-
-    var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow',
-    };
-
-    let response = await fetch(urlFreeCodeCamp+id, requestOptions);
-    let result = await response.json();
-
-	userPoints.push(result.entities.user[id].points);
-
-} */
-
-
-var userPoints;
-
-//const idUserFreeCodeCamp = 'fcc6d1f6012-533f-4a6f-8949-b766711c8f5a'
-//const idUserFreeCodeCamp = 'fcc86accbf5-9a37-4319-8de8-498906c33515'
+var userArrayPoints = [];
 
 async function getPoints(id){
 
@@ -127,58 +100,70 @@ async function getPoints(id){
     myHeaders.append("Cookie", "_csrf=XgWIagMZB3DIJKmiNWw2_yBX; csrf_token=CJzGy40i-Yn-nkwiiJx3JjVtrhFBioB91v_8; connect.sid=s%3AOYbepHrYbtwH5AdlKH_z1IiVBjGdhbMo.YuGP9bE7xSFH9UMpfUx5eREwD2PWGitHqJH315CrPqo");
 
     var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow',
+		method: 'GET',
+		headers: myHeaders,
+		redirect: 'follow',
     };
 
-    let response = await fetch(urlFreeCodeCamp+id, requestOptions);
-    let result = await response.json();
+	try{
+		let response = await fetch(urlFreeCodeCamp+id, requestOptions);
+		let result = await response.json();
 
-	userPoints = await result.entities.user[id].points;
-    //let freeCodePoints = await result.entities.user[id].points;
-    //console.log('FreeCodeCamp: Actualmente tiene ' + freeCodePoints + ' puntos')
-    //return freeCodePoints;
+		let userPoints = await result.entities.user[id].points;
+
+		return userPoints;
+	}catch(err){
+		console.error(err);
+	}	
+}
+
+async function getArrayPoints(id){
+
+	userArrayPoints.push({id:id, points:await getPoints(id)});
 }
 
 
 
 
-// TYPEFORM
+// TYPEFORM ****************************************************************************************************
 
 const urlTypeFormPromos = 'https://api.typeform.com/forms';
-const tokenTypeForm = 'tfp_AcE6kGFiV4xg6BLHiqJXYhb8BrFHdSFvbsi8TNWiHnF6_3pabg7dmiTSY43';
+const tokenTypeForm = 'tfp_GnZuL3sjSVmRL8NEUeZxyHVbqgLJbkFoMp6pbUavcFSq_3sqakqAhZEr4b';  //Este dato habrá que sacarlo de la BD -> tabla token
+const idPromo = 'pY7hQ52y'  //Este dato habrá que sacarlo de la BD -> tabla promos
 
+const NAME = 0;
+const SURNAME = 1;
+const MAIL = 2;
+const FREECODE = 3;
+const DESCRIPTION = 4;
+
+var arrayFreeCodeIds = [];
 
 async function getCandidatures(idPromo){
 
     const urlTypeFormCandidatures = 'https://api.typeform.com/forms/' + idPromo + '/responses';
 
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer " + tokenTypeForm);
+    myHeaders.append("Authorization", "Bearer " + tokenTypeForm + "S");
 
     var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow'
+		method: 'GET',
+		headers: myHeaders,
+		redirect: 'follow'
     };
 
-    let response = await fetch(urlTypeFormCandidatures, requestOptions);
-    let result = await response.json();
+	try{
+		let response = await fetch(urlTypeFormCandidatures, requestOptions);
+		let result = await response.json();
+		let typeFormCandidatures = await result.items;
+		return typeFormCandidatures;
 
-    let typeFormCandidatures = await result.items;
-    //console.log('TypeForm candidatos: ' + typeFormCandidatures)
-    return typeFormCandidatures;
+	}catch(err){
+		console.error(err);
+	} 
 }
 
-
-
-var arrayFreeCodeIds = [];
-
 async function getFreeCodeIds(){
-
-	const idPromo = 'pY7hQ52y'  //Este dato se puede sacar de TypeForm
-	const FREECODE = 3;
 
 	let typeFormPromos = await getCandidatures(idPromo);
 
@@ -193,24 +178,13 @@ async function getFreeCodeIds(){
 	});
 }
 
-
-
-
 async function showCandidatures(){
-
-    const idPromo = 'pY7hQ52y'  //Este dato se puede sacar de TypeForm
-
-    const NAME = 0;
-    const SURNAME = 1;
-    const MAIL = 2;
-    const FREECODE = 3;
-    const DESCRIPTION = 4;
 
     let typeFormPromos = await getCandidatures(idPromo);
 
 	var row;
 	var rowsCandidates = [];
-	var contIdPoints = 0;
+	var idFreeCode;
 	
 	typeFormPromos.forEach(user => {   
 	
@@ -232,17 +206,16 @@ async function showCandidatures(){
 			if(user.answers.indexOf(element) == FREECODE) {
 				row+= '<td>Teléfono</td>'; 
 				row+= '<td>'+ element.text + '</td>';
+				idFreeCode = element.text;
 			} 
 			if(user.answers.indexOf(element) == DESCRIPTION) { 				
-				row+= '<td id="points'+contIdPoints+'">Points</td>';
-				contIdPoints++;
+				row+= '<td id="'+ idFreeCode +'">Points</td>';
 				row+= '<td>'+ element.text + '</td>';
 				row+= '<td>Fecha registro</td>'; 
 				row+= '<td>Promo id</td>'; 
 				row+= '<td>Acciones</td></tr>'; 
 			} 					
 		}); 
-
 		rowsCandidates.push(row);		
     });
 	
@@ -252,50 +225,32 @@ async function showCandidatures(){
 
 showCandidatures();
 
-
-
-
-
-/* async function pepe(){
+async function printPoints(){
 	await getFreeCodeIds();
-	luis = 0;
+	var i = 0;
+
+	/* console.log('Array de IDs recien solicitados: ' + arrayFreeCodeIds);
+	console.log('Array 0 de IDs recien solicitados: ' + arrayFreeCodeIds[0]);
+	console.log('Array 1 de IDs recien solicitados: ' + arrayFreeCodeIds[1]); */
 	
 	arrayFreeCodeIds.forEach(element => {
-		async function jose(){
+		async function printHtml(){
 			
-			await getPoints(element, luis);
-			console.log(userPoints);
-
-			console.log('FreeCodeId '+ luis + ':' + element);
-			console.log('Points user '+ luis + ':' + userPoints[luis]);
-			document.getElementById('points'+luis).innerHTML=userPoints[luis];
-						
-			luis++;
+			try{
+				await getArrayPoints(element);			
+				//console.log('Puntos de ' + userArrayPoints[i].id + ':' + userArrayPoints[i].points);
+				document.getElementById(userArrayPoints[i].id).innerHTML=userArrayPoints[i].points;							
+				i++;
+			}catch(err){
+				console.error(err);
+				location.reload();
+			}			
 		};
-		jose();
-	});
-
-	
+		printHtml();
+	});	
 }
-pepe(); */
 
-async function pepe(){
-	await getFreeCodeIds();
-	let i=0;
-	arrayFreeCodeIds.forEach(element => {
-		async function jose(){
-			await getPoints(element);
-			console.log('FreeCodeId '+ i + ':' + element);
-			console.log('Points user '+ i + ':' + userPoints);
-
-			document.getElementById('points'+i).innerHTML=userPoints;
-			i++;
-		};
-		jose();
-	});
-}
-pepe();
-
+printPoints();
 
 </script>
 
