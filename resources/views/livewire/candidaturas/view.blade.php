@@ -23,6 +23,8 @@
 						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
 							<i class="fa fa-plus"></i> Añadir candidatura
 						</div>
+						<a href="{{url('/send/email')}}" class="btn btn-sm btn-info"> 
+						<i class="fa fa-plus"></i> Enviar Email</a>
 					</div>
 				</div>
 				<div class="card-body admin-card-body">
@@ -88,9 +90,7 @@
 </div>
 
 
-
 <script>
-
 
 // FREECODECAMP
 
@@ -115,7 +115,6 @@ async function getPoints(id, i){
 	userPoints.push(result.entities.user[id].points);
 
 } */
-
 
 var userPoints;
 
@@ -150,7 +149,6 @@ async function getPoints(id){
 const urlTypeFormPromos = 'https://api.typeform.com/forms';
 const tokenTypeForm = 'tfp_8vtaPeZuDzHFE4wfX6dpUVKGkbZxfiYwSpREdTyf9SCU_3ss54XXT7bF7yV';
 
-
 async function getCandidatures(idPromo){
 
     const urlTypeFormCandidatures = 'https://api.typeform.com/forms/' + idPromo + '/responses';
@@ -173,7 +171,6 @@ async function getCandidatures(idPromo){
 }
 
 
-
 var arrayFreeCodeIds = [];
 
 async function getFreeCodeIds(){
@@ -193,8 +190,6 @@ async function getFreeCodeIds(){
 		}); 	
 	});
 }
-
-
 
 
 async function showCandidatures(){
@@ -254,9 +249,6 @@ async function showCandidatures(){
 showCandidatures();
 
 
-
-
-
 /* async function pepe(){
 	await getFreeCodeIds();
 	luis = 0;
@@ -296,7 +288,4 @@ async function pepe(){
 	});
 }
 pepe();
-
-
 </script>
-
