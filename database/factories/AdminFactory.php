@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,15 +10,13 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class AdminFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = Admin::class;
     public function definition()
     {
         return [
-            //
+            'regional' => $this->faker->name,
+			'provincial' => $this->faker->name,
+			'local' => $this->faker->name,
         ];
     }
 }

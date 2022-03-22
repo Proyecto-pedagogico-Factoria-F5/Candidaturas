@@ -147,7 +147,8 @@ async function getPoints(id){
 // TYPEFORM
 
 const urlTypeFormPromos = 'https://api.typeform.com/forms';
-const tokenTypeForm = 'tfp_AcE6kGFiV4xg6BLHiqJXYhb8BrFHdSFvbsi8TNWiHnF6_3pabg7dmiTSY43';
+const tokenTypeForm = 'tfp_8vtaPeZuDzHFE4wfX6dpUVKGkbZxfiYwSpREdTyf9SCU_3ss54XXT7bF7yV';
+;
 
 
 async function getCandidatures(idPromo){
