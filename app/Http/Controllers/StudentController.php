@@ -12,7 +12,14 @@ class StudentController extends Controller
     public function mail()
 	{
 		$id=1;		
-	 $student_detail = [
+	  $student_detail = [
+        'nombre' =>  Candidatura::find($id)->nombre,
+        'apellidos' =>  Candidatura::find($id)->apellidos,
+		'email' => Candidatura::find($id)->email,
+		];
+	   Mail::to ($student_detail['email'])->send(new MySendMail($student_detail));
+	   $id=3;
+	   $student_detail = [
         'nombre' =>  Candidatura::find($id)->nombre,
         'apellidos' =>  Candidatura::find($id)->apellidos,
 		'email' => Candidatura::find($id)->email,

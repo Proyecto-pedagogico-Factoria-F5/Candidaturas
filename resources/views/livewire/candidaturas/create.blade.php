@@ -54,6 +54,10 @@
                         <label for="promo_id"></label>
                         <input wire:model="promo_id" type="text" class="form-control" id="promo_id" placeholder="Promo Id">@error('promo_id') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
+                    <div class="checkbox">
+                        <label for="email"></label>
+                        <input type="checkbox" name="email[]"">
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
