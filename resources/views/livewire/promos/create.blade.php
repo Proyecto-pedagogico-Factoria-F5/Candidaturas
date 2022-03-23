@@ -32,12 +32,8 @@
                         <label for="ubicación">Localidad</label>
                         <input wire:model="ubicación" type="text" class="form-control" id="ubicación" placeholder="Localidad" required>@error('ubicación') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
-                    {{-- <div class="form-group">
-                        <label for="fecha_de_inicio">Fecha de inicio</label>
-                        <input wire:model="fecha_de_inicio" type="text" class="form-control" id="fecha_de_inicio" placeholder="Fecha de inicio" required>@error('fecha_de_inicio') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div> --}}
                         
-                    <x-datepicker wire:model="date" id="date" />
+                    <x-datepicker wire:model="fecha_de_inicio" id="date" />
 
                     <div class="form-group">
                         <label for="duración">Duración (h)</label>

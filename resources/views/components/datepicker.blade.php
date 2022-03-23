@@ -1,6 +1,6 @@
 <div class="form-group">
     <label for="fecha_de_inicio">Fecha de inicio</label>
-    <input type="text" id="datepicker" class="form-control" value="D/MM/YYYY" required>@error('fecha_de_inicio') <span class="error text-danger">{{ $message }}</span> @enderror
+    <input type="text" id="datepicker" class="form-control" value="YYYY-MM-D" required>@error('fecha_de_inicio') <span class="error text-danger">{{ $message }}</span> @enderror
 
     {{-- <script src="./node_modules/moment/moment.js"></script>
     <script src="./node_modules/pikaday/pikaday.js"></script>  --}}
