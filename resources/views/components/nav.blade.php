@@ -35,13 +35,13 @@
                         <i class="fas fa-user-plus text-info"></i> Dar de alta
                     </a>
 
-                    <a class="dropdown-item" href="{{ url('/profiles') }}">
+                  {{--   <a class="dropdown-item" href="{{ url('/profiles') }}">
                         <i class="fab fa-laravel text-info"></i> Profiles
                     </a> 
                    
                     <a class="dropdown-item" href="{{ url('/roles') }}">
                         <i class="fas fa-user-edit text-info"></i> Administrar roles
-                    </a> 
+                    </a>  --}}
                 </div>
             </li>
 
@@ -79,9 +79,9 @@
             </li>
 
             {{-- Coders --}}
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a href="{{ url('/coders') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Coders</a> 
-            </li>
+            </li> --}}
             
             {{-- Profile --}}
             <li class="nav-item dropdown">
@@ -90,7 +90,7 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ url('/profile') }}">Mi perfil</a>
+                   {{--  <a class="dropdown-item" href="{{ url('/profile') }}">Mi perfil</a> --}}
                     <a class="dropdown-item" href="{{ url('/tokens') }}">Token</a>
                     <a class="dropdown-item dropdown-last-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();

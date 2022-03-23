@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Promo;
+use App\Models\Token;
 use App\Http\Requests\StorePromoRequest;
 use App\Http\Requests\UpdatePromoRequest;
 
@@ -45,9 +46,12 @@ class PromoController extends Controller
      * @param  \App\Models\Promo  $promo
      * @return \Illuminate\Http\Response
      */
-    public function show(Promo $promo)
+    public function show($id)
     {
-        //
+        $data = Promo::findOrFail($id);
+        $token = Token::findOrFail(1);
+
+        return view('candidaturas-view', compact('data','token'));
     }
 
     /**

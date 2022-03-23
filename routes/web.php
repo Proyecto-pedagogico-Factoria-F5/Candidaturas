@@ -28,6 +28,7 @@ Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 
 Route::get('/schools-view', [HomeController::class, 'index'])->name('schools-view');
 Route::get('/promos-view', [PromoController::class, 'index'])->name('promos-view');
+Route::get('/candidaturas-view/{id}', [PromoController::class, 'show'])->name('candidaturas-view');
 
 //Route Hooks - Do not delete//
 	Route::view('coders', 'livewire.coders.index')->middleware('auth');
