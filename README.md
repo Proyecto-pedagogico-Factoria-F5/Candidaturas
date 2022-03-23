@@ -10,6 +10,7 @@ composer require laravel/ui
 composer require livewire/livewire
 composer require flightsadmin/livewire-crud
 php artisan crud:install
+npm install pikaday
 npm install moment --save
 ```
 
