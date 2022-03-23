@@ -32,10 +32,15 @@
 						</div>
 
 						{{-- Button --}} 
-						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal"> 
+						{{-- <div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal"> 
 							<i class="fa fa-plus"></i>  Añadir promo 
-						</div>
+						</div> --}}
 
+						<div class="btn btn-sm btn-info"> 
+							<a href="{{ url('/promos-create') }}">
+								<i class="fa fa-plus"></i>  Añadir promo 
+							</a>	
+						</div>
 					</div>	
 				</div>
 					
