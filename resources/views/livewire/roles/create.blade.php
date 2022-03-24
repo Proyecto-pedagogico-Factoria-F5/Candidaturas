@@ -14,7 +14,7 @@
                         <label for="nombre"></label>
                         <input wire:model="nombre" type="text" class="form-control" id="nombre" placeholder="Nombre">@error('nombre') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="email"></label>
                         <input wire:model="email" type="text" class="form-control" id="email" placeholder="Email">@error('email') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
@@ -37,7 +37,7 @@
                     <div class="form-group">
                         <label for="imagen"></label>
                         <input wire:model="imagen" type="text" class="form-control" id="imagen" placeholder="Imagen">@error('imagen') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
+                    </div> --}}
                 </form>
             </div>
             <div class="modal-footer">

@@ -7,7 +7,7 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4>
-								<i class="fab fa-key text-info"></i> Roles
+								<i class="fas fa-key text-info"></i> Roles
 							</h4>
 						</div>
 						<div wire:poll.60s>
@@ -34,26 +34,26 @@
 							<tr> 
 								<td>#</td> 
 								<th>Nombre</th>
-								<th>Email</th>
+								{{-- <th>Email</th>
 								<th>Teléfono</th>
 								<th>Puesto</th>
 								<th>Escuela</th>
 								<th>Promo</th>
-								<th>Imagen</th>
+								<th>Imagen</th> --}}
 								<td>Acciones</td>
 							</tr>
 						</thead>
 						<tbody>
 							@foreach($roles as $row)
 							<tr>
-								<td>{{ $loop->iteration }}</td> 
+								<td>{{ $row->id }}</td> 
 								<td>{{ $row->nombre }}</td>
-								<td>{{ $row->email }}</td>
+								{{-- <td>{{ $row->email }}</td>
 								<td>{{ $row->teléfono }}</td>
 								<td>{{ $row->puesto }}</td>
 								<td>{{ $row->escuela }}</td>
 								<td>{{ $row->promo }}</td>
-								<td>{{ $row->imagen }}</td>
+								<td>{{ $row->imagen }}</td> --}}
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -15,7 +15,7 @@ class PromoFactory extends Factory
         return [
 			'nombre_promo' => $this->faker->name,
 			'ubicación' => $this->faker->name,
-			'escuela' => $this->faker->name,
+			// 'escuela' => $this->faker->name,
 			'escuela_id' => $this->faker->name,
 			'fecha_de_inicio' => $this->faker->name,
 			'duración' => $this->faker->name,

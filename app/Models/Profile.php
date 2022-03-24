@@ -13,6 +13,16 @@ class Profile extends Model
 
     protected $table = 'profiles';
 
-    protected $fillable = ['nombre','email','password','teléfono','puesto','role','escuela','promo','imagen'];
+    protected $fillable = [
+        'nombre',
+        'email',
+        'password',
+        'teléfono',
+        'puesto',
+        'role',
+        'escuela_id',
+        'promo',
+        'imagen'
+    ];
 	
 }

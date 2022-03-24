@@ -7,7 +7,7 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4>
-								<i class="fab fa-user-edit text-info"></i> Perfiles
+								<i class="fas fa-user-edit text-info"></i> Perfiles
 							</h4>
 						</div>
 						<div wire:poll.60s>
@@ -17,7 +17,7 @@
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Profiles">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar perfiles">
 						</div>
 						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
 						<i class="fa fa-plus"></i>  Añadir perfil
@@ -35,7 +35,7 @@
 								<td>#</td> 
 								<th>Nombre</th>
 								<th>Email</th>
-								<th>Password</th>
+								{{-- <th>Password</th> --}}
 							    <th>Teléfono</th>
 								<th>Puesto</th>
 								<th>Rol</th>
@@ -48,16 +48,16 @@
 						<tbody>
 							@foreach($profiles as $row)
 							<tr>
-								<td>{{ $loop->iteration }}</td> 
+								<td>{{ $row->id }}</td> 
 								<td>{{ $row->nombre }}</td>
 								<td>{{ $row->email }}</td>
-								<td>{{ $row->password }}</td>
+								{{-- <td>{{ $row->password }}</td> --}}
 								<td>{{ $row->teléfono }}</td>
 								<td>{{ $row->puesto }}</td>
 								<td>{{ $row->role }}</td>
-								<td>{{ $row->escuela }}</td>
+								<td>{{ $row->escuela_id }}</td>
 								<td>{{ $row->promo }}</td>
-								<td>{{ $row->imagen }}</td>
+								<td><img class="table-img" src="{{ asset('storage').'/'.$row->imagen }}" alt="{{ $row->nombre }}"></td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
