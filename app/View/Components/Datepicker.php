@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use App\Models\School;
 
 class Datepicker extends Component
 {
@@ -23,6 +24,8 @@ class Datepicker extends Component
      */
     public function render()
     {
-        return view('components.datepicker');
+        return view('components.datepicker', [
+            'schools' => School::all()
+        ]);
     }
 }

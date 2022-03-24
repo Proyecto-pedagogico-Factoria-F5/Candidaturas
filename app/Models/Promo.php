@@ -16,6 +16,7 @@ class Promo extends Model
     protected $fillable = [
         'nombre_promo',
         'ubicación',
+        'escuela',
         'escuela_id',
         'fecha_de_inicio',
         'duración',

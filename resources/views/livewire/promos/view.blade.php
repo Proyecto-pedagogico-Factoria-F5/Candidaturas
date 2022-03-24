@@ -36,11 +36,6 @@
 							<i class="fa fa-plus"></i>  Añadir promo 
 						</div>
 
-						{{-- <div class="btn btn-sm btn-info"> 
-							<a href="{{ url('/promos-create') }}">
-								<i class="fa fa-plus"></i>  Añadir promo 
-							</a>	
-						</div> --}}
 					</div>	
 				</div>
 					

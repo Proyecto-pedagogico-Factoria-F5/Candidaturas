@@ -6,14 +6,14 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use App\Models\Promo;
-
+use App\Models\School;
 class Promos extends Component
 {
     use WithPagination;
 	use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $nombre_promo, $ubicación, $escuela_id, $fecha_de_inicio, $duración, $url, $imagen, $código;
+    public $selected_id, $keyWord, $nombre_promo, $ubicación, $escuela, $escuela_id, $fecha_de_inicio, $duración, $url, $imagen, $código;
     public $updateMode = false;
 
     public function render()
@@ -23,6 +23,7 @@ class Promos extends Component
             'promos' => Promo::latest()
 						->orWhere('nombre_promo', 'LIKE', $keyWord)
 						->orWhere('ubicación', 'LIKE', $keyWord)
+						->orWhere('escuela', 'LIKE', $keyWord)
 						->orWhere('escuela_id', 'LIKE', $keyWord)
 						->orWhere('fecha_de_inicio', 'LIKE', $keyWord)
 						->orWhere('duración', 'LIKE', $keyWord)
@@ -30,6 +31,7 @@ class Promos extends Component
 						->orWhere('imagen', 'LIKE', $keyWord)
 						->orWhere('código', 'LIKE', $keyWord)
 						->paginate(10),
+			'schools' => School::all()
         ]);
     }
 	
@@ -43,6 +45,7 @@ class Promos extends Component
     {		
 		$this->nombre_promo = null;
 		$this->ubicación = null;
+		$this->escuela = null;
 		$this->escuela_id = null;
 		$this->fecha_de_inicio = null;
 		$this->duración = null;
@@ -56,6 +59,7 @@ class Promos extends Component
         $this->validate([
 		'nombre_promo' => 'required',
 		'ubicación' => 'required',
+		'escuela' => 'required',
 		'escuela_id' => 'required',
 		'fecha_de_inicio' => 'required',
 		'duración' => 'required',
@@ -67,6 +71,7 @@ class Promos extends Component
         Promo::create([ 
 			'nombre_promo' => $this-> nombre_promo,
 			'ubicación' => $this-> ubicación,
+			'escuela' => $this-> escuela,
 			'escuela_id' => $this-> escuela_id,
 			'fecha_de_inicio' => $this-> fecha_de_inicio,
 			'duración' => $this-> duración,
@@ -87,6 +92,7 @@ class Promos extends Component
         $this->selected_id = $id; 
 		$this->nombre_promo = $record-> nombre_promo;
 		$this->ubicación = $record-> ubicación;
+		$this->escuela = $record-> escuela;
 		$this->escuela_id = $record-> escuela_id;
 		$this->fecha_de_inicio = $record-> fecha_de_inicio;
 		$this->duración = $record-> duración;
@@ -102,6 +108,7 @@ class Promos extends Component
         $this->validate([
 		'nombre_promo' => 'required',
 		'ubicación' => 'required',
+		'escuela' => 'required',
 		'escuela_id' => 'required',
 		'fecha_de_inicio' => 'required',
 		'duración' => 'required',
@@ -115,6 +122,7 @@ class Promos extends Component
             $record->update([ 
 			'nombre_promo' => $this-> nombre_promo,
 			'ubicación' => $this-> ubicación,
+			'escuela' => $this-> escuela,
 			'escuela_id' => $this-> escuela_id,
 			'fecha_de_inicio' => $this-> fecha_de_inicio,
 			'duración' => $this-> duración,

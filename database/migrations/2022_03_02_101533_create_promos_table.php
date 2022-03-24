@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre_promo');
             $table->string('ubicación');
+            $table->string('escuela');
             $table->string('escuela_id');
             $table->date('fecha_de_inicio');
             $table->string('duración');
