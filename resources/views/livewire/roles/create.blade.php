@@ -11,33 +11,22 @@
            <div class="modal-body">
 				<form>
                     <div class="form-group">
-                        <label for="nombre"></label>
-                        <input wire:model="nombre" type="text" class="form-control" id="nombre" placeholder="Nombre">@error('nombre') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="superadmin"></label>
+                        <input wire:model="superadmin" type="text" class="form-control" id="superadmin" placeholder="Superadmin">@error('superadmin') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                     <div class="form-group">
+                        <label for="regional"></label>
+                        <input wire:model="regional" type="text" class="form-control" id="regional" placeholder="Regional">@error('regional') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="email"></label>
-                        <input wire:model="email" type="text" class="form-control" id="email" placeholder="Email">@error('email') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="provincial"></label>
+                        <input wire:model="provincial" type="text" class="form-control" id="provincial" placeholder="Provincial">@error('provincial') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="teléfono"></label>
-                        <input wire:model="teléfono" type="text" class="form-control" id="teléfono" placeholder="Teléfono">@error('teléfono') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="local"></label>
+                        <input wire:model="local" type="text" class="form-control" id="local" placeholder="Local">@error('local') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="puesto"></label>
-                        <input wire:model="puesto" type="text" class="form-control" id="puesto" placeholder="Puesto">@error('puesto') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="escuela"></label>
-                        <input wire:model="escuela" type="text" class="form-control" id="escuela" placeholder="Escuela">@error('escuela') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="promo"></label>
-                        <input wire:model="promo" type="text" class="form-control" id="promo" placeholder="Promo">@error('promo') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="imagen"></label>
-                        <input wire:model="imagen" type="text" class="form-control" id="imagen" placeholder="Imagen">@error('imagen') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
+                 
                 </form>
             </div>
             <div class="modal-footer">

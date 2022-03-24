@@ -13,13 +13,11 @@ class RoleFactory extends Factory
     public function definition()
     {
         return [
-			'nombre' => $this->faker->name,
-			'email' => $this->faker->name,
-			'teléfono' => $this->faker->name,
-			'puesto' => $this->faker->name,
-			'escuela' => $this->faker->name,
-			'promo' => $this->faker->name,
-			'imagen' => $this->faker->name,
+			'superadmin' => $this->faker->name,
+			'regional' => $this->faker->name,
+			'provincial' => $this->faker->name,
+			'local' => $this->faker->name,
+		
         ];
     }
 }

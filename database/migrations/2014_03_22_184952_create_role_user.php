@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('role_user', function (Blueprint $table) {
             $table->id();
-            $table->string('superadmin');
-            $table->string('regional');
-            $table->string('provincial');
-            $table->string('local');
+            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('role_id')->reference('id')->on('roles')->cascadeOnDelete();
+            $table->foreign('user_id')->reference('id')->on('users')->cascadeOnDelete();
         });
     }
 
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('role_users');
     }
 };

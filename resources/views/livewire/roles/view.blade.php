@@ -33,13 +33,10 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Nombre</th>
-								<th>Email</th>
-								<th>Teléfono</th>
-								<th>Puesto</th>
-								<th>Escuela</th>
-								<th>Promo</th>
-								<th>Imagen</th>
+								<th>Superadmin</th>
+								<th>Regional</th>
+								<th>Provincial</th>
+								<th>Local</th>
 								<td>Acciones</td>
 							</tr>
 						</thead>
@@ -47,13 +44,10 @@
 							@foreach($roles as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->nombre }}</td>
-								<td>{{ $row->email }}</td>
-								<td>{{ $row->teléfono }}</td>
-								<td>{{ $row->puesto }}</td>
-								<td>{{ $row->escuela }}</td>
-								<td>{{ $row->promo }}</td>
-								<td>{{ $row->imagen }}</td>
+								<td>{{ $row->superadmin }}</td>
+								<td>{{ $row->regional }}</td>
+								<td>{{ $row->provincial }}</td>
+								<td>{{ $row->local }}</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

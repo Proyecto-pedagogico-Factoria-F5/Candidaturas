@@ -11,7 +11,7 @@ class Roles extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $nombre, $email, $teléfono, $puesto, $escuela, $promo, $imagen;
+    public $selected_id, $keyWord, $superadmin, $regional, $provincial, $local;
     public $updateMode = false;
 
     public function render()
@@ -19,13 +19,10 @@ class Roles extends Component
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.roles.view', [
             'roles' => Role::latest()
-						->orWhere('nombre', 'LIKE', $keyWord)
-						->orWhere('email', 'LIKE', $keyWord)
-						->orWhere('teléfono', 'LIKE', $keyWord)
-						->orWhere('puesto', 'LIKE', $keyWord)
-						->orWhere('escuela', 'LIKE', $keyWord)
-						->orWhere('promo', 'LIKE', $keyWord)
-						->orWhere('imagen', 'LIKE', $keyWord)
+						->orWhere('superadmin', 'LIKE', $keyWord)
+						->orWhere('regional', 'LIKE', $keyWord)
+						->orWhere('provincial', 'LIKE', $keyWord)
+						->orWhere('local', 'LIKE', $keyWord)
 						->paginate(10),
         ]);
     }
@@ -38,35 +35,29 @@ class Roles extends Component
 	
     private function resetInput()
     {		
-		$this->nombre = null;
-		$this->email = null;
-		$this->teléfono = null;
-		$this->puesto = null;
-		$this->escuela = null;
-		$this->promo = null;
-		$this->imagen = null;
+		$this->superadmin = null;
+		$this->regional = null;
+		$this->provincial = null;
+		$this->local = null;
+		
     }
 
     public function store()
     {
         $this->validate([
-		'nombre' => 'required',
-		'email' => 'required',
-		'teléfono' => 'required',
-		'puesto' => 'required',
-		'escuela' => 'required',
-		'promo' => 'required',
-		'imagen' => 'required',
+		'superadmin' => 'required',
+		'regional' => 'required',
+		'provincial' => 'required',
+		'local' => 'required',
+		
         ]);
 
         Role::create([ 
-			'nombre' => $this-> nombre,
-			'email' => $this-> email,
-			'teléfono' => $this-> teléfono,
-			'puesto' => $this-> puesto,
-			'escuela' => $this-> escuela,
-			'promo' => $this-> promo,
-			'imagen' => $this-> imagen
+			'superadmin' => $this-> superadmin,
+			'regional' => $this-> regional,
+			'provincial' => $this-> provincial,
+			'local' => $this-> local,
+			
         ]);
         
         $this->resetInput();
@@ -79,13 +70,11 @@ class Roles extends Component
         $record = Role::findOrFail($id);
 
         $this->selected_id = $id; 
-		$this->nombre = $record-> nombre;
-		$this->email = $record-> email;
-		$this->teléfono = $record-> teléfono;
-		$this->puesto = $record-> puesto;
-		$this->escuela = $record-> escuela;
-		$this->promo = $record-> promo;
-		$this->imagen = $record-> imagen;
+		$this->superadmin = $record-> superadmin;
+		$this->regional = $record-> regional;
+		$this->provincial = $record-> provincial;
+		$this->local = $record-> local;
+		
 		
         $this->updateMode = true;
     }
@@ -93,25 +82,21 @@ class Roles extends Component
     public function update()
     {
         $this->validate([
-		'nombre' => 'required',
-		'email' => 'required',
-		'teléfono' => 'required',
-		'puesto' => 'required',
-		'escuela' => 'required',
-		'promo' => 'required',
-		'imagen' => 'required',
+		'superadmin' => 'required',
+		'regional' => 'required',
+		'provincial' => 'required',
+		'local' => 'required',
+		
         ]);
 
         if ($this->selected_id) {
 			$record = Role::find($this->selected_id);
             $record->update([ 
-			'nombre' => $this-> nombre,
-			'email' => $this-> email,
-			'teléfono' => $this-> teléfono,
-			'puesto' => $this-> puesto,
-			'escuela' => $this-> escuela,
-			'promo' => $this-> promo,
-			'imagen' => $this-> imagen
+			'superadmin' => $this-> superadmin,
+			'regional' => $this-> regional,
+			'provincial' => $this-> provincial,
+			'local' => $this-> local,
+			
             ]);
 
             $this->resetInput();

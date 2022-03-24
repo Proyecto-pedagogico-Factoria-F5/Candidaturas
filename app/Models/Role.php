@@ -13,6 +13,6 @@ class Role extends Model
 
     protected $table = 'roles';
 
-    protected $fillable = ['nombre','email','teléfono','puesto','escuela','promo','imagen'];
+    protected $fillable = ['superadmin','regional','provincial','local'];
 	
 }
