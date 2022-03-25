@@ -19,7 +19,7 @@ class Roles extends Component
     {
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.roles.view', [
-            'roles' => Role::latest()
+            'roles' => Role::where('id', '>', 0)->orderBy('id')
 						->orWhere('nombre', 'LIKE', $keyWord)
 						// ->orWhere('email', 'LIKE', $keyWord)
 						// ->orWhere('teléfono', 'LIKE', $keyWord)
