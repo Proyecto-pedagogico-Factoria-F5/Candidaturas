@@ -50,3 +50,14 @@
         color: $brand-color-dark;
     }
 }
+
+.btn-row {
+    display: flex; 
+    justify-content: flex-end; 
+    align-items: center;
+    width: 100%;
+
+    a, .text-info {
+        color: $second-color !important;
+    }
+}

@@ -23,7 +23,8 @@ return new class extends Migration
             $table->string('teléfono');
             $table->string('puesto');
             $table->string('role');
-            $table->string('escuela');
+            // $table->string('escuela');
+            $table->string('escuela_id');
             $table->string('promo');
             $table->string('imagen');
             $table->timestamps();

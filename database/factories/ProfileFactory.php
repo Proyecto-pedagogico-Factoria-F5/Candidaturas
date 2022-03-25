@@ -19,7 +19,8 @@ class ProfileFactory extends Factory
 			'teléfono' => $this->faker->name,
 			'puesto' => $this->faker->name,
 			'role' => $this->faker->name,
-			'escuela' => $this->faker->name,
+			// 'escuela' => $this->faker->name,
+			'escuela_id' => $this->faker->name,
 			'promo' => $this->faker->name,
 			'imagen' => $this->faker->name,
         ];

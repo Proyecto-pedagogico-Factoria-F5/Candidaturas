@@ -13,18 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('promos', function (Blueprint $table) {
+        Schema::create('role_user', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_promo');
-            $table->string('ubicación');
-            $table->string('escuela');
-            $table->string('escuela_id');
-            $table->date('fecha_de_inicio');
-            $table->string('duración');
-            $table->string('url');
-            $table->string('imagen');
-            $table->string('código');
+            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('role_id')->reference('id')->on('roles')->cascadeOnDelete();
+            $table->foreign('user_id')->reference('id')->on('users')->cascadeOnDelete();
         });
     }
 
@@ -35,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('promo');
+        Schema::dropIfExists('role_user');
     }
 };

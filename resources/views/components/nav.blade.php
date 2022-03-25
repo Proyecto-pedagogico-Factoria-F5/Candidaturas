@@ -31,17 +31,17 @@
                     <i class="fas fa-users text-info"></i> Usuarios
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="{{ url('/register') }}">
+                    {{-- <a class="dropdown-item" href="{{ url('/register') }}">
                         <i class="fas fa-user-plus text-info"></i> Dar de alta
-                    </a>
+                    </a> --}}
 
-                  {{--   <a class="dropdown-item" href="{{ url('/profiles') }}">
-                        <i class="fab fa-laravel text-info"></i> Profiles
+                    <a class="dropdown-item" href="{{ url('/profiles') }}">
+                        <i class="fas fa-user-edit text-info"></i> Administrar perfiles
                     </a> 
                    
                     <a class="dropdown-item" href="{{ url('/roles') }}">
-                        <i class="fas fa-user-edit text-info"></i> Administrar roles
-                    </a>  --}}
+                        <i class="fas fa-key text-info"></i> Administrar roles
+                    </a> 
                 </div>
             </li>
 
@@ -59,7 +59,7 @@
             </li>
 
             {{-- Promos --}}
-            <li class="nav-item dropdown">
+            {{-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="{{ url('/promos') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     <i class="fas fa-graduation-cap text-info"></i> Promos
                 </a>
@@ -69,18 +69,18 @@
                     </a>
                     <a class="dropdown-item" href="{{ url('/promos') }}"><i class="fas fa-edit text-info"></i> Administrar promos</a>
                 </div>
-            </li>
+            </li> --}}
 
             {{-- Candidaturas --}}
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a href="{{ url('/candidaturas') }}" class="nav-link">
-                    <i class="fab fa-laravel text-info"></i> Candidaturas
+                    <i class="fas fa-user-graduate text-info"></i> Candidaturas
                 </a> 
-            </li>
+            </li> --}}
 
             {{-- Coders --}}
             {{-- <li class="nav-item">
-                <a href="{{ url('/coders') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Coders</a> 
+                <a href="{{ url('/coders') }}" class="nav-link"><i class="fas fa-laptop-code text-info"></i> Coders</a> 
             </li> --}}
             
             {{-- Profile --}}

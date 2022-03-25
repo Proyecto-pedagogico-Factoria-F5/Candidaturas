@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
+            $table->string('regional');
+            $table->string('provincial');
+            $table->string('local');
             $table->timestamps();
         });
     }

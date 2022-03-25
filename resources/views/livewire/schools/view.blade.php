@@ -2,53 +2,51 @@
 <div class="container-fluid">
 	<div class="row justify-content-center">
 		<div class="col-md-12">
-				
-			<div class="table-responsive ">
-				<div>
-					<table class="table table-bordered table-sm ">
-	
-						<div class="card-header">
-							<div style="display: flex; justify-content: space-between; align-items: center;">
-								<div class="float-left">
-									<h4>
-										<i class="fas fa-school text-info"></i> Escuelas
-									</h4>
-								</div>
-
-								<div wire:poll.60s>
-									<code><h5>{{ now()->format('H:i:s') }} UTC</h5></code>
-								</div>
-
-								@if (session()->has('message'))
-
-								<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
-								
-								@endif
-
-								<div>
-									<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar escuela">
-								</div>
-
-								<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
-									<i class="fa fa-plus"></i>  Añadir escuela
-								</div>
-							</div>
+			
+			<div class="card admin-card">
+				<div class="card-header admin-card-header">
+					<div style="display: flex; justify-content: space-between; align-items: center;">
+						<div class="float-left">
+							<h4>
+								<i class="fas fa-school text-info"></i> Escuelas
+							</h4>
 						</div>
 
-						@include('livewire.schools.create')
-						@include('livewire.schools.update')
-					
-						<thead class="thead card-header">
-							<tr> 
-								<td>#</td> 
-								<th>Nombre</th>
-								<th>Provincia</th>
-								<th>Imagen</th>
-								<td>Acciones</td>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach($schools as $row)
+						<div wire:poll.60s>
+							<code><h5>{{ now()->format('H:i:s') }} UTC</h5></code>
+						</div>
+
+						@if (session()->has('message'))
+						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
+						@endif
+
+						<div>
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar escuela">
+						</div>
+
+						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
+							<i class="fa fa-plus"></i>  Añadir escuela
+						</div>
+					</div>
+				</div>
+
+				<div class="card-body admin-card-body">
+					@include('livewire.schools.create')
+					@include('livewire.schools.update')
+			
+					<div class="table-responsive">
+						<table class="table table-bordered table-sm">
+							<thead class="thead">
+								<tr> 
+									<td>#</td> 
+									<th>Nombre</th>
+									<th>Provincia</th>
+									<th>Imagen</th>
+									<td>Acciones</td>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach($schools as $row)
 								<tr >
 									<td>{{ $loop->iteration }}</td> 
 									<td>{{ $row->nombre_escuela }}</td>
@@ -66,10 +64,11 @@
 									</div>
 									</td>
 								</tr>
-							@endforeach
-						</tbody>
-					</table>						
-					{{ $schools->links() }}
+								@endforeach
+							</tbody>
+						</table>						
+						{{ $schools->links() }}
+					</div>
 				</div>
 			</div>
 		</div>
