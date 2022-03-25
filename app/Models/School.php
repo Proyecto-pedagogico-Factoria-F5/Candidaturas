@@ -19,4 +19,8 @@ class School extends Model
         'imagen',
     ];
 	
+    public function promo()
+    {
+        return $this->hasMany(Promo::class);
+    }
 }
