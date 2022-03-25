@@ -1,64 +1,56 @@
 {{-- @section('title', __('Candidaturas')) --}}
 
-
 @extends('layouts.app')
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            {{-- @livewire('candidaturas') --}}
-			<div class="container-fluid">
-				<div class="row justify-content-center">
-					<div class="col-md-12">
-						<div class="card">
-							<div class="card-header">
-								<div style="display: flex; justify-content: space-between; align-items: center;">
-									<div class="float-left">
-										<h4><i class="fab fa-laravel text-info"></i>					
-										Candidaturas</h4>
-									</div>
-									<div wire:poll.60s>
-										<code><h5>{{ now()->format('H:i:s') }} UTC</h5></code>
-									</div>
-									@if (session()->has('message'))
-									<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
-									@endif
-									<div>
-										<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar candidaturas">
-									</div>									
-								</div>
-							</div>
-							<div class="card-body">								
-								<div class="table-responsive" wire:ignore>
-									<table class="table table-bordered table-sm">
-										<thead class="thead">
-											<tr> 
-												<th>#</th> 
-												<th>Nombre</th>
-												<th>Apellidos</th>
-												<th>Fecha de nacimiento</th>
-												<th>Nacionalidad</th>
-												<th>Email</th>
-												<th>Teléfono</th>
-												<th>Cuenta de usuario</th>
-												<th>Puntos</th>
-												<th>Descripción</th>
-												<th>Fecha de registro</th>
-												<th>Promo id</th>
-												<th>Acciones</th>
-											</tr>
-										</thead>
-										<tbody id="tbody"></tbody>
-										
-									</table>						
-									
-								</div>
-							</div>
+			<div class="card admin-card">
+				<div class="card-header admin-card-header">
+					<div style="display: flex; justify-content: space-between; align-items: center;">
+						<div class="float-left">
+							<h4>
+								<i class="fas fa-user-graduate text-info"></i> Candidaturas
+							</h4>
 						</div>
+						<div wire:poll.60s>
+							<code><h5>{{ now()->format('H:i:s') }} UTC</h5></code>
+						</div>
+						@if (session()->has('message'))
+						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
+						@endif
+						<div>
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar candidaturas">
+						</div>									
 					</div>
 				</div>
-			</div>
-			
+				<div class="card-body admin-card-body">							
+					<div class="table-responsive" wire:ignore>
+						<table class="table table-bordered table-sm">
+							<thead class="thead">
+								<tr> 
+									<th>#</th> 
+									<th>Nombre</th>
+									<th>Apellidos</th>
+									<th>Fecha de nacimiento</th>
+									<th>Nacionalidad</th>
+									<th>Email</th>
+									<th>Teléfono</th>
+									<th>Cuenta de usuario</th>
+									<th>Puntos</th>
+									<th>Descripción</th>
+									<th>Fecha de registro</th>
+									<th>Promo id</th>
+									<th>Acciones</th>
+								</tr>
+							</thead>
+							<tbody id="tbody"></tbody>
+							
+						</table>						
+						
+					</div>
+				</div>
+			</div>		
         </div>     
     </div>   
 </div>
