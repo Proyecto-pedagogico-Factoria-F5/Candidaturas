@@ -14,6 +14,16 @@ class Profile extends Model
 
     protected $table = 'profiles';
 
-    protected $fillable = ['nombre','email','password','teléfono','puesto','role','escuela','promo','imagen'];
+    protected $fillable = ['name','email','password','phone','job','role_id','escuela_id','promo','image'];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+
+    }
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+	
 	
 }

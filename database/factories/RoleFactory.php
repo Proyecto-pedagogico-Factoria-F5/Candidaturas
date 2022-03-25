@@ -13,10 +13,8 @@ class RoleFactory extends Factory
     public function definition()
     {
         return [
-			'superadmin' => $this->faker->name,
-			'regional' => $this->faker->name,
-			'provincial' => $this->faker->name,
-			'local' => $this->faker->name,
+			'name' => $this->faker->name,
+		
 		
         ];
     }

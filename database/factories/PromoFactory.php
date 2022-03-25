@@ -14,13 +14,13 @@ class PromoFactory extends Factory
     {
         return [
 			'nombre_promo' => $this->faker->name,
-			'ubicación' => $this->faker->name,
+			'location' => $this->faker->name,
 			'escuela_id' => $this->faker->name,
 			'fecha_de_inicio' => $this->faker->name,
-			'duración' => $this->faker->name,
+			'duration' => $this->faker->name,
 			'url' => $this->faker->name,
-			'imagen' => $this->faker->name,
-			'código' => $this->faker->name,
+			'image' => $this->faker->name,
+			'code' => $this->faker->name,
         ];
     }
 }

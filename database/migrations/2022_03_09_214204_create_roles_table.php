@@ -15,10 +15,8 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('superadmin');
-            $table->string('regional');
-            $table->string('provincial');
-            $table->string('local');
+            $table->string('name');
+           
             $table->timestamps();
         });
     }

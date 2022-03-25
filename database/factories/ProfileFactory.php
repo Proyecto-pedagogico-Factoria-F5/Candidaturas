@@ -16,12 +16,12 @@ class ProfileFactory extends Factory
 			'nombre' => $this->faker->name,
 			'email' => $this->faker->name,
 			'password' => $this->faker->name,
-			'teléfono' => $this->faker->name,
-			'puesto' => $this->faker->name,
-			'role' => $this->faker->name,
-			'escuela' => $this->faker->name,
+			'phone' => $this->faker->name,
+			'job' => $this->faker->name,
+			'role_id' => $this->faker->name,
+			'escuela_id' => $this->faker->name,
 			'promo' => $this->faker->name,
-			'imagen' => $this->faker->name,
+			'image' => $this->faker->name,
         ];
     }
 }

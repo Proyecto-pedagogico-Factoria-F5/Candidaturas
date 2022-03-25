@@ -18,5 +18,8 @@ class School extends Model
         'provincia',
         'imagen',
     ];
-	
+	public function promo()
+    {
+        return $this->belongsToMany(Promo::class);
+    }
 }

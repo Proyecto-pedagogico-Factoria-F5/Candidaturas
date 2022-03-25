@@ -18,14 +18,14 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('apellidos');
             $table->string('email')->unique();
-            $table->string('teléfono');
+            $table->string('phone');
             $table->string('cuenta_usuario');
             $table->string('puntos');
-            $table->longText('descripción');
+            $table->longText('description');
             $table->date('fecha_de_registro');
             $table->date('fecha_de_nacimiento');
             $table->string('nacionalidad');
-            $table->string('promo_id');
+            $table->integer('promo_id');
             
 
             $table->timestamps();

@@ -15,12 +15,16 @@ class Promo extends Model
 
     protected $fillable = [
         'nombre_promo',
-        'ubicación',
+        'location',
         'escuela_id',
         'fecha_de_inicio',
-        'duración',
+        'duration',
         'url',
-        'imagen',
-        'código'
+        'image',
+        'code',
     ];
+    public function school()
+    {
+        return $this->hasOne(School::class);
+    }
 }
