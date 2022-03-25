@@ -7,15 +7,22 @@ npm install && npm run dev
 composer install
 composer update
 composer require laravel/ui
-php artisan ui bootstrap --auth
+composer require livewire/livewire
+composer require flightsadmin/livewire-crud
+php artisan crud:install
+npm install pikaday
+npm install moment --save
 ```
 
-### By
+## By
 - Rubén Bertólez Chicote
 - Emma Fernández Corte
 - Elena Garzón Mieres
 - Sara González Sánchez
 - Ignacio Moreno Frisón
+
+## Credits
+- [Moment.js MIT License](https://momentjs.com/)
 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>

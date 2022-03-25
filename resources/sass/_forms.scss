@@ -24,8 +24,41 @@
     }
 }
 
+.admin-card {
+    .btn a {
+        color: $second-color !important;
+    }
+}
+
 .form-group {
     input#imagen {
         padding: 0.2rem;
     }
 }
+
+/* ---- Datepicker ---- */
+
+.pika-lendar {
+
+    .is-today .pika-button {
+        color: $brand-color !important;
+        font-weight: bold;
+    }
+    
+    .is-selected .pika-button, .has-event .pika-button {
+        color: $second-color;
+        font-weight: bold;
+        background: rgba($brand-color, 0.4) !important;
+        box-shadow: inset 0 1px 3px rgba($brand-color, 0.8) !important;
+        border-radius: 3px;
+    }
+
+    .pika-button:hover, .pika-row.pick-whole-week:hover .pika-button {
+        color: $second-color;
+        background: rgba($brand-color, 0.4) !important;
+        box-shadow: none;
+        border-radius: 3px;
+    }
+}
+
+/* ---- End datepicker ---- */

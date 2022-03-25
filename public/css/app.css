@@ -14904,6 +14904,29 @@ h3 {
     margin-bottom: 4rem;
   }
 }
+.admin-card .admin-card-header h4, .admin-card .admin-card-header h5 {
+  margin-bottom: 0;
+}
+.admin-card .admin-card-header code {
+  color: #FC4702;
+}
+.admin-card .admin-card-header code h5 {
+  font-size: 0.9rem;
+}
+.admin-card .admin-card-body {
+  padding: 0;
+}
+.admin-card .admin-card-body table {
+  margin-bottom: 0;
+}
+.admin-card .admin-card-body table thead {
+  background-color: #6C757D;
+  color: #fffafa;
+}
+.admin-card .admin-card-body table th, .admin-card .admin-card-body table td {
+  vertical-align: middle;
+}
+
 .create-container {
   margin: 0 auto;
 }
@@ -14927,10 +14950,34 @@ h3 {
   box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
 }
 
+.admin-card .btn a {
+  color: #fffafa !important;
+}
+
 .form-group input#imagen {
   padding: 0.2rem;
 }
 
+/* ---- Datepicker ---- */
+.pika-lendar .is-today .pika-button {
+  color: #FC4702 !important;
+  font-weight: bold;
+}
+.pika-lendar .is-selected .pika-button, .pika-lendar .has-event .pika-button {
+  color: #fffafa;
+  font-weight: bold;
+  background: rgba(252, 71, 2, 0.4) !important;
+  box-shadow: inset 0 1px 3px rgba(252, 71, 2, 0.8) !important;
+  border-radius: 3px;
+}
+.pika-lendar .pika-button:hover, .pika-lendar .pika-row.pick-whole-week:hover .pika-button {
+  color: #fffafa;
+  background: rgba(252, 71, 2, 0.4) !important;
+  box-shadow: none;
+  border-radius: 3px;
+}
+
+/* ---- End datepicker ---- */
 .dropdown-item:active {
   color: #fffafa;
   background-color: #e64100;
