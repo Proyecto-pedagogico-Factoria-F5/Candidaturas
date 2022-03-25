@@ -31,9 +31,9 @@
                     <i class="fas fa-users text-info"></i> Usuarios
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="{{ url('/register') }}">
+                    {{-- <a class="dropdown-item" href="{{ url('/register') }}">
                         <i class="fas fa-user-plus text-info"></i> Dar de alta
-                    </a>
+                    </a> --}}
 
                     <a class="dropdown-item" href="{{ url('/profiles') }}">
                         <i class="fas fa-user-edit text-info"></i> Administrar perfiles

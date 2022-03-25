@@ -14813,12 +14813,6 @@ h3 {
   opacity: 86%;
 }
 
-.btn-row {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
 .profile-card {
   background: #ffffff;
   border-radius: 10px;
@@ -15020,6 +15014,16 @@ h3 {
 }
 .btn-link:hover {
   color: #e64100;
+}
+
+.btn-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+.btn-row a, .btn-row .text-info {
+  color: #fffafa !important;
 }
 
 body {
