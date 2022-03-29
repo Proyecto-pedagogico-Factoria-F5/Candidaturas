@@ -40,7 +40,7 @@
 									<th>Puntos</th>
 									<th>Descripción</th>
 									<th>Fecha de registro</th>
-									<th>Promo id</th>
+									<th>Promo</th>
 									<th>Acciones</th>
 								</tr>
 							</thead>
@@ -102,8 +102,8 @@ async function getArrayPoints(id){
 const urlTypeFormPromos = 'https://api.typeform.com/forms';
 
 // Los siguientes datos provienen de la BD
-const idPromo = '<?=$data->código?>';
-const tokenTypeForm = '<?=$token->token_typeform?>';
+const idPromo = '<?=$data->code?>';
+const tokenTypeForm = '<?=$token->typeform_token?>';
 
 const NAME = 0; 
 const SURNAME = 1;
@@ -186,7 +186,7 @@ async function showCandidatures(){
 				row+= '<td id="'+ idFreeCode +'">Points</td>';
 				row+= '<td>'+ element.text + '</td>';
 				row+= '<td>Fecha registro</td>'; 
-				row+= '<td>Promo id</td>'; 
+				row+= '<td>Promo</td>'; 
 				row+= '<td>Acciones</td></tr>'; 
 			} 					
 		}); 

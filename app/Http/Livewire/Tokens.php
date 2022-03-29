@@ -11,7 +11,7 @@ class Tokens extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $typeform_toke;
+    public $selected_id, $keyWord, $typeform_token;
     public $updateMode = false;
 
     public function render()

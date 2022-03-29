@@ -11,7 +11,10 @@ class Roles extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $user_id, $name;
+    public $selected_id, $keyWord, $name;
+    public $validationArray = [
+        'name' => 'required',
+    ];
     public $updateMode = false;
 
     public function render()
@@ -19,7 +22,6 @@ class Roles extends Component
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.roles.view', [
             'roles' => Role::oldest()
-						->orWhere('user_id', 'LIKE', $keyWord)
 						->orWhere('name', 'LIKE', $keyWord)
 						->paginate(10),
         ]);
@@ -32,20 +34,15 @@ class Roles extends Component
     }
 	
     private function resetInput()
-    {	
-		$this->user_id = null;	
-		$this->nombre = null;
+    {		
+		$this->name = null;
     }
 
     public function store()
     {
-        $this->validate([
-			'user_id' => 'required',
-			'nombre' => 'required',
-        ]);
+        $this->validate($this->validationArray);
 
         Role::create([ 
-			'user_id' => $this-> user_id,
 			'name' => $this-> name,
         ]);
         
@@ -59,7 +56,6 @@ class Roles extends Component
         $record = Role::findOrFail($id);
 
         $this->selected_id = $id; 
-		$this->user_id = $record-> user_id;
 		$this->name = $record-> name;
 		
         $this->updateMode = true;
@@ -67,15 +63,11 @@ class Roles extends Component
 
     public function update()
     {
-        $this->validate([
-			'user_id' => 'required',
-			'nombre' => 'required',
-        ]);
+        $this->validate($this->validationArray);
 
         if ($this->selected_id) {
 			$record = Role::find($this->selected_id);
             $record->update([ 
-				'user_id' => $this-> user_id,
 				'name' => $this-> name,
             ]);
 

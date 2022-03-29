@@ -33,7 +33,7 @@ Route::get('/escuelas', [SchoolController::class, 'index'])->name('escuelas');
 
 Route::get('/promos', [PromoController::class, 'index'])->name('promos');
 
-Route::get('/candidaturas/{id}', [CandidaturaController::class, 'index'])->name('candidaturas');
+Route::get('/candidaturas-view/{id}', [PromoController::class, 'show'])->name('candidaturas-view');
 
 Route::get('/perfil', [HomeController::class, 'profile'])->name('perfil');
 

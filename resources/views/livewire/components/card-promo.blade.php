@@ -1,7 +1,7 @@
 @foreach ($promos as $promo)
  
   <div class="card col-lg-4 col-md-6 col-xs-12">
-    <a href="{{ route('candidaturas', $promo->id) }}">
+    <a href="{{ route('candidaturas-view', $promo->id) }}">
       <img class="card-img-top" src="{{ asset('storage').'/'.$promo->image }}" alt="{{ $promo->name }}">
       <div class="card-main">
         <h5 class="card-title">{{ $promo->name }}</h2>

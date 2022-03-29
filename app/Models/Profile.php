@@ -21,7 +21,7 @@ class Profile extends Model
         'email',
         'password',
         'job',
-        'role',
+        'role_id',
         'github',
         'birth_date',
         'image'

@@ -6,9 +6,9 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use App\Models\Profile;
-use App\Models\Role;
 use App\Models\School;
 use App\Models\Promo;
+use App\Models\Role;
 
 class Profiles extends Component
 {
@@ -16,7 +16,7 @@ class Profiles extends Component
 	use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $school_id, $promo_id, $name, $surnames, $email, $password, $job, $role, $github, $birth_date, $image;
+    public $selected_id, $keyWord, $school_id, $promo_id, $role_id, $name, $surnames, $email, $password, $job, $github, $birth_date, $image;
     public $updateMode = false;
 
     public function render()
@@ -26,19 +26,19 @@ class Profiles extends Component
             'profiles' => Profile::latest()
 						->orWhere('school_id', 'LIKE', $keyWord)
 						->orWhere('promo_id', 'LIKE', $keyWord)
+						->orWhere('role_id', 'LIKE', $keyWord)
 						->orWhere('name', 'LIKE', $keyWord)
 						->orWhere('surnames', 'LIKE', $keyWord)
 						->orWhere('email', 'LIKE', $keyWord)
 						->orWhere('password', 'LIKE', $keyWord)
 						->orWhere('job', 'LIKE', $keyWord)
-						->orWhere('role', 'LIKE', $keyWord)
 						->orWhere('github', 'LIKE', $keyWord)
 						->orWhere('birth_date', 'LIKE', $keyWord)
 						->orWhere('image', 'LIKE', $keyWord)
 						->paginate(10),
-			'roles' => Role::all(),
 			'schools' => School::all(),
 			'promos' => Promo::all(),
+			'roles' => Role::all(),
         ]);
     }
 	
@@ -52,15 +52,15 @@ class Profiles extends Component
     {		
 		$this->school_id = null;
 		$this->promo_id = null;
+		$this->role_id = null;
 		$this->name = null;
 		$this->surnames = null;
 		$this->email = null;
 		$this->password = null;
 		$this->job = null;
-		$this->role = null;
 		$this->github = null;
 		$this->birth_date = null;
-		$this->imagen = null;
+		$this->image = null;
     }
 
     public function store()
@@ -68,12 +68,12 @@ class Profiles extends Component
         $this->validate([
 			'school_id' => 'required',
 			'promo_id' => 'required',
+			'role_id' => 'required',
             'name' => 'required',
             'surnames' => 'required',
 			'email' => 'required',
 			'password' => 'required',
 			'job' => 'required',
-			'role' => 'required',
 			'github' => 'required',
 			'birth_date' => 'required',
 			'image' => 'image|max:1024', // 1MB Max
@@ -82,15 +82,15 @@ class Profiles extends Component
         Profile::create([ 
 			'school_id' => $this->school_id,
 			'promo_id' => $this->promo_id,
-			'name' => $this-> name,
-			'surnames' => $this-> surnames,
-			'email' => $this-> email,
-			'password' => $this-> password,
-			'job' => $this-> job,
-			'role' => $this-> role,
-			'github' => $this-> github,
-			'birth_date' => $this-> birth_date,
-			'image' => $this->imagen->store('uploads', 'public'),
+			'role_id' => $this->role_id,
+			'name' => $this->name,
+			'surnames' => $this->surnames,
+			'email' => $this->email,
+			'password' => $this->password,
+			'job' => $this->job,
+			'github' => $this->github,
+			'birth_date' => $this->birth_date,
+			'image' => $this->image->store('uploads', 'public'),
         ]);
         
         $this->resetInput();
@@ -103,17 +103,17 @@ class Profiles extends Component
         $record = Profile::findOrFail($id);
 
         $this->selected_id = $id; 
-		$this->school_id = $record-> school_id;
-		$this->promo_id = $record-> promo_id;
-		$this->name = $record-> name;
-		$this->surnames = $record-> surnames;
-		$this->email = $record-> email;
-		$this->password = $record-> password;
-		$this->job = $record-> job;
-		$this->role = $record-> role;
-		$this->github = $record-> github;
-		$this->birth_date = $record-> birth_date;
-		$this->image = $record-> image;
+		$this->school_id = $record->school_id;
+		$this->promo_id = $record->promo_id;
+		$this->role_id = $record->role_id;
+		$this->name = $record->name;
+		$this->surnames = $record->surnames;
+		$this->email = $record->email;
+		$this->password = $record->password;
+		$this->job = $record->job;
+		$this->github = $record->github;
+		$this->birth_date = $record->birth_date;
+		$this->image = $record->image;
 		
         $this->updateMode = true;
     }
@@ -123,12 +123,12 @@ class Profiles extends Component
         $this->validate([
 			'school_id' => 'required',
 			'promo_id' => 'required',
+			'role_id' => 'required',
             'name' => 'required',
             'surnames' => 'required',
 			'email' => 'required',
 			'password' => 'required',
 			'job' => 'required',
-			'role' => 'required',
 			'github' => 'required',
 			'birth_date' => 'required',
 			'image' => 'image|max:1024', // 1MB Max
@@ -139,15 +139,15 @@ class Profiles extends Component
             $record->update([ 
 				'school_id' => $this->school_id,
 				'promo_id' => $this->promo_id,
-				'name' => $this-> name,
-				'surnames' => $this-> surnames,
-				'email' => $this-> email,
-				'password' => $this-> password,
-				'job' => $this-> job,
-				'role' => $this-> role,
-				'github' => $this-> github,
-				'birth_date' => $this-> birth_date,
-				'image' => $this->imagen->store('uploads', 'public'),
+				'role_id' => $this->role_id,
+				'name' => $this->name,
+				'surnames' => $this->surnames,
+				'email' => $this->email,
+				'password' => $this->password,
+				'job' => $this->job,
+				'github' => $this->github,
+				'birth_date' => $this->birth_date,
+				'image' => $this->image->store('uploads', 'public'),
             ]);
 
             $this->resetInput();

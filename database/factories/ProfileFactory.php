@@ -13,6 +13,9 @@ class ProfileFactory extends Factory
     public function definition()
     {
         return [
+			'school_id' => $this->faker->name,
+			'promo_id' => $this->faker->name,
+			'role_id' => $this->faker->name,
 			'name' => $this->faker->name,
 			'surnames' => $this->faker->name,
 			'email' => $this->faker->name,

@@ -34,12 +34,6 @@
 							<tr> 
 								<td>#</td> 
 								<th>Nombre</th>
-								{{-- <th>Email</th>
-								<th>Teléfono</th>
-								<th>Puesto</th>
-								<th>Escuela</th>
-								<th>Promo</th>
-								<th>Imagen</th> --}}
 								<td>Acciones</td>
 							</tr>
 						</thead>
@@ -47,23 +41,17 @@
 							@foreach($roles as $row)
 							<tr>
 								<td>{{ $row->id }}</td> 
-								<td>{{ $row->nombre }}</td>
-								{{-- <td>{{ $row->email }}</td>
-								<td>{{ $row->teléfono }}</td>
-								<td>{{ $row->puesto }}</td>
-								<td>{{ $row->escuela }}</td>
-								<td>{{ $row->promo }}</td>
-								<td>{{ $row->imagen }}</td> --}}
+								<td>{{ $row->name }}</td>
 								<td width="90">
-								<div class="btn-group">
-									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Acciones
-									</button>
-									<div class="dropdown-menu dropdown-menu-right">
-									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a>							 
-									<a class="dropdown-item" onclick="confirm('¿Confirmas que quieres borrar el rol con id {{$row->id}}? \n¡Esta acción no se puede deshacer!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Borrar </a>   
+									<div class="btn-group">
+										<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											Acciones
+										</button>
+										<div class="dropdown-menu dropdown-menu-right">
+											<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a>							 
+											<a class="dropdown-item" onclick="confirm('¿Confirmas que quieres borrar el rol con id {{$row->id}}? \n¡Esta acción no se puede deshacer!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Borrar </a>   
+										</div>
 									</div>
-								</div>
 								</td>
 							@endforeach
 						</tbody>

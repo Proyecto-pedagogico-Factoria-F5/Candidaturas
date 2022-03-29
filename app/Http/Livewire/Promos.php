@@ -15,7 +15,17 @@ class Promos extends Component
 
 	protected $paginationTheme = 'bootstrap';
 	public $selected_id, $keyWord, $school_id, $name, $ubication, $start_date, $duration, $url, $image, $code; 
-	public $updateMode = false;
+	public $validationArray = [
+        'school_id' => 'required|not_in:0',
+        'name' => 'required',
+        'ubication' => 'required',
+        'start_date' => 'required',
+        'duration' => 'required',
+        'image' => 'image|max:1024', // 1MB Max
+        'url' => 'required',
+        'code' => 'required'
+    ];
+    public $updateMode = false;
 
     public function render()
     {
@@ -69,16 +79,7 @@ class Promos extends Component
 
     public function store()
     {
-        $this->validate([
-			'school_id' => 'required|not_in:0',
-            'name' => 'required',
-            'ubication' => 'required',
-            'start_date' => 'required',
-            'duration' => 'required',
-            'image' => 'image|max:1024', // 1MB Max
-            'url' => 'required',
-            'code' => 'required'
-        ]);
+        $this->validate($this->validationArray);
 
         Promo::create([ 
 			'school_id' => $this->school_id,
@@ -115,16 +116,7 @@ class Promos extends Component
 
     public function update()
     {
-        $this->validate([
-			'school_id' => 'required|not_in:0',
-            'name' => 'required',
-            'ubication' => 'required',
-            'start_date' => 'required',
-            'duration' => 'required',
-            'image' => 'image|max:1024', // 1MB Max
-            'url' => 'required',
-            'code' => 'required'
-        ]);
+        $this->validate($this->validationArray);
 
         if ($this->selected_id) {
 			$record = Promo::find($this->selected_id);
