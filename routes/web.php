@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\PromoController;
-use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\CandidaturaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +33,7 @@ Route::get('/escuelas', [SchoolController::class, 'index'])->name('escuelas');
 
 Route::get('/promos', [PromoController::class, 'index'])->name('promos');
 
-Route::get('/candidaturas/{id}', [CandidateController::class, 'index'])->name('candidaturas');
+Route::get('/candidaturas/{id}', [CandidaturaController::class, 'index'])->name('candidaturas');
 
 Route::get('/perfil', [HomeController::class, 'profile'])->name('perfil');
 
