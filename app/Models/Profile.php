@@ -17,12 +17,12 @@ class Profile extends Model
     protected $fillable = ['name','email','password','phone','job','role_id','escuela_id','promo','image'];
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class);
 
     }
     public function role()
     {
-        return $this->belongsTo(Role::class);
+        return $this->hasOne(Role::class);
     }
 	
 	
