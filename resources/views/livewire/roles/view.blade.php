@@ -33,10 +33,8 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Superadmin</th>
-								<th>Regional</th>
-								<th>Provincial</th>
-								<th>Local</th>
+								<th>Role</th>
+							
 								<td>Acciones</td>
 							</tr>
 						</thead>
@@ -44,10 +42,8 @@
 							@foreach($roles as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->superadmin }}</td>
-								<td>{{ $row->regional }}</td>
-								<td>{{ $row->provincial }}</td>
-								<td>{{ $row->local }}</td>
+								<td>{{ $row->name }}</td>
+								
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

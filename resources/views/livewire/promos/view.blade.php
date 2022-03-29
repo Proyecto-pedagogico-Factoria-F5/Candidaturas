@@ -66,11 +66,11 @@
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->id }}</td>
 								<td>{{ $row->nombre_promo }}</td>
-								<td>{{ $row->ubicación }}</td>
+								<td>{{ $row->location }}</td>
 								<td>{{ $row->fecha_de_inicio }}</td>
-								<td>{{ $row->duración }}</td>
-								<td><img class="table-img" src="{{ asset('storage').'/'.$row->imagen }}" alt="{{ $row->nombre_promo }}"></td>
-								<td>{{ $row->código }}</td>
+								<td>{{ $row->duration }}</td>
+								<td><img class="table-img" src="{{ asset('storage').'/'.$row->image }}" alt="{{ $row->nombre_promo }}"></td>
+								<td>{{ $row->code }}</td>
 								<td>{{ $row->url }}</td>
 								<td width="90">
 									<div class="btn-group">

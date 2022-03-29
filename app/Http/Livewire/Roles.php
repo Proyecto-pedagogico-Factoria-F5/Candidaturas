@@ -11,18 +11,16 @@ class Roles extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $superadmin, $regional, $provincial, $local;
+    public $selected_id, $keyWord, $name;
     public $updateMode = false;
 
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.roles.view', [
-            'roles' => Role::latest()
-						->orWhere('superadmin', 'LIKE', $keyWord)
-						->orWhere('regional', 'LIKE', $keyWord)
-						->orWhere('provincial', 'LIKE', $keyWord)
-						->orWhere('local', 'LIKE', $keyWord)
+            'roles' => Role::oldest()
+						->orWhere('name', 'LIKE', $keyWord)
+						
 						->paginate(10),
         ]);
     }
@@ -35,28 +33,22 @@ class Roles extends Component
 	
     private function resetInput()
     {		
-		$this->superadmin = null;
-		$this->regional = null;
-		$this->provincial = null;
-		$this->local = null;
+		$this->name = null;
+	
 		
     }
 
     public function store()
     {
         $this->validate([
-		'superadmin' => 'required',
-		'regional' => 'required',
-		'provincial' => 'required',
-		'local' => 'required',
+		'name' => 'required',
+	
 		
         ]);
 
         Role::create([ 
-			'superadmin' => $this-> superadmin,
-			'regional' => $this-> regional,
-			'provincial' => $this-> provincial,
-			'local' => $this-> local,
+			'name' => $this-> name,
+			
 			
         ]);
         
@@ -70,10 +62,8 @@ class Roles extends Component
         $record = Role::findOrFail($id);
 
         $this->selected_id = $id; 
-		$this->superadmin = $record-> superadmin;
-		$this->regional = $record-> regional;
-		$this->provincial = $record-> provincial;
-		$this->local = $record-> local;
+		$this->name = $record-> name;
+	
 		
 		
         $this->updateMode = true;
@@ -82,20 +72,18 @@ class Roles extends Component
     public function update()
     {
         $this->validate([
-		'superadmin' => 'required',
-		'regional' => 'required',
-		'provincial' => 'required',
-		'local' => 'required',
+		'name' => 'required',
+		
+        
 		
         ]);
 
         if ($this->selected_id) {
 			$record = Role::find($this->selected_id);
             $record->update([ 
-			'superadmin' => $this-> superadmin,
-			'regional' => $this-> regional,
-			'provincial' => $this-> provincial,
-			'local' => $this-> local,
+			'name' => $this-> name,
+			
+            
 			
             ]);
 

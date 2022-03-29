@@ -11,7 +11,7 @@ class Profiles extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $nombre, $email, $password, $teléfono, $puesto, $role, $escuela, $promo, $imagen;
+    public $selected_id, $keyWord, $name, $email, $password, $phone, $job, $role_id, $escuela_id, $promo, $image;
     public $updateMode = false;
 
     public function render()
@@ -19,15 +19,15 @@ class Profiles extends Component
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.profiles.view', [
             'profiles' => Profile::latest()
-						->orWhere('nombre', 'LIKE', $keyWord)
+						->orWhere('name', 'LIKE', $keyWord)
 						->orWhere('email', 'LIKE', $keyWord)
 						->orWhere('password', 'LIKE', $keyWord)
-						->orWhere('teléfono', 'LIKE', $keyWord)
-						->orWhere('puesto', 'LIKE', $keyWord)
-						->orWhere('role', 'LIKE', $keyWord)
-						->orWhere('escuela', 'LIKE', $keyWord)
+						->orWhere('phone', 'LIKE', $keyWord)
+						->orWhere('job', 'LIKE', $keyWord)
+						->orWhere('role_id', 'LIKE', $keyWord)
+						->orWhere('escuela_id', 'LIKE', $keyWord)
 						->orWhere('promo', 'LIKE', $keyWord)
-						->orWhere('imagen', 'LIKE', $keyWord)
+						->orWhere('image', 'LIKE', $keyWord)
 						->paginate(10),
         ]);
     }
@@ -40,40 +40,40 @@ class Profiles extends Component
 	
     private function resetInput()
     {		
-		$this->nombre = null;
+		$this->name = null;
 		$this->email = null;
 		$this->password = null;
-		$this->teléfono = null;
-		$this->puesto = null;
-		$this->role = null;
-		$this->escuela = null;
+		$this->phone = null;
+		$this->job = null;
+		$this->role_id = null;
+		$this->escuela_id = null;
 		$this->promo = null;
-		$this->imagen = null;
+		$this->image = null;
     }
 
     public function store()
     {
         $this->validate([
-		'nombre' => 'required',
+		'name' => 'required',
 		'email' => 'required',
-		'teléfono' => 'required',
-		'puesto' => 'required',
-		'role' => 'required',
-		'escuela' => 'required',
+		'phone' => 'required',
+		'job' => 'required',
+		'role_id' => 'required',
+		'escuela_id' => 'required',
 		'promo' => 'required',
-		'imagen' => 'required',
+		'image' => 'required',
         ]);
 
         Profile::create([ 
-			'nombre' => $this-> nombre,
+			'name' => $this-> name,
 			'email' => $this-> email,
 			'password' => $this-> password,
-			'teléfono' => $this-> teléfono,
-			'puesto' => $this-> puesto,
-			'role' => $this-> role,
-			'escuela' => $this-> escuela,
+			'phone' => $this-> phone,
+			'job' => $this-> job,
+			'role_id' => $this-> role_id,
+			'escuela_id' => $this-> escuela_id,
 			'promo' => $this-> promo,
-			'imagen' => $this-> imagen
+			'image' => $this-> image
         ]);
         
         $this->resetInput();
@@ -86,15 +86,15 @@ class Profiles extends Component
         $record = Profile::findOrFail($id);
 
         $this->selected_id = $id; 
-		$this->nombre = $record-> nombre;
+		$this->name = $record-> name;
 		$this->email = $record-> email;
 		$this->password = $record-> password;
-		$this->teléfono = $record-> teléfono;
-		$this->puesto = $record-> puesto;
-		$this->role = $record-> role;
-		$this->escuela = $record-> escuela;
+		$this->phone = $record-> phone;
+		$this->job = $record-> job;
+		$this->role_id = $record-> role_id;
+		$this->escuela_id = $record-> escuela_id;
 		$this->promo = $record-> promo;
-		$this->imagen = $record-> imagen;
+		$this->image = $record-> image;
 		
         $this->updateMode = true;
     }
@@ -102,29 +102,29 @@ class Profiles extends Component
     public function update()
     {
         $this->validate([
-		'nombre' => 'required',
+		'name' => 'required',
 		'email' => 'required',
 		'password' => 'required',
-		'teléfono' => 'required',
-		'puesto' => 'required',
-		'role' => 'required',
-		'escuela' => 'required',
+		'phone' => 'required',
+		'job' => 'required',
+		'role_id' => 'required',
+		'escuela_id' => 'required',
 		'promo' => 'required',
-		'imagen' => 'required',
+		'image' => 'required',
         ]);
 
         if ($this->selected_id) {
 			$record = Profile::find($this->selected_id);
             $record->update([ 
-			'nombre' => $this-> nombre,
+			'name' => $this-> name,
 			'email' => $this-> email,
 			'password' => $this-> password,
-			'teléfono' => $this-> teléfono,
-			'puesto' => $this-> puesto,
-			'role' => $this-> role,
-			'escuela' => $this-> escuela,
+			'phone' => $this-> phone,
+			'job' => $this-> job,
+			'role_id' => $this-> role_id,
+			'escuela_id' => $this-> escuela_id,
 			'promo' => $this-> promo,
-			'imagen' => $this-> imagen
+			'image' => $this-> image
             ]);
 
             $this->resetInput();

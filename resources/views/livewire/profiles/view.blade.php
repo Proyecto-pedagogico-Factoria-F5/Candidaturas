@@ -16,10 +16,10 @@
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Profiles">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar perfil">
 						</div>
 						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Add Profiles
+						<i class="fa fa-plus"></i>  Añadir perfil
 						</div>
 					</div>
 				</div>
@@ -48,15 +48,15 @@
 							@foreach($profiles as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->nombre }}</td>
+								<td>{{ $row->name }}</td>
 								<td>{{ $row->email }}</td>
 								<td>{{ $row->password }}</td>
-								<td>{{ $row->teléfono }}</td>
-								<td>{{ $row->puesto }}</td>
-								<td>{{ $row->role }}</td>
-								<td>{{ $row->escuela }}</td>
+								<td>{{ $row->phone }}</td>
+								<td>{{ $row->job }}</td>
+								<td>{{ $row->role_id }}</td>
+								<td>{{ $row->escuela_id }}</td>
 								<td>{{ $row->promo }}</td>
-								<td>{{ $row->imagen }}</td>
+								<td>{{ $row->image }}</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
