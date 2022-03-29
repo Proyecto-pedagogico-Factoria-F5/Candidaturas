@@ -1,6 +1,15 @@
+table {
+    .table-img {
+        max-width: 5rem;
+    }
+
+    > td {
+        padding: 32rem !important;
+        vertical-align: middle;
+    }
+}
+
 .admin-card {
-    // border-bottom-left-radius: 15px;
-    // border-bottom-right-radius: 15px;
 
     .admin-card-header {
     

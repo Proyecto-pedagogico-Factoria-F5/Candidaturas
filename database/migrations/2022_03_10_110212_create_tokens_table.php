@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('tokens', function (Blueprint $table) {
             $table->id();
             $table->string('token_typeform');
+            
             $table->timestamps();
         });
     }

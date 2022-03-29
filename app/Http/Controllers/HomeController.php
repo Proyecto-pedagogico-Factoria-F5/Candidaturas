@@ -24,16 +24,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('schools-view');
+        return view('home');
     }
 
-    public function register()
-    {
-        return view('auth.register');
-    }
+    // public function register()
+    // {
+    //     return view('auth.register');
+    // }
 
-    public function profile()
-    {
-        return view('user.profile');
-    }
+    // public function profile()
+    // {
+    //     return view('user.profile');
+    // }
 }

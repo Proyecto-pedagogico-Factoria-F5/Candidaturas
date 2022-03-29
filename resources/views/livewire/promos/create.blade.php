@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-               <x-datepicker wire:model="fecha_de_inicio" id="date" />
+               <x-create-promo wire:model="start_date" id="start_date" />
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Cancelar</button>

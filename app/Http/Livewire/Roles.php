@@ -11,22 +11,16 @@ class Roles extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    // public $selected_id, $keyWord, $nombre, $email, $teléfono, $puesto, $escuela, $promo, $imagen;
-	public $selected_id, $keyWord, $nombre;
+    public $selected_id, $keyWord, $user_id, $name;
     public $updateMode = false;
 
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.roles.view', [
-            'roles' => Role::where('id', '>', 0)->orderBy('id')
-						->orWhere('nombre', 'LIKE', $keyWord)
-						// ->orWhere('email', 'LIKE', $keyWord)
-						// ->orWhere('teléfono', 'LIKE', $keyWord)
-						// ->orWhere('puesto', 'LIKE', $keyWord)
-						// ->orWhere('escuela', 'LIKE', $keyWord)
-						// ->orWhere('promo', 'LIKE', $keyWord)
-						// ->orWhere('imagen', 'LIKE', $keyWord)
+            'roles' => Role::oldest()
+						->orWhere('user_id', 'LIKE', $keyWord)
+						->orWhere('name', 'LIKE', $keyWord)
 						->paginate(10),
         ]);
     }
@@ -38,41 +32,26 @@ class Roles extends Component
     }
 	
     private function resetInput()
-    {		
+    {	
+		$this->user_id = null;	
 		$this->nombre = null;
-		// $this->email = null;
-		// $this->teléfono = null;
-		// $this->puesto = null;
-		// $this->escuela = null;
-		// $this->promo = null;
-		// $this->imagen = null;
     }
 
     public function store()
     {
         $this->validate([
-		'nombre' => 'required',
-		// 'email' => 'required',
-		// 'teléfono' => 'required',
-		// 'puesto' => 'required',
-		// 'escuela' => 'required',
-		// 'promo' => 'required',
-		// 'imagen' => 'required',
+			'user_id' => 'required',
+			'nombre' => 'required',
         ]);
 
         Role::create([ 
-			'nombre' => $this-> nombre,
-			// 'email' => $this-> email,
-			// 'teléfono' => $this-> teléfono,
-			// 'puesto' => $this-> puesto,
-			// 'escuela' => $this-> escuela,
-			// 'promo' => $this-> promo,
-			// 'imagen' => $this-> imagen
+			'user_id' => $this-> user_id,
+			'name' => $this-> name,
         ]);
         
         $this->resetInput();
 		$this->emit('closeModal');
-		session()->flash('message', 'Role Successfully created.');
+		session()->flash('message', 'Rol creado correctamente.');
     }
 
     public function edit($id)
@@ -80,13 +59,8 @@ class Roles extends Component
         $record = Role::findOrFail($id);
 
         $this->selected_id = $id; 
-		$this->nombre = $record-> nombre;
-		// $this->email = $record-> email;
-		// $this->teléfono = $record-> teléfono;
-		// $this->puesto = $record-> puesto;
-		// $this->escuela = $record-> escuela;
-		// $this->promo = $record-> promo;
-		// $this->imagen = $record-> imagen;
+		$this->user_id = $record-> user_id;
+		$this->name = $record-> name;
 		
         $this->updateMode = true;
     }
@@ -94,30 +68,20 @@ class Roles extends Component
     public function update()
     {
         $this->validate([
-		'nombre' => 'required',
-		// 'email' => 'required',
-		// 'teléfono' => 'required',
-		// 'puesto' => 'required',
-		// 'escuela' => 'required',
-		// 'promo' => 'required',
-		// 'imagen' => 'required',
+			'user_id' => 'required',
+			'nombre' => 'required',
         ]);
 
         if ($this->selected_id) {
 			$record = Role::find($this->selected_id);
             $record->update([ 
-			'nombre' => $this-> nombre,
-			// 'email' => $this-> email,
-			// 'teléfono' => $this-> teléfono,
-			// 'puesto' => $this-> puesto,
-			// 'escuela' => $this-> escuela,
-			// 'promo' => $this-> promo,
-			// 'imagen' => $this-> imagen
+				'user_id' => $this-> user_id,
+				'name' => $this-> name,
             ]);
 
             $this->resetInput();
             $this->updateMode = false;
-			session()->flash('message', 'Role Successfully updated.');
+			session()->flash('message', 'Rol actualizado correctamente.');
         }
     }
 

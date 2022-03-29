@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
-use App\Http\Requests\StoreAdminRequest;
-use App\Http\Requests\UpdateAdminRequest;
+use App\Models\School;
+use App\Http\Requests\StoreSchoolRequest;
+use App\Http\Requests\UpdateSchoolRequest;
 
-class AdminController extends Controller
+class SchoolController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        return view('schools-view');
     }
 
     /**
@@ -31,10 +31,10 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreAdminRequest  $request
+     * @param  \App\Http\Requests\StoreSchoolRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAdminRequest $request)
+    public function store(StoreSchoolRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Admin  $admin
+     * @param  \App\Models\School  $school
      * @return \Illuminate\Http\Response
      */
-    public function show(Admin $admin)
+    public function show(School $school)
     {
         //
     }
@@ -53,10 +53,10 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Admin  $admin
+     * @param  \App\Models\School  $school
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admin $admin)
+    public function edit(School $school)
     {
         //
     }
@@ -64,11 +64,11 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateAdminRequest  $request
-     * @param  \App\Models\Admin  $admin
+     * @param  \App\Http\Requests\UpdateSchoolRequest  $request
+     * @param  \App\Models\School  $school
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAdminRequest $request, Admin $admin)
+    public function update(UpdateSchoolRequest $request, School $school)
     {
         //
     }
@@ -76,10 +76,10 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Admin  $admin
+     * @param  \App\Models\School  $school
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Admin $admin)
+    public function destroy(School $school)
     {
         //
     }

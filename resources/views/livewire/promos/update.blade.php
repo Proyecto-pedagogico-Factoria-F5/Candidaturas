@@ -12,36 +12,41 @@
                 <form>
 					<input type="hidden" wire:model="selected_id">
                     <div class="form-group">
-                        <label for="escuela_id"></label>
-                        <input wire:model="escuela_id" type="text" class="form-control" id="escuela_id" placeholder="Escuela Id">@error('escuela_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="school_id">Escuela</label>
+                        <select wire:model="school_id" class="form-control form-select" name="school_id" required>
+                            <option value="0">Escoger escuela...</option>
+                            @foreach($schools as $school)
+                            <option value="{{$school->id}}">{{$school->name}}</option>
+                            @endforeach
+                        </select>@error('school_id') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="nombre_promo">Nombre</label>
-                        <input wire:model="nombre_promo" type="text" class="form-control" id="nombre_promo" placeholder="Nombre" required>@error('nombre_promo') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="name">Nombre</label>
+                        <input wire:model="name" type="text" class="form-control" id="name" placeholder="Nombre" required>@error('name') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="ubicación">Localidad</label>
-                        <input wire:model="ubicación" type="text" class="form-control" id="ubicación" placeholder="Localidad" required>@error('ubicación') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="ubication">Localidad</label>
+                        <input wire:model="ubication" type="text" class="form-control" id="ubication" placeholder="Localidad" required>@error('ubication') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>   
+                    <div class="form-group">
+                        <label for="start_date">Fecha de inicio</label>
+                        <input wire:model="start_date" type="text" id="datepicker" class="form-control" placeholder="YYYY-MM-DD" required>@error('start_date') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="fecha_de_inicio">Fecha de inicio</label>
-                        <input wire:model="fecha_de_inicio" type="text" class="form-control" id="fecha_de_inicio" placeholder="Fecha de inicio" required>@error('fecha_de_inicio') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="duration">Duración (h)</label>
+                        <input wire:model="duration" type="text" class="form-control" id="hours" placeholder="Duración (h)" required>@error('duration') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="duración">Duración (h)</label>
-                        <input wire:model="duración" type="text" class="form-control" id="duración" placeholder="Duración (h)" required>@error('duración') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="image">Imagen</label>
+                        <input wire:model="image" type="file" class="form-control" id="image" name="image" placeholder="Imagen" required>@error('image') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="imagen">Imagen</label>
-                        <input wire:model="imagen" type="file" class="form-control" id="imagen" name="image" placeholder="Imagen" required>@error('imagen') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="código">Código</label>
-                        <input wire:model="código" type="text" class="form-control" id="código" placeholder="Código">@error('código') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="code">Código</label>
+                        <input wire:model="code" type="text" class="form-control" id="code" placeholder="Código">@error('code') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="url">Url</label>
-                        <input wire:model="url" type="text" class="form-control" id="url" placeholder="Url">@error('url') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="url" type="text" class="form-control" id="url" placeholder="Url" required>@error('url') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                 </form>
             </div>

@@ -16,7 +16,7 @@ class Profiles extends Component
 	use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $nombre, $email, $password, $teléfono, $puesto, $role, $escuela_id, $promo, $imagen;
+    public $selected_id, $keyWord, $school_id, $promo_id, $name, $surnames, $email, $password, $job, $role, $github, $birth_date, $image;
     public $updateMode = false;
 
     public function render()
@@ -24,16 +24,17 @@ class Profiles extends Component
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.profiles.view', [
             'profiles' => Profile::latest()
-						->orWhere('nombre', 'LIKE', $keyWord)
+						->orWhere('school_id', 'LIKE', $keyWord)
+						->orWhere('promo_id', 'LIKE', $keyWord)
+						->orWhere('name', 'LIKE', $keyWord)
+						->orWhere('surnames', 'LIKE', $keyWord)
 						->orWhere('email', 'LIKE', $keyWord)
 						->orWhere('password', 'LIKE', $keyWord)
-						->orWhere('teléfono', 'LIKE', $keyWord)
-						->orWhere('puesto', 'LIKE', $keyWord)
+						->orWhere('job', 'LIKE', $keyWord)
 						->orWhere('role', 'LIKE', $keyWord)
-						// ->orWhere('escuela', 'LIKE', $keyWord)
-						->orWhere('escuela_id', 'LIKE', $keyWord)
-						->orWhere('promo', 'LIKE', $keyWord)
-						->orWhere('imagen', 'LIKE', $keyWord)
+						->orWhere('github', 'LIKE', $keyWord)
+						->orWhere('birth_date', 'LIKE', $keyWord)
+						->orWhere('image', 'LIKE', $keyWord)
 						->paginate(10),
 			'roles' => Role::all(),
 			'schools' => School::all(),
@@ -49,51 +50,52 @@ class Profiles extends Component
 	
     private function resetInput()
     {		
-		$this->nombre = null;
+		$this->school_id = null;
+		$this->promo_id = null;
+		$this->name = null;
+		$this->surnames = null;
 		$this->email = null;
 		$this->password = null;
-		$this->teléfono = null;
-		$this->puesto = null;
+		$this->job = null;
 		$this->role = null;
-		// $this->escuela = null;
-		$this->escuela_id = null;
-		$this->promo = null;
+		$this->github = null;
+		$this->birth_date = null;
 		$this->imagen = null;
     }
 
     public function store()
     {
         $this->validate([
-		'nombre' => 'required',
-		'email' => 'required',
-		'password' => 'required',
-		'teléfono' => 'required',
-		'puesto' => 'required',
-		'role' => 'required',
-		// 'escuela' => 'required',
-		'escuela_id' => 'required',
-		'promo' => 'required',
-		// 'imagen' => 'required',
-		'imagen' => 'image|max:1024', // 1MB Max
+			'school_id' => 'required',
+			'promo_id' => 'required',
+            'name' => 'required',
+            'surnames' => 'required',
+			'email' => 'required',
+			'password' => 'required',
+			'job' => 'required',
+			'role' => 'required',
+			'github' => 'required',
+			'birth_date' => 'required',
+			'image' => 'image|max:1024', // 1MB Max
         ]);
 
         Profile::create([ 
-			'nombre' => $this-> nombre,
+			'school_id' => $this->school_id,
+			'promo_id' => $this->promo_id,
+			'name' => $this-> name,
+			'surnames' => $this-> surnames,
 			'email' => $this-> email,
 			'password' => $this-> password,
-			'teléfono' => $this-> teléfono,
-			'puesto' => $this-> puesto,
+			'job' => $this-> job,
 			'role' => $this-> role,
-			// 'escuela' => $this-> escuela,
-			'escuela_id' => $this-> escuela_id,
-			'promo' => $this-> promo,
-			// 'imagen' => $this->imagen,
-			'imagen' => $this->imagen->store('uploads', 'public'),
+			'github' => $this-> github,
+			'birth_date' => $this-> birth_date,
+			'image' => $this->imagen->store('uploads', 'public'),
         ]);
         
         $this->resetInput();
 		$this->emit('closeModal');
-		session()->flash('message', 'Profile Successfully created.');
+		session()->flash('message', 'Perfil creado correctamente.');
     }
 
     public function edit($id)
@@ -101,16 +103,17 @@ class Profiles extends Component
         $record = Profile::findOrFail($id);
 
         $this->selected_id = $id; 
-		$this->nombre = $record-> nombre;
+		$this->school_id = $record-> school_id;
+		$this->promo_id = $record-> promo_id;
+		$this->name = $record-> name;
+		$this->surnames = $record-> surnames;
 		$this->email = $record-> email;
 		$this->password = $record-> password;
-		$this->teléfono = $record-> teléfono;
-		$this->puesto = $record-> puesto;
+		$this->job = $record-> job;
 		$this->role = $record-> role;
-		// $this->escuela = $record-> escuela;
-		$this->escuela_id = $record-> escuela_id;
-		$this->promo = $record-> promo;
-		$this->imagen = $record-> imagen;
+		$this->github = $record-> github;
+		$this->birth_date = $record-> birth_date;
+		$this->image = $record-> image;
 		
         $this->updateMode = true;
     }
@@ -118,38 +121,38 @@ class Profiles extends Component
     public function update()
     {
         $this->validate([
-		'nombre' => 'required',
-		'email' => 'required',
-		'password' => 'required',
-		'teléfono' => 'required',
-		'puesto' => 'required',
-		'role' => 'required',
-		// 'escuela' => 'required',
-		'escuela_id' => 'required',
-		'promo' => 'required',
-		// 'imagen' => 'required',
-		'imagen' => 'image|max:1024', // 1MB Max
+			'school_id' => 'required',
+			'promo_id' => 'required',
+            'name' => 'required',
+            'surnames' => 'required',
+			'email' => 'required',
+			'password' => 'required',
+			'job' => 'required',
+			'role' => 'required',
+			'github' => 'required',
+			'birth_date' => 'required',
+			'image' => 'image|max:1024', // 1MB Max
         ]);
 
         if ($this->selected_id) {
 			$record = Profile::find($this->selected_id);
             $record->update([ 
-			'nombre' => $this-> nombre,
-			'email' => $this-> email,
-			'password' => $this-> password,
-			'teléfono' => $this-> teléfono,
-			'puesto' => $this-> puesto,
-			'role' => $this-> role,
-			// 'escuela' => $this-> escuela,
-			'escuela_id' => $this-> escuela_id,
-			'promo' => $this-> promo,
-			// 'imagen' => $this->imagen,
-			'imagen' => $this->imagen->store('uploads', 'public'),
+				'school_id' => $this->school_id,
+				'promo_id' => $this->promo_id,
+				'name' => $this-> name,
+				'surnames' => $this-> surnames,
+				'email' => $this-> email,
+				'password' => $this-> password,
+				'job' => $this-> job,
+				'role' => $this-> role,
+				'github' => $this-> github,
+				'birth_date' => $this-> birth_date,
+				'image' => $this->imagen->store('uploads', 'public'),
             ]);
 
             $this->resetInput();
             $this->updateMode = false;
-			session()->flash('message', 'Profile Successfully updated.');
+			session()->flash('message', 'Perfil actualizado correctamente.');
         }
     }
 

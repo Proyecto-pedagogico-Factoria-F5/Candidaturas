@@ -13,6 +13,17 @@ class Coder extends Model
 
     protected $table = 'coders';
 
-    protected $fillable = ['nombre','apellidos','email','teléfono','fecha_de_nacimiento','github','promo_id'];
-	
+    protected $fillable = [
+        'promo_id',
+        'name',
+        'surnames',
+        'birth_date',
+        'nationality',
+        'email',
+        'phone',
+        'register_date',
+        'user_account',
+        'points',
+        'github'
+    ];
 }

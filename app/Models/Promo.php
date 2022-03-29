@@ -14,14 +14,18 @@ class Promo extends Model
     protected $table = 'promos';
 
     protected $fillable = [
-        'nombre_promo',
-        'ubicación',
-        'escuela',
-        'escuela_id',
-        'fecha_de_inicio',
-        'duración',
+        'school_id',
+        'name',
+        'ubication',
+        'start_date',
+        'duration',
+        'image',
         'url',
-        'imagen',
-        'código'
+        'code'
     ];
+
+    public function school()
+    {
+        return $this->belongsTo(School::class);
+    }
 }

@@ -13,17 +13,17 @@ class CandidaturaFactory extends Factory
     public function definition()
     {
         return [
-			'nombre' => $this->faker->name,
-			'apellidos' => $this->faker->name,
+			'name' => $this->faker->name,
+			'surnames' => $this->faker->name,
+			'birth_date' => $this->faker->name,
+			'nationality' => $this->faker->name,
 			'email' => $this->faker->name,
-			'teléfono' => $this->faker->name,
-			'cuenta_usuario' => $this->faker->name,
-			'puntos' => $this->faker->name,
-			'descripción' => $this->faker->name,
-			'fecha_de_registro' => $this->faker->name,
-			'fecha_de_nacimiento' => $this->faker->name,
-			'nacionalidad' => $this->faker->name,
-			'promo_id' => $this->faker->name,
+			'phone' => $this->faker->name,
+			'register_date' => $this->faker->name,
+			'user_account' => $this->faker->name,
+			'points' => $this->faker->name,
+			'description' => $this->faker->name,
+			'selected' => $this->faker->name,
         ];
     }
 }

@@ -11,20 +11,21 @@ class Candidatura extends Model
 	
     public $timestamps = true;
 
-    protected $table = 'candidaturas';
+    protected $table = 'candidates';
 
     protected $fillable = [
-        'nombre',
-        'apellidos',
+        'promo_id',
+        'name',
+        'surnames',
+        'birth_date',
+        'nationality',
         'email',
-        'teléfono',
-        'cuenta_usuario',
-        'puntos',
-        'descripción',
-        'fecha_de_registro',
-        'fecha_de_nacimiento',
-        'nacionalidad',
-        'promo_id'
+        'phone',
+        'register_date',
+        'user_account',
+        'points',
+        'description',
+        'selected'
     ];
-	
+
 }

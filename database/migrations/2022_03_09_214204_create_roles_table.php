@@ -15,13 +15,10 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            // $table->string('email')->unique();
-            // $table->string('teléfono');
-            // $table->string('puesto');
-            // $table->string('escuela');
-            // $table->string('promo');
-            // $table->string('imagen');
+
+            $table->string('user_id');
+            $table->string('name');
+
             $table->timestamps();
         });
     }

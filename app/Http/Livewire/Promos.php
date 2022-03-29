@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+
 use App\Models\Promo;
 use App\Models\School;
 class Promos extends Component
@@ -13,26 +14,39 @@ class Promos extends Component
 	use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $nombre_promo, $ubicación, $escuela, $escuela_id, $fecha_de_inicio, $duración, $url, $imagen, $código;
-    public $updateMode = false;
+	public $selected_id, $keyWord, $school_id, $name, $ubication, $start_date, $duration, $url, $image, $code; 
+	public $updateMode = false;
 
     public function render()
     {
-		$keyWord = '%'.$this->keyWord .'%';
-        return view('livewire.promos.view', [
-            'promos' => Promo::latest()
-						->orWhere('nombre_promo', 'LIKE', $keyWord)
-						->orWhere('ubicación', 'LIKE', $keyWord)
-						// ->orWhere('escuela', 'LIKE', $keyWord)
-						->orWhere('escuela_id', 'LIKE', $keyWord)
-						->orWhere('fecha_de_inicio', 'LIKE', $keyWord)
-						->orWhere('duración', 'LIKE', $keyWord)
-						->orWhere('url', 'LIKE', $keyWord)
-						->orWhere('imagen', 'LIKE', $keyWord)
-						->orWhere('código', 'LIKE', $keyWord)
+		$keyWord = '%'.$this->keyWord .'%';    
+		return view('livewire.promos.view', [
+            'promos' => Promo::with('school')
+                        ->orWhere('school_id', 'LIKE', $keyWord)
+                        ->orWhere('name', 'LIKE', $keyWord)
+                        ->orWhere('ubication', 'LIKE', $keyWord)
+                        ->orWhere('start_date', 'LIKE', $keyWord)
+                        ->orWhere('duration', 'LIKE', $keyWord)
+                        ->orWhere('image', 'LIKE', $keyWord)
+                        ->orWhere('url', 'LIKE', $keyWord)
+                        ->orWhere('code', 'LIKE', $keyWord)
 						->paginate(10),
-			'schools' => School::all()
+            'schools' => School::all()
         ]);
+       
+        // return view('livewire.promos.view', [
+        //     'promos' => Promo::oldest()
+        //                 ->orWhere('school_id', 'LIKE', $keyWord)
+        //                 ->orWhere('name', 'LIKE', $keyWord)
+        //                 ->orWhere('ubication', 'LIKE', $keyWord)
+        //                 ->orWhere('start_date', 'LIKE', $keyWord)
+        //                 ->orWhere('duration', 'LIKE', $keyWord)
+        //                 ->orWhere('image', 'LIKE', $keyWord)
+        //                 ->orWhere('url', 'LIKE', $keyWord)
+        //                 ->orWhere('code', 'LIKE', $keyWord)
+		// 				->paginate(10),
+        //     'schools' => School::all()
+        // ]);
     }
 	
     public function cancel()
@@ -43,46 +57,43 @@ class Promos extends Component
 	
     private function resetInput()
     {		
-		$this->nombre_promo = null;
-		$this->ubicación = null;
-		// $this->escuela = null;
-		$this->escuela_id = null;
-		$this->fecha_de_inicio = null;
-		$this->duración = null;
-		$this->url = null;
-		$this->imagen = null;
-		$this->código = null;
+		$this->school_id = null;
+        $this->name = null;	
+        $this->ubication = null;
+        $this->start_date = null;
+        $this->duration = null;
+        $this->image = null;
+        $this->url = null;
+        $this->code = null;
     }
 
     public function store()
     {
         $this->validate([
-		'nombre_promo' => 'required',
-		'ubicación' => 'required',
-		// 'escuela' => 'required',
-		'escuela_id' => 'required',
-		'fecha_de_inicio' => 'required',
-		'duración' => 'required',
-		'url' => 'required',
-		'imagen' => 'image|max:1024', // 1MB Max
-		'código' => 'required',
+			'school_id' => 'required|not_in:0',
+            'name' => 'required',
+            'ubication' => 'required',
+            'start_date' => 'required',
+            'duration' => 'required',
+            'image' => 'image|max:1024', // 1MB Max
+            'url' => 'required',
+            'code' => 'required'
         ]);
 
         Promo::create([ 
-			'nombre_promo' => $this-> nombre_promo,
-			'ubicación' => $this-> ubicación,
-			// 'escuela' => $this-> escuela,
-			'escuela_id' => $this-> escuela_id,
-			'fecha_de_inicio' => $this-> fecha_de_inicio,
-			'duración' => $this-> duración,
-			'url' => $this-> url,
-			'imagen' => $this->imagen->store('uploads', 'public'),
-			'código' => $this-> código
+			'school_id' => $this->school_id,
+            'name' => $this->name,
+            'ubication' => $this->ubication,
+            'start_date' => $this->start_date,
+            'duration' => $this->duration,
+            'image' => $this->image->store('uploads', 'public'),
+            'url' => $this->url,
+            'code' => $this->code
         ]);
         
         $this->resetInput();
 		$this->emit('closeModal');
-		session()->flash('message', 'Promo creada con éxito');
+		session()->flash('message', 'Promo creada correctamente.');
     }
 
     public function edit($id)
@@ -90,15 +101,14 @@ class Promos extends Component
         $record = Promo::findOrFail($id);
 
         $this->selected_id = $id; 
-		$this->nombre_promo = $record-> nombre_promo;
-		$this->ubicación = $record-> ubicación;
-		// $this->escuela = $record-> escuela;
-		$this->escuela_id = $record-> escuela_id;
-		$this->fecha_de_inicio = $record-> fecha_de_inicio;
-		$this->duración = $record-> duración;
-		$this->url = $record-> url;
-		$this->imagen = $record-> imagen;
-		$this->código = $record-> código;
+        $this->school_id = $record->school_id;
+        $this->name = $record->name;
+        $this->ubication = $record->ubication;
+        $this->start_date = $record->start_date;
+        $this->duration = $record->duration;
+        $this->image = $record->image;
+        $this->url = $record->url;
+        $this->code = $record->code;
 		
         $this->updateMode = true;
     }
@@ -106,34 +116,32 @@ class Promos extends Component
     public function update()
     {
         $this->validate([
-		'nombre_promo' => 'required',
-		'ubicación' => 'required',
-		// 'escuela' => 'required',
-		'escuela_id' => 'required',
-		'fecha_de_inicio' => 'required',
-		'duración' => 'required',
-		'url' => 'required',
-		'imagen' => 'image|max:1024', // 1MB Max
-		'código' => 'required',
+			'school_id' => 'required|not_in:0',
+            'name' => 'required',
+            'ubication' => 'required',
+            'start_date' => 'required',
+            'duration' => 'required',
+            'image' => 'image|max:1024', // 1MB Max
+            'url' => 'required',
+            'code' => 'required'
         ]);
 
         if ($this->selected_id) {
 			$record = Promo::find($this->selected_id);
             $record->update([ 
-			'nombre_promo' => $this-> nombre_promo,
-			'ubicación' => $this-> ubicación,
-			// 'escuela' => $this-> escuela,
-			'escuela_id' => $this-> escuela_id,
-			'fecha_de_inicio' => $this-> fecha_de_inicio,
-			'duración' => $this-> duración,
-			'url' => $this-> url,
-			'imagen' => $this->imagen->store('uploads', 'public'),
-			'código' => $this-> código
+				'school_id' => $this->school_id,
+                'name' => $this->name,
+                'ubication' => $this->ubication,
+                'start_date' => $this->start_date,
+                'duration' => $this->duration,
+                'image' => $this->image->store('uploads', 'public'),
+                'url' => $this->url,
+                'code' => $this->code 
             ]);
 
             $this->resetInput();
             $this->updateMode = false;
-			session()->flash('message', 'Promo actualizada con éxito');
+			session()->flash('message', 'Promo actualizada correctamente.');
         }
     }
 

@@ -14,9 +14,9 @@ class School extends Model
     protected $table = 'schools';
 
     protected $fillable = [
-        'nombre_escuela',
-        'provincia',
-        'imagen',
+        'name',
+        'province',
+        'image'
     ];
 	
     public function promo()

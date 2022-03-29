@@ -1,6 +1,3 @@
-//External
-// @import './node_modules/pikaday/css/pikaday.css';
-
 // Reset
 @import 'reset';
 
@@ -19,13 +16,14 @@
 @import './components/cards';
 
 // ----Views
-@import 'user/user';
-@import 'welcome';
+@import 'views/user';
+@import 'views/welcome';
 
 // ----Structure
 @import 'tables';
 @import 'forms';
 @import 'buttons';
 @import 'custom';
+@import 'footer';
 @import 'nav';
 @import 'layout';
