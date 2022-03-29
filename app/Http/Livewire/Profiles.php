@@ -17,7 +17,20 @@ class Profiles extends Component
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $school_id, $promo_id, $role_id, $name, $surnames, $email, $password, $job, $github, $birth_date, $image;
-    public $updateMode = false;
+    public $validationArray = [
+        'school_id' => 'required',
+		'promo_id' => 'required',
+		'role_id' => 'required',
+		'name' => 'required',
+		'surnames' => 'required',
+		'email' => 'required',
+		'password' => 'required',
+		'job' => 'required',
+		'github' => 'required',
+		'birth_date' => 'required',
+		'image' => 'image|max:1024', // 1MB Max
+    ];
+	public $updateMode = false;
 
     public function render()
     {
@@ -38,7 +51,7 @@ class Profiles extends Component
 						->paginate(10),
 			'schools' => School::all(),
 			'promos' => Promo::all(),
-			'roles' => Role::all(),
+			'roles' => Role::all()
         ]);
     }
 	
@@ -65,19 +78,7 @@ class Profiles extends Component
 
     public function store()
     {
-        $this->validate([
-			'school_id' => 'required',
-			'promo_id' => 'required',
-			'role_id' => 'required',
-            'name' => 'required',
-            'surnames' => 'required',
-			'email' => 'required',
-			'password' => 'required',
-			'job' => 'required',
-			'github' => 'required',
-			'birth_date' => 'required',
-			'image' => 'image|max:1024', // 1MB Max
-        ]);
+        $this->validate($this->validationArray);
 
         Profile::create([ 
 			'school_id' => $this->school_id,
@@ -120,19 +121,7 @@ class Profiles extends Component
 
     public function update()
     {
-        $this->validate([
-			'school_id' => 'required',
-			'promo_id' => 'required',
-			'role_id' => 'required',
-            'name' => 'required',
-            'surnames' => 'required',
-			'email' => 'required',
-			'password' => 'required',
-			'job' => 'required',
-			'github' => 'required',
-			'birth_date' => 'required',
-			'image' => 'image|max:1024', // 1MB Max
-        ]);
+        $this->validate($this->validationArray);
 
         if ($this->selected_id) {
 			$record = Profile::find($this->selected_id);
