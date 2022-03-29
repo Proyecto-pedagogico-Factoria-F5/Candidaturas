@@ -158,7 +158,12 @@ async function showCandidatures(){
 
 	var row;
 	var rowsCandidates = [];
+	var rowsData = [];
+	var names;
+	var surname;
+	var email;
 	var idFreeCode;
+	var description;
 	
 	typeFormPromos.forEach(user => {   
 	
@@ -168,14 +173,17 @@ async function showCandidatures(){
 					
 			if(user.answers.indexOf(element) == NAME) {
 				row+= '<td>'+ element.text + '</td>';
+				name = element.text;
 			}    
 			if(user.answers.indexOf(element) == SURNAME) {
 				row+= '<td>'+ element.text + '</td>';
+				surname = element.text;
 			}    
 			if(user.answers.indexOf(element) == MAIL) {  
 				row+= '<td>Fecha</td>';  
 				row+= '<td>Nacionalidad</td>';    
-				row+= '<td>'+ element.email + '</td>';  
+				row+= '<td>'+ element.email + '</td>'; 
+				email = element.email;
 			}
 			if(user.answers.indexOf(element) == FREECODE) {
 				row+= '<td>Teléfono</td>'; 
@@ -185,14 +193,20 @@ async function showCandidatures(){
 			if(user.answers.indexOf(element) == DESCRIPTION) { 				
 				row+= '<td id="'+ idFreeCode +'">Points</td>';
 				row+= '<td>'+ element.text + '</td>';
+				description = element.text;
 				row+= '<td>Fecha registro</td>'; 
 				row+= '<td>Promo id</td>'; 
-				row+= '<td>Acciones</td></tr>'; 
+				row+= '<td><button type="button" wire:click.prevent="store()" class="btn btn-primary close-modal">Guardar</button></td></tr>'; 
+				
 			} 					
 		}); 
-		rowsCandidates.push(row);		
+		rowsCandidates.push(row);
+		rowsData.push({name:name, surname:surname , mail:email , freecode:idFreeCode, description:descrption  });		
     });
 	
+	console.log(rowsData);
+	console.log(rowsCandidates);
+
 	$('#tbody').append(rowsCandidates);
 	return rowsCandidates;
 }
