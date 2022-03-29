@@ -201,10 +201,10 @@ async function showCandidatures(){
 			} 					
 		}); 
 		rowsCandidates.push(row);
-		rowsData.push({name:name, surname:surname , mail:email , freecode:idFreeCode, description:descrption  });		
+		//rowsData.push({name:name, surname:surname , mail:email , freecode:idFreeCode, description:descrption  });		
     });
 	
-	console.log(rowsData);
+	//console.log(rowsData);
 	console.log(rowsCandidates);
 
 	$('#tbody').append(rowsCandidates);
