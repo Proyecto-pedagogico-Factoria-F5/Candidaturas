@@ -30,6 +30,20 @@ class Profiles extends Component
 		'birth_date' => 'required',
 		'image' => 'image|max:1024', // 1MB Max
     ];
+	public function data () {
+		return [
+			'school_id' => $this->school_id,
+			'promo_id' => $this->promo_id,
+			'role_id' => $this->role_id,
+			'name' => $this->name,
+			'surnames' => $this->surnames,
+			'email' => $this->email,
+			'password' => $this->password,
+			'job' => $this->job,
+			'github' => $this->github,
+			'birth_date' => $this->birth_date,
+			'image' => $this->image->store('uploads', 'public'),
+	];}
 	public $updateMode = false;
 
     public function render()
@@ -80,19 +94,7 @@ class Profiles extends Component
     {
         $this->validate($this->validationArray);
 
-        Profile::create([ 
-			'school_id' => $this->school_id,
-			'promo_id' => $this->promo_id,
-			'role_id' => $this->role_id,
-			'name' => $this->name,
-			'surnames' => $this->surnames,
-			'email' => $this->email,
-			'password' => $this->password,
-			'job' => $this->job,
-			'github' => $this->github,
-			'birth_date' => $this->birth_date,
-			'image' => $this->image->store('uploads', 'public'),
-        ]);
+        Profile::create($this->data());
         
         $this->resetInput();
 		$this->emit('closeModal');
@@ -125,19 +127,7 @@ class Profiles extends Component
 
         if ($this->selected_id) {
 			$record = Profile::find($this->selected_id);
-            $record->update([ 
-				'school_id' => $this->school_id,
-				'promo_id' => $this->promo_id,
-				'role_id' => $this->role_id,
-				'name' => $this->name,
-				'surnames' => $this->surnames,
-				'email' => $this->email,
-				'password' => $this->password,
-				'job' => $this->job,
-				'github' => $this->github,
-				'birth_date' => $this->birth_date,
-				'image' => $this->image->store('uploads', 'public'),
-            ]);
+            $record->update($this->data());
 
             $this->resetInput();
             $this->updateMode = false;

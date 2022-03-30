@@ -15,6 +15,10 @@ class Roles extends Component
     public $validationArray = [
         'name' => 'required',
     ];
+    public function data () {
+        return [
+            'name' => $this-> name,
+    ];}
     public $updateMode = false;
 
     public function render()
@@ -42,9 +46,7 @@ class Roles extends Component
     {
         $this->validate($this->validationArray);
 
-        Role::create([ 
-			'name' => $this-> name,
-        ]);
+        Role::create($this->data());
         
         $this->resetInput();
 		$this->emit('closeModal');
@@ -67,9 +69,7 @@ class Roles extends Component
 
         if ($this->selected_id) {
 			$record = Role::find($this->selected_id);
-            $record->update([ 
-				'name' => $this-> name,
-            ]);
+            $record->update($this->data());
 
             $this->resetInput();
             $this->updateMode = false;
