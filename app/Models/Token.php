@@ -13,6 +13,6 @@ class Token extends Model
 
     protected $table = 'tokens';
 
-    protected $fillable = ['token_typeform'];
+    protected $fillable = ['typeform_token'];
 	
 }

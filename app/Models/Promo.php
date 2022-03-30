@@ -14,14 +14,30 @@ class Promo extends Model
     protected $table = 'promos';
 
     protected $fillable = [
-        'nombre_promo',
-        'ubicación',
-        'escuela',
-        'escuela_id',
-        'fecha_de_inicio',
-        'duración',
+        'name',
+        'ubication',
+        'start_date',
+        'duration',
+        'image',
         'url',
-        'imagen',
-        'código'
+        'code'
     ];
+
+    public function school()
+    {
+        return $this->belongsToMany(School::class);
+    }
+
+    public function coder()
+    {
+        return $this->belongsToMany(Coder::class);
+    }
+
+    static function addToPivotTable($promo, $school_id)
+    {
+        // dd($promo);
+        //dd($school_id['school_id']);
+        $promo->school()->attach(School::getSchool($school_id['school_id']));
+
+    }
 }

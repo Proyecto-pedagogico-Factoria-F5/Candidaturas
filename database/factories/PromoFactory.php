@@ -13,15 +13,13 @@ class PromoFactory extends Factory
     public function definition()
     {
         return [
-			'nombre_promo' => $this->faker->name,
-			'ubicación' => $this->faker->name,
-			// 'escuela' => $this->faker->name,
-			'escuela_id' => $this->faker->name,
-			'fecha_de_inicio' => $this->faker->name,
-			'duración' => $this->faker->name,
+			'name' => $this->faker->name,
+			'ubication' => $this->faker->name,
+			'start_date' => $this->faker->name,
+			'duration' => $this->faker->name,
+			'image' => $this->faker->name,
 			'url' => $this->faker->name,
-			'imagen' => $this->faker->name,
-			'código' => $this->faker->name,
+			'code' => $this->faker->name,
         ];
     }
 }

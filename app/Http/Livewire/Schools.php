@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+
 use App\Models\School;
 
 class Schools extends Component
@@ -13,17 +14,25 @@ class Schools extends Component
     use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $nombre_escuela, $provincia, $imagen;
+    public $selected_id, $keyWord, $name, $province, $image;
+    public $validationArray = [
+    ];
+    public function data () {
+        return [
+        'name' => $this-> name,
+        'province' => $this-> province,
+        'image' => $this->image->store('uploads', 'public')
+    ];}
     public $updateMode = false;
 
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.schools.view', [
-            'schools' => School::latest()
-						->orWhere('nombre_escuela', 'LIKE', $keyWord)
-						->orWhere('provincia', 'LIKE', $keyWord)
-						->orWhere('imagen', 'LIKE', $keyWord)
+            'schools' => School::oldest()
+                        ->orWhere('name', 'LIKE', $keyWord)
+                        ->orWhere('province', 'LIKE', $keyWord)
+                        ->orWhere('image', 'LIKE', $keyWord)
 						->paginate(10),
         ]);
     }
@@ -36,28 +45,24 @@ class Schools extends Component
 	
     private function resetInput()
     {		
-		$this->nombre_escuela = null;
-		$this->provincia = null;
-		$this->imagen = null;
+		$this->name = null;
+		$this->province = null;
+		$this->image = null;
     }
 
     public function store()
     {
         $this->validate([
-		'nombre_escuela' => 'required',
-		'provincia' => 'required',
-		'imagen' => 'image|max:1024', // 1MB Max
+            'name' => 'required',
+            'province' => 'required',
+            'image' => 'image|max:1024', // 1MB Max
         ]);
 
-        School::create([ 
-			'nombre_escuela' => $this-> nombre_escuela,
-			'provincia' => $this-> provincia,
-			'imagen' => $this->imagen->store('uploads', 'public'),
-        ]);
+        School::create($this->data());
         
         $this->resetInput();
 		$this->emit('closeModal');
-		session()->flash('message', 'Escuela creada con éxito');
+		session()->flash('message', 'Escuela creada correctamente.');
     }
 
     public function edit($id)
@@ -65,9 +70,9 @@ class Schools extends Component
         $record = School::findOrFail($id);
 
         $this->selected_id = $id; 
-		$this->nombre_escuela = $record-> nombre_escuela;
-		$this->provincia = $record-> provincia;
-		$this->imagen = $record-> imagen;
+        $this->name = $record-> name;
+		$this->province = $record-> province;
+		$this->image = $record-> image;
 		
         $this->updateMode = true;
     }
@@ -75,22 +80,18 @@ class Schools extends Component
     public function update()
     {
         $this->validate([
-		'nombre_escuela' => 'required',
-		'provincia' => 'required',
-		'imagen' => 'image|max:1024', // 1MB Max
+            'name' => 'required',
+            'province' => 'required',
+            'image' => 'image|max:1024', // 1MB Max
         ]);
 
         if ($this->selected_id) {
 			$record = School::find($this->selected_id);
-            $record->update([ 
-			'nombre_escuela' => $this-> nombre_escuela,
-			'provincia' => $this-> provincia,
-			'imagen' => $this->imagen->store('uploads', 'public'),
-            ]);
+            $record->update($this->data());
 
             $this->resetInput();
             $this->updateMode = false;
-			session()->flash('message', 'Escuela actualizada con éxito');
+			session()->flash('message', 'Escuela actualizada correctamente.');
         }
     }
 

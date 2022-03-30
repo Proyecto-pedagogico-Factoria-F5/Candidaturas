@@ -13,7 +13,7 @@ class TokenFactory extends Factory
     public function definition()
     {
         return [
-			'token_typeform' => $this->faker->name,
+			'typeform_token' => $this->faker->name,
         ];
     }
 }

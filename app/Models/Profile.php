@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
 class Profile extends Model
 {
 	use HasFactory;
@@ -15,15 +14,34 @@ class Profile extends Model
     protected $table = 'profiles';
 
     protected $fillable = [
-        'nombre',
+        'name',
+        'surnames',
         'email',
         'password',
-        'teléfono',
-        'puesto',
-        'role',
-        'escuela_id',
-        'promo',
-        'imagen'
+        'job',
+        'github',
+        'birth_date',
+        'image'
     ];
-	
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    public function user()
+    {
+        return $this->belongsToMany(User::class);
+
+    }
+
+    public function role()
+    {
+        return $this->belongsToMany(Role::class);
+    }
 }

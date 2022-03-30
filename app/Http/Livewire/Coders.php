@@ -11,7 +11,34 @@ class Coders extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $nombre, $apellidos, $email, $teléfono, $fecha_de_nacimiento, $github, $promo_id;
+	public $selected_id, $keyWord, $promo_id, $name, $surnames, $birth_date, $nationality, $email, $phone, $register_date, $user_account, $points, $github;
+    public $validationArray = [
+        'promo_id' => 'required',
+        'name' => 'required',
+        'surnames' => 'required',
+        'birth_date' => 'required',
+        'nationality' => 'required',
+        'email' => 'required',
+        'phone' => 'required',
+        'register_date' => 'required',
+        'user_account' => 'required',
+        'points' => 'required',
+        'github' => 'required',
+    ];
+    public function data () {
+        return [
+            'promo_id' => $this->promo_id,
+            'name' => $this->name,
+            'surnames' => $this->surnames,
+            'birth_date' => $this->birth_date,
+            'nationality' => $this->natiomality,
+            'email' => $this->email,
+            'phone' => $this->phone,
+            'register_date' => $this->register_date,
+            'user_account' => $this->user_account,
+            'points' => $this->points,
+			'github' => $this-> github,
+    ];}
     public $updateMode = false;
 
     public function render()
@@ -19,13 +46,16 @@ class Coders extends Component
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.coders.view', [
             'coders' => Coder::latest()
-						->orWhere('nombre', 'LIKE', $keyWord)
-						->orWhere('apellidos', 'LIKE', $keyWord)
+						->orWhere('name', 'LIKE', $keyWord)
+						->orWhere('surnames', 'LIKE', $keyWord)
+						->orWhere('birth_date', 'LIKE', $keyWord)
+						->orWhere('nationality', 'LIKE', $keyWord)
 						->orWhere('email', 'LIKE', $keyWord)
-						->orWhere('teléfono', 'LIKE', $keyWord)
-						->orWhere('fecha_de_nacimiento', 'LIKE', $keyWord)
+						->orWhere('phone', 'LIKE', $keyWord)
+						->orWhere('register_date', 'LIKE', $keyWord)
+						->orWhere('user_account', 'LIKE', $keyWord)
+						->orWhere('points', 'LIKE', $keyWord)
 						->orWhere('github', 'LIKE', $keyWord)
-						->orWhere('promo_id', 'LIKE', $keyWord)
 						->paginate(10),
         ]);
     }
@@ -38,40 +68,27 @@ class Coders extends Component
 	
     private function resetInput()
     {		
-		$this->nombre = null;
-		$this->apellidos = null;
-		$this->email = null;
-		$this->teléfono = null;
-		$this->fecha_de_nacimiento = null;
+        $this->name = null;
+        $this->surnames = null;
+        $this->birth_date = null;
+        $this->nationality = null;
+        $this->email = null;
+        $this->phone = null;
+        $this->register_date = null;
+        $this->user_account = null;
+        $this->points = null;
 		$this->github = null;
-		$this->promo_id = null;
     }
 
     public function store()
     {
-        $this->validate([
-		'nombre' => 'required',
-		'apellidos' => 'required',
-		'email' => 'required',
-		'teléfono' => 'required',
-		'fecha_de_nacimiento' => 'required',
-		'github' => 'required',
-		'promo_id' => 'required',
-        ]);
+        $this->validate($this->validationArray);
 
-        Coder::create([ 
-			'nombre' => $this-> nombre,
-			'apellidos' => $this-> apellidos,
-			'email' => $this-> email,
-			'teléfono' => $this-> teléfono,
-			'fecha_de_nacimiento' => $this-> fecha_de_nacimiento,
-			'github' => $this-> github,
-			'promo_id' => $this-> promo_id
-        ]);
+        Coder::create($this->data());
         
         $this->resetInput();
 		$this->emit('closeModal');
-		session()->flash('message', 'Coder Successfully created.');
+		session()->flash('message', 'Coder creado correctamente.');
     }
 
     public function edit($id)
@@ -79,44 +96,32 @@ class Coders extends Component
         $record = Coder::findOrFail($id);
 
         $this->selected_id = $id; 
-		$this->nombre = $record-> nombre;
-		$this->apellidos = $record-> apellidos;
-		$this->email = $record-> email;
-		$this->teléfono = $record-> teléfono;
-		$this->fecha_de_nacimiento = $record-> fecha_de_nacimiento;
+        
+        $this->name = $record->name;
+        $this->surnames = $record->surnames;
+        $this->birth_date = $record->birth_date;
+        $this->natiomality = $record->natiomality;
+        $this->email = $record->email;
+        $this->phone = $record->phone;
+        $this->register_date = $record->register_date;
+        $this->user_account = $record->user_account;
+        $this->points = $record->points;
 		$this->github = $record-> github;
-		$this->promo_id = $record-> promo_id;
 		
         $this->updateMode = true;
     }
 
     public function update()
     {
-        $this->validate([
-		'nombre' => 'required',
-		'apellidos' => 'required',
-		'email' => 'required',
-		'teléfono' => 'required',
-		'fecha_de_nacimiento' => 'required',
-		'github' => 'required',
-		'promo_id' => 'required',
-        ]);
+        $this->validate($this->validationArray);
 
         if ($this->selected_id) {
 			$record = Coder::find($this->selected_id);
-            $record->update([ 
-			'nombre' => $this-> nombre,
-			'apellidos' => $this-> apellidos,
-			'email' => $this-> email,
-			'teléfono' => $this-> teléfono,
-			'fecha_de_nacimiento' => $this-> fecha_de_nacimiento,
-			'github' => $this-> github,
-			'promo_id' => $this-> promo_id
-            ]);
+            $record->update($this->data());
 
             $this->resetInput();
             $this->updateMode = false;
-			session()->flash('message', 'Coder Successfully updated.');
+			session()->flash('message', 'Coder actualizado correctamente.');
         }
     }
 

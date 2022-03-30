@@ -15,18 +15,18 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+
+            $table->string('name');
+            $table->string('surnames');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('job');
+            $table->string('github');
+            $table->date('birth_date');
+            $table->string('image');
+
             $table->rememberToken();
-            $table->string('teléfono');
-            $table->string('puesto');
-            $table->string('role');
-            // $table->string('escuela');
-            $table->string('escuela_id');
-            $table->string('promo');
-            $table->string('imagen');
             $table->timestamps();
         });
     }

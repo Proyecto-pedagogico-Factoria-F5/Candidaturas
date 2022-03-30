@@ -6,9 +6,9 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use App\Models\Profile;
-use App\Models\Role;
 use App\Models\School;
 use App\Models\Promo;
+use App\Models\Role;
 
 class Profiles extends Component
 {
@@ -16,28 +16,50 @@ class Profiles extends Component
 	use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $nombre, $email, $password, $teléfono, $puesto, $role, $escuela_id, $promo, $imagen;
-    public $updateMode = false;
+    public $selected_id, $keyWord, $name, $surnames, $email, $password, $job, $github, $birth_date, $image;
+    public $validationArray = [
+		'name' => 'required',
+		'surnames' => 'required',
+		'email' => 'required',
+		'password' => 'required',
+		'job' => 'required',
+		'github' => 'required',
+		'birth_date' => 'required',
+		'image' => 'image|max:1024', // 1MB Max
+    ];
+	public function data () {
+		return [
+			'school_id' => $this->school_id,
+			'promo_id' => $this->promo_id,
+			'role_id' => $this->role_id,
+			'name' => $this->name,
+			'surnames' => $this->surnames,
+			'email' => $this->email,
+			'password' => $this->password,
+			'job' => $this->job,
+			'github' => $this->github,
+			'birth_date' => $this->birth_date,
+			'image' => $this->image->store('uploads', 'public'),
+	];}
+	public $updateMode = false;
 
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.profiles.view', [
             'profiles' => Profile::latest()
-						->orWhere('nombre', 'LIKE', $keyWord)
+						->orWhere('name', 'LIKE', $keyWord)
+						->orWhere('surnames', 'LIKE', $keyWord)
 						->orWhere('email', 'LIKE', $keyWord)
 						->orWhere('password', 'LIKE', $keyWord)
-						->orWhere('teléfono', 'LIKE', $keyWord)
-						->orWhere('puesto', 'LIKE', $keyWord)
-						->orWhere('role', 'LIKE', $keyWord)
-						// ->orWhere('escuela', 'LIKE', $keyWord)
-						->orWhere('escuela_id', 'LIKE', $keyWord)
-						->orWhere('promo', 'LIKE', $keyWord)
-						->orWhere('imagen', 'LIKE', $keyWord)
+						->orWhere('job', 'LIKE', $keyWord)
+						->orWhere('github', 'LIKE', $keyWord)
+						->orWhere('birth_date', 'LIKE', $keyWord)
+						->orWhere('image', 'LIKE', $keyWord)
 						->paginate(10),
-			'roles' => Role::all(),
 			'schools' => School::all(),
 			'promos' => Promo::all(),
+			'roles' => Role::all()
         ]);
     }
 	
@@ -49,107 +71,56 @@ class Profiles extends Component
 	
     private function resetInput()
     {		
-		$this->nombre = null;
+		$this->name = null;
+		$this->surnames = null;
 		$this->email = null;
 		$this->password = null;
-		$this->teléfono = null;
-		$this->puesto = null;
-		$this->role = null;
-		// $this->escuela = null;
-		$this->escuela_id = null;
-		$this->promo = null;
-		$this->imagen = null;
+		$this->job = null;
+		$this->github = null;
+		$this->birth_date = null;
+		$this->image = null;
     }
 
     public function store()
     {
-        $this->validate([
-		'nombre' => 'required',
-		'email' => 'required',
-		'password' => 'required',
-		'teléfono' => 'required',
-		'puesto' => 'required',
-		'role' => 'required',
-		// 'escuela' => 'required',
-		'escuela_id' => 'required',
-		'promo' => 'required',
-		// 'imagen' => 'required',
-		'imagen' => 'image|max:1024', // 1MB Max
-        ]);
+        $this->validate($this->validationArray);
 
-        Profile::create([ 
-			'nombre' => $this-> nombre,
-			'email' => $this-> email,
-			'password' => $this-> password,
-			'teléfono' => $this-> teléfono,
-			'puesto' => $this-> puesto,
-			'role' => $this-> role,
-			// 'escuela' => $this-> escuela,
-			'escuela_id' => $this-> escuela_id,
-			'promo' => $this-> promo,
-			// 'imagen' => $this->imagen,
-			'imagen' => $this->imagen->store('uploads', 'public'),
-        ]);
+        Profile::create($this->data());
         
         $this->resetInput();
 		$this->emit('closeModal');
-		session()->flash('message', 'Profile Successfully created.');
+		session()->flash('message', 'Perfil creado correctamente.');
     }
 
     public function edit($id)
     {
         $record = Profile::findOrFail($id);
 
-        $this->selected_id = $id; 
-		$this->nombre = $record-> nombre;
-		$this->email = $record-> email;
-		$this->password = $record-> password;
-		$this->teléfono = $record-> teléfono;
-		$this->puesto = $record-> puesto;
-		$this->role = $record-> role;
-		// $this->escuela = $record-> escuela;
-		$this->escuela_id = $record-> escuela_id;
-		$this->promo = $record-> promo;
-		$this->imagen = $record-> imagen;
+		$this->selected_id = $id; 
+		
+		$this->name = $record->name;
+		$this->surnames = $record->surnames;
+		$this->email = $record->email;
+		$this->password = $record->password;
+		$this->job = $record->job;
+		$this->github = $record->github;
+		$this->birth_date = $record->birth_date;
+		$this->image = $record->image;
 		
         $this->updateMode = true;
     }
 
     public function update()
     {
-        $this->validate([
-		'nombre' => 'required',
-		'email' => 'required',
-		'password' => 'required',
-		'teléfono' => 'required',
-		'puesto' => 'required',
-		'role' => 'required',
-		// 'escuela' => 'required',
-		'escuela_id' => 'required',
-		'promo' => 'required',
-		// 'imagen' => 'required',
-		'imagen' => 'image|max:1024', // 1MB Max
-        ]);
+        $this->validate($this->validationArray);
 
         if ($this->selected_id) {
 			$record = Profile::find($this->selected_id);
-            $record->update([ 
-			'nombre' => $this-> nombre,
-			'email' => $this-> email,
-			'password' => $this-> password,
-			'teléfono' => $this-> teléfono,
-			'puesto' => $this-> puesto,
-			'role' => $this-> role,
-			// 'escuela' => $this-> escuela,
-			'escuela_id' => $this-> escuela_id,
-			'promo' => $this-> promo,
-			// 'imagen' => $this->imagen,
-			'imagen' => $this->imagen->store('uploads', 'public'),
-            ]);
+            $record->update($this->data());
 
             $this->resetInput();
             $this->updateMode = false;
-			session()->flash('message', 'Profile Successfully updated.');
+			session()->flash('message', 'Perfil actualizado correctamente.');
         }
     }
 

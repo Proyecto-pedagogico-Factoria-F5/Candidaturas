@@ -14,13 +14,18 @@ class School extends Model
     protected $table = 'schools';
 
     protected $fillable = [
-        'nombre_escuela',
-        'provincia',
-        'imagen',
+        'name',
+        'province',
+        'image'
     ];
 	
     public function promo()
     {
-        return $this->hasMany(Promo::class);
+        return $this->belongsToMany(Promo::class);
+    }
+
+    static function getSchool($id)
+    {
+        return School::findOrFail($id);
     }
 }

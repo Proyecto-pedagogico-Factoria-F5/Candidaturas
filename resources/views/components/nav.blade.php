@@ -35,7 +35,7 @@
                         <i class="fas fa-user-plus text-info"></i> Dar de alta
                     </a> --}}
 
-                    <a class="dropdown-item" href="{{ url('/profiles') }}">
+                    <a class="dropdown-item" href="{{ url('/perfiles') }}">
                         <i class="fas fa-user-edit text-info"></i> Administrar perfiles
                     </a> 
                    
@@ -51,25 +51,25 @@
                     <i class="fas fa-school text-info"></i> Escuelas
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="{{ url('/home') }}">
+                    <a class="dropdown-item" href="{{ url('/escuelas') }}">
                         Listado
                     </a>
-                    <a class="dropdown-item" href="{{ url('/schools') }}"><i class="fas fa-edit text-info"></i> Administrar escuelas</a> 
+                    <a class="dropdown-item" href="{{ url('/escuelas-admin') }}"><i class="fas fa-edit text-info"></i> Administrar escuelas</a> 
                 </div>
             </li>
 
             {{-- Promos --}}
-            {{-- <li class="nav-item dropdown">
+            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="{{ url('/promos') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     <i class="fas fa-graduation-cap text-info"></i> Promos
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="{{ url('/promos-view') }}">
+                    <a class="dropdown-item" href="{{ url('/promos') }}">
                         Listado
                     </a>
-                    <a class="dropdown-item" href="{{ url('/promos') }}"><i class="fas fa-edit text-info"></i> Administrar promos</a>
+                    <a class="dropdown-item" href="{{ url('/promos-admin') }}"><i class="fas fa-edit text-info"></i> Administrar promos</a>
                 </div>
-            </li> --}}
+            </li>
 
             {{-- Candidaturas --}}
             {{-- <li class="nav-item">

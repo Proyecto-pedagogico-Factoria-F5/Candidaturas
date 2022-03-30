@@ -11,7 +11,14 @@ class Tokens extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $token_typeform;
+    public $selected_id, $keyWord, $typeform_token;
+    public $validationArray = [
+        'typeform_token' => 'required',
+    ];
+    public function data () {
+        return [
+            'typeform_token' => $this-> typeform_token
+    ];}
     public $updateMode = false;
 
     public function render()
@@ -19,7 +26,7 @@ class Tokens extends Component
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.tokens.view', [
             'tokens' => Token::latest()
-						->orWhere('token_typeform', 'LIKE', $keyWord)
+						->orWhere('typeform_token', 'LIKE', $keyWord)
 						->paginate(10),
         ]);
     }
@@ -32,22 +39,18 @@ class Tokens extends Component
 	
     private function resetInput()
     {		
-		$this->token_typeform = null;
+		$this->typeform_token = null;
     }
 
     public function store()
     {
-        $this->validate([
-		'token_typeform' => 'required',
-        ]);
+        $this->validate($this->validationArray);
 
-        Token::create([ 
-			'token_typeform' => $this-> token_typeform
-        ]);
+        Token::create($this->data());
         
         $this->resetInput();
 		$this->emit('closeModal');
-		session()->flash('message', 'Token Successfully created.');
+		session()->flash('message', 'Token creado correctamente.');
     }
 
     public function edit($id)
@@ -55,26 +58,22 @@ class Tokens extends Component
         $record = Token::findOrFail($id);
 
         $this->selected_id = $id; 
-		$this->token_typeform = $record-> token_typeform;
+		$this->typeform_token = $record-> typeform_token;
 		
         $this->updateMode = true;
     }
 
     public function update()
     {
-        $this->validate([
-		'token_typeform' => 'required',
-        ]);
+        $this->validate($this->validationArray);
 
         if ($this->selected_id) {
 			$record = Token::find($this->selected_id);
-            $record->update([ 
-			'token_typeform' => $this-> token_typeform
-            ]);
+            $record->update($this->data());
 
             $this->resetInput();
             $this->updateMode = false;
-			session()->flash('message', 'Token Successfully updated.');
+			session()->flash('message', 'Token actualizado correctamente.');
         }
     }
 

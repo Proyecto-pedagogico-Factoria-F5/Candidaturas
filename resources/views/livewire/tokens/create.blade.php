@@ -11,8 +11,8 @@
            <div class="modal-body">
 				<form>
                     <div class="form-group">
-                        <label for="token_typeform"></label>
-                        <input wire:model="token_typeform" type="text" class="form-control" id="token_typeform" placeholder="Token de Typeform">@error('token_typeform') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="typeform_token"></label>
+                        <input wire:model="typeform_token" type="text" class="form-control" id="typeform_token" placeholder="Token de Typeform">@error('typeform_token') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                 </form>
             </div>

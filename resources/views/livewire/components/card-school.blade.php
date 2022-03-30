@@ -1,10 +1,10 @@
 @foreach ($schools as $school)
 
   <div class="card col-lg-4 col-md-6 col-xs-12">
-    <a href="{{ url('/promos-view') }}">
-      <img class="card-img-top" src="{{ asset('storage').'/'.$school->imagen }}" alt="{{ $school->name }}" />
+    <a href="{{ url('/promos') }}">
+      <img class="card-img-top" src="{{ asset('storage').'/'.$school->image }}" alt="{{ $school->name }}" />
       <div class="card-main">
-        <h5 class="card-title">{{ $school->provincia }}</h5>
+        <h5 class="card-title">{{ $school->province }}</h5>
       </div>
     </a>
   </div>

@@ -10,18 +10,19 @@
             </div>
             <div class="modal-body">
                 <form>
-					<input type="hidden" wire:model="selected_id">
+                    <input type="hidden" wire:model="selected_id">
+                    
                     <div class="form-group">
-                        <label for="nombre_escuela">Nombre</label>
-                        <input wire:model="nombre_escuela" type="text" class="form-control" id="nombre_escuela" placeholder="Nombre Escuela" required>@error('nombre_escuela') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="name">Nombre</label>
+                        <input wire:model="name" type="text" class="form-control" id="name" placeholder="Nombre" required>@error('name') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="provincia">Provincia</label>
-                        <input wire:model="provincia" type="text" class="form-control" id="provincia" placeholder="Provincia" required>@error('provincia') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="province">Provincia</label>
+                        <input wire:model="province" type="text" class="form-control" id="province" placeholder="Provincia" required>@error('province') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="imagen">Imagen</label>
-                        <input wire:model="imagen" type="file" class="form-control" id="imagen" name="image" placeholder="Imagen">@error('imagen') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="image">Imagen</label>
+                        <input wire:model="image" type="file" class="form-control" id="image" name="image" placeholder="Imagen" required>@error('image') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                 </form>
             </div>

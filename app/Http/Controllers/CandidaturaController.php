@@ -15,7 +15,7 @@ class CandidaturaController extends Controller
      */
     public function index()
     {
-        //
+        // return view('candidates');
     }
 
     /**

@@ -39,11 +39,10 @@
 									<th>Nacionalidad</th>
 									<th>Email</th>
 									<th>Teléfono</th>
+									<th>Fecha de registro</th>
 									<th>Cuenta de usuario</th>
 									<th>Puntos</th>
 									<th>Descripción</th>
-									<th>Fecha de registro</th>
-									<th>Promo id</th>
 									<th>Acciones</th>
 								</tr>
 							</thead>

@@ -13,12 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('promo_school', function (Blueprint $table) {
             $table->id();
-            $table->string('regional');
-            $table->string('provincial');
-            $table->string('local');
             $table->timestamps();
+
+            $table->unsignedBigInteger('promo_id');
+            $table->unsignedBigInteger('school_id');
+
+            $table->foreign('promo_id')->references('id')->on('promos')->cascadeOnDelete();
+            $table->foreign('school_id')->references('id')->on('schools')->cascadeOnDelete();
         });
     }
 
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admin');
+        Schema::dropIfExists('promo_school');
     }
 };

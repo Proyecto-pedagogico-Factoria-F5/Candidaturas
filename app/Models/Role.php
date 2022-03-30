@@ -14,15 +14,12 @@ class Role extends Model
     protected $table = 'roles';
 
     protected $fillable = [
-        'superadmin',
-        'regional',
-        'provincial',
-        'local'
+        'name'
     ];
 
-    public function user()
+	public function profile()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(Profile::class);
     }
 
 }

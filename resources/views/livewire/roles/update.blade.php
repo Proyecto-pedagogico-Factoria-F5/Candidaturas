@@ -13,23 +13,9 @@
 					<input type="hidden" wire:model="selected_id">
                     
                     <div class="form-group">
-                        <label for="superadmin"></label>
-                        <input wire:model="superadmin" type="text" class="form-control" id="superadmin" placeholder="Superadmin">@error('superadmin') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="name"></label>
+                        <input wire:model="name" type="text" class="form-control" id="name" placeholder="Rol">@error('name') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="regional"></label>
-                        <input wire:model="regional" type="text" class="form-control" id="regional" placeholder="Regional">@error('regional') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="provincial"></label>
-                        <input wire:model="provincial" type="text" class="form-control" id="provincial" placeholder="Provincial">@error('provincial') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="local"></label>
-                        <input wire:model="local" type="text" class="form-control" id="local" placeholder="Local">@error('local') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-                  
-
                 </form>
             </div>
             <div class="modal-footer">

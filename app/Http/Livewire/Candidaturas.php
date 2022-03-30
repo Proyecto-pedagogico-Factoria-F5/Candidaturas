@@ -11,25 +11,54 @@ class Candidaturas extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $nombre, $apellidos, $email, $teléfono, $cuenta_usuario, $puntos, $descripción, $fecha_de_registro, $fecha_de_nacimiento, $nacionalidad, $promo_id;
+	public $selected_id, $keyWord, $name, $surnames, $birth_date, $nationality, $email, $phone, $register_date, $user_account, $points, $description, $selected;
+    public $validationArray = [
+        'promo_id' => 'required',
+        'name' => 'required',
+        'surnames' => 'required',
+        'birth_date' => 'required',
+        'nationality' => 'required',
+        'email' => 'required',
+        'phone' => 'required',
+        'register_date' => 'required',
+        'user_account' => 'required',
+        'points' => 'required',
+        'description' => 'required',
+        'selected' => 'required'
+    ];
+    public function data () {
+        return [
+            'promo_id' => $this->promo_id,
+            'name' => $this->name,
+            'surnames' => $this->surnames,
+            'birth_date' => $this->birth_date,
+            'nationality' => $this->natiomality,
+            'email' => $this->email,
+            'phone' => $this->phone,
+            'register_date' => $this->register_date,
+            'user_account' => $this->user_account,
+            'points' => $this->points,
+            'description' => $this->description,
+            'selected' => $this->selected
+    ];}
     public $updateMode = false;
 
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.candidaturas.view', [
-            'candidaturas' => Candidatura::latest()
-						->orWhere('nombre', 'LIKE', $keyWord)
-						->orWhere('apellidos', 'LIKE', $keyWord)
+            'candidaturas' => Candidatura::oldest()
+						->orWhere('name', 'LIKE', $keyWord)
+						->orWhere('surnames', 'LIKE', $keyWord)
+                        ->orWhere('birth_date', 'LIKE', $keyWord)
+                        ->orWhere('nationality', 'LIKE', $keyWord)
 						->orWhere('email', 'LIKE', $keyWord)
-						->orWhere('teléfono', 'LIKE', $keyWord)
-						->orWhere('cuenta_usuario', 'LIKE', $keyWord)
-						->orWhere('puntos', 'LIKE', $keyWord)
-						->orWhere('descripción', 'LIKE', $keyWord)
-						->orWhere('fecha_de_registro', 'LIKE', $keyWord)
-						->orWhere('fecha_de_nacimiento', 'LIKE', $keyWord)
-						->orWhere('nacionalidad', 'LIKE', $keyWord)
-						->orWhere('promo_id', 'LIKE', $keyWord)
+						->orWhere('phone', 'LIKE', $keyWord)
+                        ->orWhere('register_date', 'LIKE', $keyWord)
+                        ->orWhere('user_account', 'LIKE', $keyWord)
+                        ->orWhere('points', 'LIKE', $keyWord)
+                        ->orWhere('description', 'LIKE', $keyWord)
+                        ->orWhere('selected', 'LIKE', $keyWord)
 						->paginate(10),
         ]);
     }
@@ -42,52 +71,28 @@ class Candidaturas extends Component
 	
     private function resetInput()
     {		
-		$this->nombre = null;
-		$this->apellidos = null;
-		$this->email = null;
-		$this->teléfono = null;
-		$this->cuenta_usuario = null;
-		$this->puntos = null;
-		$this->descripción = null;
-		$this->fecha_de_registro = null;
-		$this->fecha_de_nacimiento = null;
-		$this->nacionalidad = null;
-		$this->promo_id = null;
+        $this->name = null;
+        $this->surnames = null;
+        $this->birth_date = null;
+        $this->nationality = null;
+        $this->email = null;
+        $this->phone = null;
+        $this->register_date = null;
+        $this->user_account = null;
+        $this->points = null;
+        $this->description = null;
+        $this->selected = null;
     }
 
     public function store()
     {
-        $this->validate([
-		'nombre' => 'required',
-		'apellidos' => 'required',
-		'email' => 'required',
-		'teléfono' => 'required',
-		'cuenta_usuario' => 'required',
-		'puntos' => 'required',
-		'descripción' => 'required',
-		'fecha_de_registro' => 'required',
-		'fecha_de_nacimiento' => 'required',
-		'nacionalidad' => 'required',
-		'promo_id' => 'required',
-        ]);
+        $this->validate($this->validationArray);
 
-        Candidatura::create([ 
-			'nombre' => $this-> nombre,
-			'apellidos' => $this-> apellidos,
-			'email' => $this-> email,
-			'teléfono' => $this-> teléfono,
-			'cuenta_usuario' => $this-> cuenta_usuario,
-			'puntos' => $this-> puntos,
-			'descripción' => $this-> descripción,
-			'fecha_de_registro' => $this-> fecha_de_registro,
-			'fecha_de_nacimiento' => $this-> fecha_de_nacimiento,
-			'nacionalidad' => $this-> nacionalidad,
-			'promo_id' => $this-> promo_id
-        ]);
+        Candidatura::create($this->data());
         
         $this->resetInput();
 		$this->emit('closeModal');
-		session()->flash('message', 'Candidatura Successfully created.');
+		session()->flash('message', 'Candidatura creada correctamente.');
     }
 
     public function edit($id)
@@ -95,6 +100,7 @@ class Candidaturas extends Component
         $record = Candidatura::findOrFail($id);
 
         $this->selected_id = $id; 
+        
 		$this->nombre = $record-> nombre;
 		$this->apellidos = $record-> apellidos;
 		$this->email = $record-> email;
@@ -105,46 +111,21 @@ class Candidaturas extends Component
 		$this->fecha_de_registro = $record-> fecha_de_registro;
 		$this->fecha_de_nacimiento = $record-> fecha_de_nacimiento;
 		$this->nacionalidad = $record-> nacionalidad;
-		$this->promo_id = $record-> promo_id;
 
         $this->updateMode = true;
     }
 
     public function update()
     {
-        $this->validate([
-		'nombre' => 'required',
-		'apellidos' => 'required',
-		'email' => 'required',
-		'teléfono' => 'required',
-		'cuenta_usuario' => 'required',
-		'puntos' => 'required',
-		'descripción' => 'required',
-		'fecha_de_registro' => 'required',
-		'fecha_de_nacimiento' => 'required',
-		'nacionalidad' => 'required',
-		'promo_id' => 'required',
-        ]);
+        $this->validate($this->validationArray);
 
         if ($this->selected_id) {
 			$record = Candidatura::find($this->selected_id);
-            $record->update([ 
-			'nombre' => $this-> nombre,
-			'apellidos' => $this-> apellidos,
-			'email' => $this-> email,
-			'teléfono' => $this-> teléfono,
-			'cuenta_usuario' => $this-> cuenta_usuario,
-			'puntos' => $this-> puntos,
-			'descripción' => $this-> descripción,
-			'fecha_de_registro' => $this-> fecha_de_registro,
-			'fecha_de_nacimiento' => $this-> fecha_de_nacimiento,
-			'nacionalidad' => $this-> nacionalidad,
-			'promo_id' => $this-> promo_id
-            ]);
+            $record->update($this->data());
 
             $this->resetInput();
             $this->updateMode = false;
-			session()->flash('message', 'Candidatura Successfully updated.');
+			session()->flash('message', 'Candidatura actualizada correctamente.');
         }
     }
 

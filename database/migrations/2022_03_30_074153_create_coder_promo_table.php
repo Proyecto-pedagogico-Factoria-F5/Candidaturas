@@ -13,12 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tokens', function (Blueprint $table) {
+        Schema::create('coder_promo', function (Blueprint $table) {
             $table->id();
-
-            $table->string('typeform_token');
-            
             $table->timestamps();
+
+            $table->unsignedBigInteger('coder_id');
+            $table->unsignedBigInteger('promo_id');
+
+            $table->foreign('coder_id')->references('id')->on('coders')->cascadeOnDelete();
+            $table->foreign('promo_id')->references('id')->on('promos')->cascadeOnDelete();
         });
     }
 
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tokens');
+        Schema::dropIfExists('coder_promo');
     }
 };
