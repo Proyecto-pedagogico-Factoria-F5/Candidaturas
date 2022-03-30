@@ -13,7 +13,6 @@ class PromoFactory extends Factory
     public function definition()
     {
         return [
-			'school_id' => $this->faker->name,
 			'name' => $this->faker->name,
 			'ubication' => $this->faker->name,
 			'start_date' => $this->faker->name,

@@ -11,7 +11,12 @@ class Coders extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-	public $selected_id, $keyWord, $promo_id, $name, $surnames, $birth_date, $nationality, $email, $phone, $register_date, $user_account, $points, $github;
+	public $selected_id, $keyWord, $name, $surnames, $birth_date, $nationality, $email, $phone, $register_date, $user_account, $points, $github;
+    public $validationArray = [
+    ];
+    public function data () {
+        return [
+    ];}
     public $updateMode = false;
 
     public function render()
@@ -19,7 +24,6 @@ class Coders extends Component
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.coders.view', [
             'coders' => Coder::latest()
-						->orWhere('promo_id', 'LIKE', $keyWord)
 						->orWhere('name', 'LIKE', $keyWord)
 						->orWhere('surnames', 'LIKE', $keyWord)
 						->orWhere('birth_date', 'LIKE', $keyWord)
@@ -42,7 +46,6 @@ class Coders extends Component
 	
     private function resetInput()
     {		
-		$this->promo_id = null;
         $this->name = null;
         $this->surnames = null;
         $this->birth_date = null;
@@ -58,7 +61,6 @@ class Coders extends Component
     public function store()
     {
         $this->validate([
-			'promo_id' => 'required',
             'name' => 'required',
             'surnames' => 'required',
             'birth_date' => 'required',
@@ -72,7 +74,6 @@ class Coders extends Component
         ]);
 
         Coder::create([ 
-			'promo_id' => $this->promo_id,
             'name' => $this->name,
             'surnames' => $this->surnames,
             'birth_date' => $this->birth_date,
@@ -95,7 +96,7 @@ class Coders extends Component
         $record = Coder::findOrFail($id);
 
         $this->selected_id = $id; 
-		$this->promo_id = $record->promo_id;
+        
         $this->name = $record->name;
         $this->surnames = $record->surnames;
         $this->birth_date = $record->birth_date;
@@ -113,7 +114,6 @@ class Coders extends Component
     public function update()
     {
         $this->validate([
-			'promo_id' => 'required',
             'name' => 'required',
             'surnames' => 'required',
             'birth_date' => 'required',
@@ -129,7 +129,6 @@ class Coders extends Component
         if ($this->selected_id) {
 			$record = Coder::find($this->selected_id);
             $record->update([ 
-				'promo_id' => $this->promo_id,
 				'name' => $this->name,
 				'surnames' => $this->surnames,
 				'birth_date' => $this->birth_date,

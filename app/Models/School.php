@@ -21,6 +21,6 @@ class School extends Model
 	
     public function promo()
     {
-        return $this->hasMany(Promo::class);
+        return $this->belongsToMany(Promo::class);
     }
 }

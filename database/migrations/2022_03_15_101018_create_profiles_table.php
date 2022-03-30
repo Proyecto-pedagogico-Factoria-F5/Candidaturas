@@ -16,9 +16,6 @@ return new class extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
 
-            $table->string('school_id');
-            $table->string('promo_id');
-            $table->string('role_id');
             $table->string('name');
             $table->string('surnames');
             $table->string('email')->unique();

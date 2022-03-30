@@ -14,7 +14,6 @@ class Coder extends Model
     protected $table = 'coders';
 
     protected $fillable = [
-        'promo_id',
         'name',
         'surnames',
         'birth_date',
@@ -26,4 +25,9 @@ class Coder extends Model
         'points',
         'github'
     ];
+
+    public function promo()
+    {
+        return $this->belongsToMany(Promo::class);
+    }
 }

@@ -14,9 +14,8 @@ class Promos extends Component
 	use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
-	public $selected_id, $keyWord, $school_id, $name, $ubication, $start_date, $duration, $url, $image, $code; 
+	public $selected_id, $keyWord, $name, $ubication, $start_date, $duration, $url, $image, $code; 
 	public $validationArray = [
-        'school_id' => 'required|not_in:0',
         'name' => 'required',
         'ubication' => 'required',
         'start_date' => 'required',
@@ -25,6 +24,16 @@ class Promos extends Component
         'url' => 'required',
         'code' => 'required'
     ];
+    public function data () {
+        return [
+            'name' => $this->name,
+            'ubication' => $this->ubication,
+            'start_date' => $this->start_date,
+            'duration' => $this->duration,
+            'image' => $this->image->store('uploads', 'public'),
+            'url' => $this->url,
+            'code' => $this->code 
+    ];}
     public $updateMode = false;
 
     public function render()
@@ -32,7 +41,6 @@ class Promos extends Component
 		$keyWord = '%'.$this->keyWord .'%';    
 		return view('livewire.promos.view', [
             'promos' => Promo::with('school')
-                        ->orWhere('school_id', 'LIKE', $keyWord)
                         ->orWhere('name', 'LIKE', $keyWord)
                         ->orWhere('ubication', 'LIKE', $keyWord)
                         ->orWhere('start_date', 'LIKE', $keyWord)
@@ -67,7 +75,6 @@ class Promos extends Component
 	
     private function resetInput()
     {		
-		$this->school_id = null;
         $this->name = null;	
         $this->ubication = null;
         $this->start_date = null;
@@ -81,16 +88,7 @@ class Promos extends Component
     {
         $this->validate($this->validationArray);
 
-        Promo::create([ 
-			'school_id' => $this->school_id,
-            'name' => $this->name,
-            'ubication' => $this->ubication,
-            'start_date' => $this->start_date,
-            'duration' => $this->duration,
-            'image' => $this->image->store('uploads', 'public'),
-            'url' => $this->url,
-            'code' => $this->code
-        ]);
+        Promo::create($this->data());
         
         $this->resetInput();
 		$this->emit('closeModal');
@@ -101,8 +99,8 @@ class Promos extends Component
     {
         $record = Promo::findOrFail($id);
 
-        $this->selected_id = $id; 
-        $this->school_id = $record->school_id;
+        $this->selected_id = $id;
+
         $this->name = $record->name;
         $this->ubication = $record->ubication;
         $this->start_date = $record->start_date;
@@ -120,16 +118,7 @@ class Promos extends Component
 
         if ($this->selected_id) {
 			$record = Promo::find($this->selected_id);
-            $record->update([ 
-				'school_id' => $this->school_id,
-                'name' => $this->name,
-                'ubication' => $this->ubication,
-                'start_date' => $this->start_date,
-                'duration' => $this->duration,
-                'image' => $this->image->store('uploads', 'public'),
-                'url' => $this->url,
-                'code' => $this->code 
-            ]);
+            $record->update($this->data());
 
             $this->resetInput();
             $this->updateMode = false;

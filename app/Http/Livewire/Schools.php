@@ -15,6 +15,14 @@ class Schools extends Component
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $name, $province, $image;
+    public $validationArray = [
+    ];
+    public function data () {
+        return [
+        'name' => $this-> name,
+        'province' => $this-> province,
+        'image' => $this->image->store('uploads', 'public')
+    ];}
     public $updateMode = false;
 
     public function render()
@@ -50,11 +58,7 @@ class Schools extends Component
             'image' => 'image|max:1024', // 1MB Max
         ]);
 
-        School::create([ 
-			'name' => $this-> name,
-			'province' => $this-> province,
-			'image' => $this->image->store('uploads', 'public')
-        ]);
+        School::create($this->data());
         
         $this->resetInput();
 		$this->emit('closeModal');
@@ -83,11 +87,7 @@ class Schools extends Component
 
         if ($this->selected_id) {
 			$record = School::find($this->selected_id);
-            $record->update([ 
-                'name' => $this-> name,
-                'province' => $this-> province,
-                'image' => $this->image->store('uploads', 'public')
-            ]);
+            $record->update($this->data());
 
             $this->resetInput();
             $this->updateMode = false;

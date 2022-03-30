@@ -14,7 +14,6 @@ class Promo extends Model
     protected $table = 'promos';
 
     protected $fillable = [
-        'school_id',
         'name',
         'ubication',
         'start_date',
@@ -26,6 +25,11 @@ class Promo extends Model
 
     public function school()
     {
-        return $this->belongsTo(School::class);
+        return $this->belongsToMany(School::class)->withPivot('');
+    }
+
+    public function coder()
+    {
+        return $this->belongsToMany(Coder::class);
     }
 }

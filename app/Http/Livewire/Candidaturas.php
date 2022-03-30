@@ -12,6 +12,11 @@ class Candidaturas extends Component
 
 	protected $paginationTheme = 'bootstrap';
 	public $selected_id, $keyWord, $name, $surnames, $birth_date, $nationality, $email, $phone, $register_date, $user_account, $points, $description, $selected;
+    public $validationArray = [
+    ];
+    public function data () {
+        return [
+    ];}
     public $updateMode = false;
 
     public function render()
@@ -19,7 +24,6 @@ class Candidaturas extends Component
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.candidaturas.view', [
             'candidaturas' => Candidatura::oldest()
-						->orWhere('promo_id', 'LIKE', $keyWord)
 						->orWhere('name', 'LIKE', $keyWord)
 						->orWhere('surnames', 'LIKE', $keyWord)
                         ->orWhere('birth_date', 'LIKE', $keyWord)
@@ -43,7 +47,6 @@ class Candidaturas extends Component
 	
     private function resetInput()
     {		
-		$this->promo_id = null;
         $this->name = null;
         $this->surnames = null;
         $this->birth_date = null;
@@ -60,7 +63,6 @@ class Candidaturas extends Component
     public function store()
     {
         $this->validate([
-			'promo_id' => 'required',
             'name' => 'required',
             'surnames' => 'required',
             'birth_date' => 'required',
@@ -75,7 +77,6 @@ class Candidaturas extends Component
         ]);
 
         Candidatura::create([ 
-			'promo_id' => $this->promo_id,
             'name' => $this->name,
             'surnames' => $this->surnames,
             'birth_date' => $this->birth_date,
@@ -99,6 +100,7 @@ class Candidaturas extends Component
         $record = Candidatura::findOrFail($id);
 
         $this->selected_id = $id; 
+        
 		$this->nombre = $record-> nombre;
 		$this->apellidos = $record-> apellidos;
 		$this->email = $record-> email;
@@ -109,7 +111,6 @@ class Candidaturas extends Component
 		$this->fecha_de_registro = $record-> fecha_de_registro;
 		$this->fecha_de_nacimiento = $record-> fecha_de_nacimiento;
 		$this->nacionalidad = $record-> nacionalidad;
-		$this->promo_id = $record-> promo_id;
 
         $this->updateMode = true;
     }
@@ -117,7 +118,6 @@ class Candidaturas extends Component
     public function update()
     {
         $this->validate([
-			'promo_id' => 'required',
             'name' => 'required',
             'surnames' => 'required',
             'birth_date' => 'required',
@@ -134,7 +134,6 @@ class Candidaturas extends Component
         if ($this->selected_id) {
 			$record = Candidatura::find($this->selected_id);
             $record->update([ 
-				'promo_id' => $this->promo_id,
 				'name' => $this->name,
 				'surnames' => $this->surnames,
 				'birth_date' => $this->birth_date,

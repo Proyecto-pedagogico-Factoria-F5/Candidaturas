@@ -13,18 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('promos', function (Blueprint $table) {
+        Schema::create('coder_promo', function (Blueprint $table) {
             $table->id();
-            
-            $table->string('name');
-            $table->string('ubication');
-            $table->date('start_date');
-            $table->integer('duration');
-            $table->string('image');
-            $table->string('url');
-            $table->string('code');
-
             $table->timestamps();
+
+            $table->unsignedBigInteger('coder_id');
+            $table->unsignedBigInteger('promo_id');
+
+            $table->foreign('coder_id')->references('id')->on('coders')->cascadeOnDelete();
+            $table->foreign('promo_id')->references('id')->on('promos')->cascadeOnDelete();
         });
     }
 
@@ -35,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('promo');
+        Schema::dropIfExists('coder_promo');
     }
 };

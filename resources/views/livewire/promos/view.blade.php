@@ -48,7 +48,7 @@
 								@foreach($promos as $row)
 								<tr>
 									<td>{{ $row->id }}</td> 
-									<td>{{ $row->school->name }}</td> 
+									<td>{{ $row->pivot->school->name }}</td> 
 									<td>{{ $row->name }}</td> 
 									<td>{{ $row->ubication }}</td> 
 									<td>{{ $row->start_date }}</td> 

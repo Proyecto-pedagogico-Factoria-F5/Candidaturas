@@ -14,14 +14,11 @@ class Profile extends Model
     protected $table = 'profiles';
 
     protected $fillable = [
-        'school_id',
-        'promo_id',
         'name',
         'surnames',
         'email',
         'password',
         'job',
-        'role_id',
         'github',
         'birth_date',
         'image'
@@ -39,12 +36,12 @@ class Profile extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsToMany(User::class);
 
     }
 
     public function role()
     {
-        return $this->hasOne(Role::class);
+        return $this->belongsToMany(Role::class);
     }
 }

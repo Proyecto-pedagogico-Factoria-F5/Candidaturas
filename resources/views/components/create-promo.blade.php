@@ -1,7 +1,7 @@
 <form wire:submit.prevent="save">
     <div class="form-group">
         <label for="school_id">Escuela</label>
-        <select wire:model="school_id" class="form-control form-select" name="school_id" required>
+        <select class="form-control form-select" name="school_id" required>
             <option value="0">Escoger escuela...</option>
             @foreach($schools as $school)
             <option value="{{$school->id}}">{{$school->name}}</option>

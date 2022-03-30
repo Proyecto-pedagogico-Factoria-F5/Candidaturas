@@ -16,11 +16,8 @@ class Profiles extends Component
 	use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $school_id, $promo_id, $role_id, $name, $surnames, $email, $password, $job, $github, $birth_date, $image;
+    public $selected_id, $keyWord, $name, $surnames, $email, $password, $job, $github, $birth_date, $image;
     public $validationArray = [
-        'school_id' => 'required',
-		'promo_id' => 'required',
-		'role_id' => 'required',
 		'name' => 'required',
 		'surnames' => 'required',
 		'email' => 'required',
@@ -37,9 +34,6 @@ class Profiles extends Component
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.profiles.view', [
             'profiles' => Profile::latest()
-						->orWhere('school_id', 'LIKE', $keyWord)
-						->orWhere('promo_id', 'LIKE', $keyWord)
-						->orWhere('role_id', 'LIKE', $keyWord)
 						->orWhere('name', 'LIKE', $keyWord)
 						->orWhere('surnames', 'LIKE', $keyWord)
 						->orWhere('email', 'LIKE', $keyWord)
@@ -63,9 +57,6 @@ class Profiles extends Component
 	
     private function resetInput()
     {		
-		$this->school_id = null;
-		$this->promo_id = null;
-		$this->role_id = null;
 		$this->name = null;
 		$this->surnames = null;
 		$this->email = null;
@@ -81,9 +72,6 @@ class Profiles extends Component
         $this->validate($this->validationArray);
 
         Profile::create([ 
-			'school_id' => $this->school_id,
-			'promo_id' => $this->promo_id,
-			'role_id' => $this->role_id,
 			'name' => $this->name,
 			'surnames' => $this->surnames,
 			'email' => $this->email,
@@ -103,10 +91,8 @@ class Profiles extends Component
     {
         $record = Profile::findOrFail($id);
 
-        $this->selected_id = $id; 
-		$this->school_id = $record->school_id;
-		$this->promo_id = $record->promo_id;
-		$this->role_id = $record->role_id;
+		$this->selected_id = $id; 
+		
 		$this->name = $record->name;
 		$this->surnames = $record->surnames;
 		$this->email = $record->email;
@@ -126,9 +112,6 @@ class Profiles extends Component
         if ($this->selected_id) {
 			$record = Profile::find($this->selected_id);
             $record->update([ 
-				'school_id' => $this->school_id,
-				'promo_id' => $this->promo_id,
-				'role_id' => $this->role_id,
 				'name' => $this->name,
 				'surnames' => $this->surnames,
 				'email' => $this->email,

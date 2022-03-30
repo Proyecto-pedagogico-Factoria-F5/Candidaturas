@@ -14,7 +14,6 @@ class Candidatura extends Model
     protected $table = 'candidates';
 
     protected $fillable = [
-        'promo_id',
         'name',
         'surnames',
         'birth_date',
