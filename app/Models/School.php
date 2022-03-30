@@ -23,4 +23,9 @@ class School extends Model
     {
         return $this->belongsToMany(Promo::class);
     }
+
+    static function getSchool($id)
+    {
+        return School::findOrFail($id);
+    }
 }

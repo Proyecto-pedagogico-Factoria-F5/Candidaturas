@@ -26,7 +26,6 @@ class Promos extends Component
     ];
     public function data () {
         return [
-            'school_id' => $this->school_id,
             'name' => $this->name,
             'ubication' => $this->ubication,
             'start_date' => $this->start_date,
@@ -36,6 +35,12 @@ class Promos extends Component
             'code' => $this->code
     ];}
     public $updateMode = false;
+
+    public function dataSchool() {
+        return [
+            'school_id' => $this->school_id,
+        ];
+    }
 
     public function render()
     {
@@ -89,8 +94,9 @@ class Promos extends Component
     {
         $this->validate($this->validationArray);
 
-        Promo::create($this->data());
-        
+        $dataStore = Promo::create($this->data());     
+        Promo::addToPivotTable($dataStore, $this->dataSchool());
+       
         $this->resetInput();
 		$this->emit('closeModal');
 		session()->flash('message', 'Promo creada correctamente.');
