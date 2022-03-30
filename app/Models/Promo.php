@@ -25,11 +25,18 @@ class Promo extends Model
 
     public function school()
     {
-        return $this->belongsToMany(School::class)->withPivot('');
+        return $this->belongsToMany(School::class);
     }
 
     public function coder()
     {
         return $this->belongsToMany(Coder::class);
+    }
+
+    static function addToPivotTable($promo, $school_id)
+    {
+        // dd($promo);
+        // dd($school_id);
+        $promo->school()->attach(School::getSchool($school_id));
     }
 }

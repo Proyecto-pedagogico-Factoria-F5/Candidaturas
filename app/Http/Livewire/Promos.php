@@ -14,7 +14,7 @@ class Promos extends Component
 	use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
-	public $selected_id, $keyWord, $name, $ubication, $start_date, $duration, $url, $image, $code; 
+	public $selected_id, $keyWord, $school_id, $name, $ubication, $start_date, $duration, $url, $image, $code; 
 	public $validationArray = [
         'name' => 'required',
         'ubication' => 'required',
@@ -24,7 +24,7 @@ class Promos extends Component
         'url' => 'required',
         'code' => 'required'
     ];
-    public function data () {
+    public function data() {
         return [
             'name' => $this->name,
             'ubication' => $this->ubication,
@@ -34,6 +34,11 @@ class Promos extends Component
             'url' => $this->url,
             'code' => $this->code 
     ];}
+    public function dataSchool() {
+        return [
+            'school_id' => $this->school_id,
+        ];
+    }
     public $updateMode = false;
 
     public function render()
@@ -87,6 +92,8 @@ class Promos extends Component
     public function store()
     {
         $this->validate($this->validationArray);
+
+        Promo::addToPivotTable($this->data(), $this->dataSchool());
 
         Promo::create($this->data());
         

@@ -102,4 +102,9 @@ class Schools extends Component
             $record->delete();
         }
     }
+
+    public function getSchool($id)
+    {
+        return School::findOrFail($id);
+    }
 }
