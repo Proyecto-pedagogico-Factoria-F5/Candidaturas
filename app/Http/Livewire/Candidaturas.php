@@ -13,9 +13,33 @@ class Candidaturas extends Component
 	protected $paginationTheme = 'bootstrap';
 	public $selected_id, $keyWord, $name, $surnames, $birth_date, $nationality, $email, $phone, $register_date, $user_account, $points, $description, $selected;
     public $validationArray = [
+        'promo_id' => 'required',
+        'name' => 'required',
+        'surnames' => 'required',
+        'birth_date' => 'required',
+        'nationality' => 'required',
+        'email' => 'required',
+        'phone' => 'required',
+        'register_date' => 'required',
+        'user_account' => 'required',
+        'points' => 'required',
+        'description' => 'required',
+        'selected' => 'required'
     ];
     public function data () {
         return [
+            'promo_id' => $this->promo_id,
+            'name' => $this->name,
+            'surnames' => $this->surnames,
+            'birth_date' => $this->birth_date,
+            'nationality' => $this->natiomality,
+            'email' => $this->email,
+            'phone' => $this->phone,
+            'register_date' => $this->register_date,
+            'user_account' => $this->user_account,
+            'points' => $this->points,
+            'description' => $this->description,
+            'selected' => $this->selected
     ];}
     public $updateMode = false;
 
@@ -62,33 +86,9 @@ class Candidaturas extends Component
 
     public function store()
     {
-        $this->validate([
-            'name' => 'required',
-            'surnames' => 'required',
-            'birth_date' => 'required',
-            'nationality' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'register_date' => 'required',
-            'user_account' => 'required',
-            'points' => 'required',
-            'description' => 'required',
-            'selected' => 'required'
-        ]);
+        $this->validate($this->validationArray);
 
-        Candidatura::create([ 
-            'name' => $this->name,
-            'surnames' => $this->surnames,
-            'birth_date' => $this->birth_date,
-            'nationality' => $this->natiomality,
-            'email' => $this->email,
-            'phone' => $this->phone,
-            'register_date' => $this->register_date,
-            'user_account' => $this->user_account,
-            'points' => $this->points,
-            'description' => $this->description,
-            'selected' => $this->selected
-        ]);
+        Candidatura::create($this->data());
         
         $this->resetInput();
 		$this->emit('closeModal');
@@ -117,35 +117,11 @@ class Candidaturas extends Component
 
     public function update()
     {
-        $this->validate([
-            'name' => 'required',
-            'surnames' => 'required',
-            'birth_date' => 'required',
-            'nationality' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'register_date' => 'required',
-            'user_account' => 'required',
-            'points' => 'required',
-            'description' => 'required',
-            'selected' => 'required'
-        ]);
+        $this->validate($this->validationArray);
 
         if ($this->selected_id) {
 			$record = Candidatura::find($this->selected_id);
-            $record->update([ 
-				'name' => $this->name,
-				'surnames' => $this->surnames,
-				'birth_date' => $this->birth_date,
-				'nationality' => $this->natiomality,
-				'email' => $this->email,
-				'phone' => $this->phone,
-				'register_date' => $this->register_date,
-				'user_account' => $this->user_account,
-				'points' => $this->points,
-				'description' => $this->description,
-				'selected' => $this->selected
-            ]);
+            $record->update($this->data());
 
             $this->resetInput();
             $this->updateMode = false;

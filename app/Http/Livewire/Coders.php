@@ -11,11 +11,33 @@ class Coders extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-	public $selected_id, $keyWord, $name, $surnames, $birth_date, $nationality, $email, $phone, $register_date, $user_account, $points, $github;
+	public $selected_id, $keyWord, $promo_id, $name, $surnames, $birth_date, $nationality, $email, $phone, $register_date, $user_account, $points, $github;
     public $validationArray = [
+        'promo_id' => 'required',
+        'name' => 'required',
+        'surnames' => 'required',
+        'birth_date' => 'required',
+        'nationality' => 'required',
+        'email' => 'required',
+        'phone' => 'required',
+        'register_date' => 'required',
+        'user_account' => 'required',
+        'points' => 'required',
+        'github' => 'required',
     ];
     public function data () {
         return [
+            'promo_id' => $this->promo_id,
+            'name' => $this->name,
+            'surnames' => $this->surnames,
+            'birth_date' => $this->birth_date,
+            'nationality' => $this->natiomality,
+            'email' => $this->email,
+            'phone' => $this->phone,
+            'register_date' => $this->register_date,
+            'user_account' => $this->user_account,
+            'points' => $this->points,
+			'github' => $this-> github,
     ];}
     public $updateMode = false;
 
@@ -60,31 +82,9 @@ class Coders extends Component
 
     public function store()
     {
-        $this->validate([
-            'name' => 'required',
-            'surnames' => 'required',
-            'birth_date' => 'required',
-            'nationality' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'register_date' => 'required',
-            'user_account' => 'required',
-            'points' => 'required',
-			'github' => 'required',
-        ]);
+        $this->validate($this->validationArray);
 
-        Coder::create([ 
-            'name' => $this->name,
-            'surnames' => $this->surnames,
-            'birth_date' => $this->birth_date,
-            'nationality' => $this->natiomality,
-            'email' => $this->email,
-            'phone' => $this->phone,
-            'register_date' => $this->register_date,
-            'user_account' => $this->user_account,
-            'points' => $this->points,
-			'github' => $this-> github,
-        ]);
+        Coder::create($this->data());
         
         $this->resetInput();
 		$this->emit('closeModal');
@@ -113,33 +113,11 @@ class Coders extends Component
 
     public function update()
     {
-        $this->validate([
-            'name' => 'required',
-            'surnames' => 'required',
-            'birth_date' => 'required',
-            'nationality' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'register_date' => 'required',
-            'user_account' => 'required',
-            'points' => 'required',
-			'github' => 'required',
-        ]);
+        $this->validate($this->validationArray);
 
         if ($this->selected_id) {
 			$record = Coder::find($this->selected_id);
-            $record->update([ 
-				'name' => $this->name,
-				'surnames' => $this->surnames,
-				'birth_date' => $this->birth_date,
-				'nationality' => $this->natiomality,
-				'email' => $this->email,
-				'phone' => $this->phone,
-				'register_date' => $this->register_date,
-				'user_account' => $this->user_account,
-				'points' => $this->points,
-				'github' => $this-> github,
-            ]);
+            $record->update($this->data());
 
             $this->resetInput();
             $this->updateMode = false;

@@ -12,6 +12,13 @@ class Tokens extends Component
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $typeform_token;
+    public $validationArray = [
+        'typeform_token' => 'required',
+    ];
+    public function data () {
+        return [
+            'typeform_token' => $this-> typeform_token
+    ];}
     public $updateMode = false;
 
     public function render()
@@ -37,13 +44,9 @@ class Tokens extends Component
 
     public function store()
     {
-        $this->validate([
-		    'typeform_token' => 'required',
-        ]);
+        $this->validate($this->validationArray);
 
-        Token::create([ 
-			'typeform_token' => $this-> typeform_token
-        ]);
+        Token::create($this->data());
         
         $this->resetInput();
 		$this->emit('closeModal');
@@ -62,15 +65,11 @@ class Tokens extends Component
 
     public function update()
     {
-        $this->validate([
-		    'typeform_token' => 'required',
-        ]);
+        $this->validate($this->validationArray);
 
         if ($this->selected_id) {
 			$record = Token::find($this->selected_id);
-            $record->update([ 
-			    'typeform_token' => $this-> typeform_token
-            ]);
+            $record->update($this->data());
 
             $this->resetInput();
             $this->updateMode = false;

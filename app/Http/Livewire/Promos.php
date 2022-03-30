@@ -24,21 +24,17 @@ class Promos extends Component
         'url' => 'required',
         'code' => 'required'
     ];
-    public function data() {
+    public function data () {
         return [
+            'school_id' => $this->school_id,
             'name' => $this->name,
             'ubication' => $this->ubication,
             'start_date' => $this->start_date,
             'duration' => $this->duration,
             'image' => $this->image->store('uploads', 'public'),
             'url' => $this->url,
-            'code' => $this->code 
+            'code' => $this->code
     ];}
-    public function dataSchool() {
-        return [
-            'school_id' => $this->school_id,
-        ];
-    }
     public $updateMode = false;
 
     public function render()
@@ -93,10 +89,8 @@ class Promos extends Component
     {
         $this->validate($this->validationArray);
 
-        $dataStore = Promo::create($this->data());     
-        // $dataName = Promo::findOrFail($dataStore->id);
-        Promo::addToPivotTable($dataStore, $this->dataSchool());
-
+        Promo::create($this->data());
+        
         $this->resetInput();
 		$this->emit('closeModal');
 		session()->flash('message', 'Promo creada correctamente.');
