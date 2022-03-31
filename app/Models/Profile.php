@@ -44,4 +44,15 @@ class Profile extends Model
     {
         return $this->belongsToMany(Role::class);
     }
+
+    static function addToPivotTable($profile, $role_id)
+    {
+        // dd($profile);
+        //dd($role_id['role_id']);
+        $profile->role()->attach(Role::getRole($role_id['role_id']));
+
+    }
+
+   
+   
 }

@@ -21,5 +21,9 @@ class Role extends Model
     {
         return $this->belongsToMany(Profile::class);
     }
-
+    
+    static function getRole($id)
+    {
+        return Role::findOrFail($id);
+    }
 }

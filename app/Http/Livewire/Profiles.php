@@ -16,7 +16,7 @@ class Profiles extends Component
 	use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $surnames, $email, $password, $job, $github, $birth_date, $image;
+    public $selected_id, $keyWord, $role_id, $name, $surnames, $email, $password, $job, $github, $birth_date, $image;
     public $validationArray = [
 		'name' => 'required',
 		'surnames' => 'required',
@@ -29,9 +29,9 @@ class Profiles extends Component
     ];
 	public function data () {
 		return [
-			'school_id' => $this->school_id,
-			'promo_id' => $this->promo_id,
-			'role_id' => $this->role_id,
+			// 'school_id' => $this->school_id,
+			// 'promo_id' => $this->promo_id,
+			//'role_id' => $this->role_id,
 			'name' => $this->name,
 			'surnames' => $this->surnames,
 			'email' => $this->email,
@@ -42,6 +42,11 @@ class Profiles extends Component
 			'image' => $this->image->store('uploads', 'public'),
 	];}
 	public $updateMode = false;
+	public function dataRole() {
+        return [
+            'role_id' => $this->role_id,
+        ];
+    }
 
     public function render()
     {
@@ -85,7 +90,8 @@ class Profiles extends Component
     {
         $this->validate($this->validationArray);
 
-        Profile::create($this->data());
+       $dataStore = Profile::create($this->data());
+	   Profile::addToPivotTable($dataStore, $this->dataRole());
         
         $this->resetInput();
 		$this->emit('closeModal');
