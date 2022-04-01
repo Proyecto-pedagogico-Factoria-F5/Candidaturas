@@ -39,6 +39,11 @@
                     <div class="form-group">
                         <label for="image">Imagen</label>
                         <input wire:model="image" type="file" class="form-control" id="image" name="image" placeholder="Imagen" required>@error('image') <span class="error text-danger">{{ $message }}</span> @enderror
+                        @if ($image)
+                            <img src="{{ $image->temporaryUrl() }}">
+                        @else
+                            <img src="{{ asset('storage').'/'.$imageOld }}">
+                        @endif  
                     </div>
                     <div class="form-group">
                         <label for="code">Código</label>

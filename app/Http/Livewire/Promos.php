@@ -14,7 +14,7 @@ class Promos extends Component
 	use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
-	public $selected_id, $keyWord, $school_id, $name, $ubication, $start_date, $duration, $url, $image, $code; 
+	public $selected_id, $keyWord, $school_id, $name, $ubication, $start_date, $duration, $url, $image, $imageOld, $code; 
 	public $validationArray = [
         'name' => 'required',
         'ubication' => 'required',
@@ -24,6 +24,16 @@ class Promos extends Component
         'url' => 'required',
         'code' => 'required'
     ];
+
+    public $validationArrayWithoutImage = [
+        'name' => 'required',
+        'ubication' => 'required',
+        'start_date' => 'required',
+        'duration' => 'required',
+        'url' => 'required',
+        'code' => 'required'
+    ];
+
     public function data () {
         return [
             'name' => $this->name,
@@ -34,6 +44,18 @@ class Promos extends Component
             'url' => $this->url,
             'code' => $this->code
     ];}
+
+    public function dataUpdated ($updatedImage) {
+        return [
+            'name' => $this->name,
+            'ubication' => $this->ubication,
+            'start_date' => $this->start_date,
+            'duration' => $this->duration,
+            'image' => $updatedImage,
+            'url' => $this->url,
+            'code' => $this->code
+    ];}
+    
     public $updateMode = false;
 
     public function dataSchool() {
@@ -112,7 +134,7 @@ class Promos extends Component
         $this->ubication = $record->ubication;
         $this->start_date = $record->start_date;
         $this->duration = $record->duration;
-        $this->image = $record->image;
+        $this->imageOld = $record->image;
         $this->url = $record->url;
         $this->code = $record->code;
 		
@@ -121,11 +143,19 @@ class Promos extends Component
 
     public function update()
     {
-        $this->validate($this->validationArray);
+        $updatedImage = '';
+
+        if($this->image == null) {
+            $this->validate($this->validationArrayWithoutImage);
+            $updatedImage = $this->imageOld;
+        }else{  
+            $this->validate($this->validationArray);          
+            $updatedImage = $this->image->store('uploads', 'public');
+        }
 
         if ($this->selected_id) {
 			$record = Promo::find($this->selected_id);
-            $record->update($this->data());
+            $record->update($this->dataUpdated($updatedImage));
 
             $this->resetInput();
             $this->updateMode = false;
