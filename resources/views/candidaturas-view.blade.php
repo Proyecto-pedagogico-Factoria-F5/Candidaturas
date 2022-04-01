@@ -159,7 +159,7 @@ async function showCandidatures(){
 	var row;
 	var rowsCandidates = [];
 	var rowsData = [];
-	var names;
+	var name;
 	var surname;
 	var email;
 	var idFreeCode;
@@ -200,10 +200,10 @@ async function showCandidatures(){
 			} 					
 		}); 
 		rowsCandidates.push(row);
-		//rowsData.push({name:name, surname:surname , mail:email , freecode:idFreeCode, description:descrption  });		
+		rowsData.push({name:name, surname:surname , mail:email , freecode:idFreeCode, description:description  });		
     });
 	
-	//console.log(rowsData);
+	console.log(rowsData);
 	console.log(rowsCandidates);
 
 	$('#tbody').append(rowsCandidates);
