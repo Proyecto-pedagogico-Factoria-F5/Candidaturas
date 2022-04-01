@@ -3,12 +3,9 @@ Groupal pedagogic project for Factoría F5
 
 ## Installation
 ```
-npm install
-npm run dev
 composer install
 composer update
-composer require laravel/ui
-php artisan ui bootstrap --auth
+npm install && run dev
 ```
 
 ### By
