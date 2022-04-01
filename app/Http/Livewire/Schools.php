@@ -14,15 +14,33 @@ class Schools extends Component
     use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $province, $image;
+    public $selected_id, $keyWord, $name, $province, $image, $imageOld;
     public $validationArray = [
+        'name' => 'required',
+        'province' => 'required',
+        'image' => 'image|max:1024', // 1MB Max
     ];
+
+    public $validationArrayWithoutImage = [
+        'name' => 'required',
+        'province' => 'required',
+    ];
+
     public function data () {
         return [
         'name' => $this-> name,
         'province' => $this-> province,
         'image' => $this->image->store('uploads', 'public')
     ];}
+
+    public function dataUpdated ($updatedImage) {
+        return [
+        'name' => $this-> name,
+        'province' => $this-> province,
+        'image' => $updatedImage
+    ];}
+
+
     public $updateMode = false;
 
     public function render()
@@ -52,11 +70,7 @@ class Schools extends Component
 
     public function store()
     {
-        $this->validate([
-            'name' => 'required',
-            'province' => 'required',
-            'image' => 'image|max:1024', // 1MB Max
-        ]);
+        $this->validate($this->validationArray);
 
         School::create($this->data());
         
@@ -72,22 +86,26 @@ class Schools extends Component
         $this->selected_id = $id; 
         $this->name = $record-> name;
 		$this->province = $record-> province;
-		$this->image = $record-> image;
+		$this->imageOld = $record-> image;
 		
         $this->updateMode = true;
     }
 
     public function update()
     {
-        $this->validate([
-            'name' => 'required',
-            'province' => 'required',
-            'image' => 'image|max:1024', // 1MB Max
-        ]);
+        $updatedImage = '';
+
+        if($this->image == null) {
+            $this->validate($this->validationArrayWithoutImage);
+            $updatedImage = $this->imageOld;
+        }else{  
+            $this->validate($this->validationArray);          
+            $updatedImage = $this->image->store('uploads', 'public');
+        }
 
         if ($this->selected_id) {
 			$record = School::find($this->selected_id);
-            $record->update($this->data());
+            $record->update($this->dataUpdated($updatedImage));
 
             $this->resetInput();
             $this->updateMode = false;
