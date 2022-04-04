@@ -5,8 +5,30 @@ Groupal pedagogic project for Factoría F5
 ```
 composer install
 composer update
-npm install && run dev
+npm install && npm run dev
 ```
+## Configuration DB
+- Crear un DB MySQL con su gestor preferido(ej: phpmyadmin)
+- Crear .env clonando el archivo .env.example
+- Crear un key en el .env con el siguiente comando:
+    $ php artisan key:generate
+- Editar el archivo .env para añadir el nombre de la DB creada previamente.
+    DB_DATABASE=nombreDeLaDB
+- En Windows el puerto por defecto es: 3306. En Mac OS: 8889
+    Windows -> DB_PORT=3306 ; Mac OS -> DB_PORT=8889
+- El Password, en Windows vacio y en Mac OS: root password
+    Windows -> DB_PASSWORD= ; Mac OS -> DB_PASSWORD=root
+- Finalmente realizar una migración desde terminal para crear toda la estructura de datos en la DB
+    php artisan migrate
+
+## Ejecución
+- Tener instalado Apache y MySQL (gestores como Xampp o Mamp facilitan el proceso)
+- php artisan serve
+
+## Notas finales
+    - Es imprescindible introducir el Token de TypeForm para el correcto funcionamiento de la aplicación. Este Token se consigue desde el perfil de usuario de TypeForm
+    - Al añadir Promociones, es necesario introducir un código válido para conectar con cada formulario de TypeForm. Estos códigos aparecen en la sección de gestión de formularios de TypeForm. Cada formulario tiene su código único.
+
 
 ### By
 - Rubén Bertólez Chicote
@@ -15,7 +37,8 @@ npm install && run dev
 - Sara González Sánchez
 - Ignacio Moreno Frisón
 
-
+## Credits
+- [Moment.js MIT License](https://momentjs.com/)
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
