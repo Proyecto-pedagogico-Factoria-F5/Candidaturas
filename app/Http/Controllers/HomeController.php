@@ -27,13 +27,13 @@ class HomeController extends Controller
         return view('schools-view');
     }
 
-    // public function register()
-    // {
-    //     return view('auth.register');
-    // }
+    public function register()
+    {
+        return view('auth.register');
+    }
 
-    // public function profile()
-    // {
-    //     return view('user.profile');
-    // }
+    public function profile()
+    {
+        return view('user.profile');
+    }
 }

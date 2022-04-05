@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Route::get('/register', [HomeController::class, 'register'])->name('register');
+Route::get('/register', [HomeController::class, 'register'])->name('register');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home'); // Esta vista dependerá de los permisos, de momento la sustituye la siguiente
 

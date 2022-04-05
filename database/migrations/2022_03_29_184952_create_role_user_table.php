@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+// use Spatie\Permission\Models\Role;
+// use App\Models\User;
 
 return new class extends Migration
 {
@@ -13,15 +15,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('promo_school', function (Blueprint $table) {
+        Schema::create('role_user', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            
+            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('user_id');
 
-            $table->unsignedBigInteger('promo_id');
-            $table->unsignedBigInteger('school_id');
-
-            $table->foreign('promo_id')->references('id')->on('promos')->cascadeOnDelete();
-            $table->foreign('school_id')->references('id')->on('schools')->cascadeOnDelete();
+            $table->foreign('role_id')->references('id')->on('roles')->cascadeOnDelete();
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
         });
     }
 
@@ -32,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('promo_school');
+        Schema::dropIfExists('role_user');
     }
 };

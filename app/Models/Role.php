@@ -26,4 +26,9 @@ class Role extends Model
     {
         return Role::findOrFail($id);
     }
+
+    // public function user()
+    // {
+    //     return $this->hasMany(Role::class);
+    // }
 }
