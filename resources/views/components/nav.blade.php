@@ -35,13 +35,13 @@
                         <i class="fas fa-user-plus text-info"></i> Dar de alta
                     </a> --}}
 
-                    <a class="dropdown-item" href="{{ url('/perfiles') }}">
+                   {{--  <a class="dropdown-item" href="{{ url('/perfiles') }}">
                         <i class="fas fa-user-edit text-info"></i> Administrar perfiles
                     </a> 
                    
                     <a class="dropdown-item" href="{{ url('/roles') }}">
                         <i class="fas fa-key text-info"></i> Administrar roles
-                    </a> 
+                    </a>  --}}
                 </div>
             </li>
 

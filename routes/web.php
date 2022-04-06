@@ -35,13 +35,11 @@ Route::get('/promos', [PromoController::class, 'index'])->name('promos');
 
 Route::get('/candidaturas-view/{id}', [PromoController::class, 'show'])->name('candidaturas-view');
 
-Route::get('/perfil', [HomeController::class, 'profile'])->name('perfil');
+//Route::get('/perfil', [HomeController::class, 'profile'])->name('perfil');
 
 //Route Hooks - Do not delete//
 	Route::view('coders', 'livewire.coders.index')->middleware('auth');
 	Route::view('tokens', 'livewire.tokens.index')->middleware('auth');
-	Route::view('perfiles', 'livewire.profiles.index')->middleware('auth');
-	Route::view('roles', 'livewire.roles.index')->middleware('auth');
-	Route::view('candidaturas', 'livewire.candidaturas.index')->middleware('auth');
+	//Route::view('candidaturas', 'livewire.candidaturas.index')->middleware('auth');
 	Route::view('promos-admin', 'livewire.promos.index')->middleware('auth');
 	Route::view('escuelas-admin', 'livewire.schools.index')->middleware('auth');
