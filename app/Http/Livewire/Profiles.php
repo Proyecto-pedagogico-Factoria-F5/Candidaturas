@@ -9,6 +9,7 @@ use App\Models\Profile;
 use App\Models\School;
 use App\Models\Promo;
 use App\Models\Role;
+use App\Models\User;
 
 class Profiles extends Component
 {
@@ -16,12 +17,14 @@ class Profiles extends Component
 	use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $surnames, $email, $password, $job, $github, $birth_date, $image;
+    public $selected_id, $keyWord, $school_id, $promo_id, $role_id, $name, $surnames, $email, $password, $job, $github, $birth_date, $image;
     public $validationArray = [
-		'name' => 'required',
+		// User values
+		'name' => ['required', 'string', 'max:255'],
+		'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+		'password' => ['required', 'string', 'min:8', 'confirmed'],
+		// Profile values
 		'surnames' => 'required',
-		'email' => 'required',
-		'password' => 'required',
 		'job' => 'required',
 		'github' => 'required',
 		'birth_date' => 'required',
@@ -29,18 +32,35 @@ class Profiles extends Component
     ];
 	public function data () {
 		return [
-			'school_id' => $this->school_id,
-			'promo_id' => $this->promo_id,
-			'role_id' => $this->role_id,
-			'name' => $this->name,
-			'surnames' => $this->surnames,
-			'email' => $this->email,
-			'password' => $this->password,
+			'surnames' => $this->surnames,	
 			'job' => $this->job,
 			'github' => $this->github,
 			'birth_date' => $this->birth_date,
 			'image' => $this->image->store('uploads', 'public'),
-	];}
+		];
+	}
+	public function dataSchool() {
+        return [
+            'school_id' => $this->school_id,
+        ];
+    }
+	public function dataPromo() {
+        return [
+            'promo_id' => $this->promo_id,
+        ];
+    }
+	public function dataRole() {
+        return [
+            'role_id' => $this->role_id,
+        ];
+    }
+	public function dataUser() {
+		return [
+			'name' => $this->name,
+			'password' => $this->password,
+			'email' => $this->email,
+		];
+	}
 	public $updateMode = false;
 
     public function render()
@@ -86,6 +106,7 @@ class Profiles extends Component
         $this->validate($this->validationArray);
 
         Profile::create($this->data());
+		User::create($this->dataUser());
         
         $this->resetInput();
 		$this->emit('closeModal');
@@ -131,4 +152,22 @@ class Profiles extends Component
             $record->delete();
         }
     }
+
+	// public function user()
+	// {
+	// 	return $this->belongsTo(User::class);
+	// }
+
+	// static function addToPivotTable($profile_id, $user_id)
+	// {
+	// 	$profile_id->user()->attach(User::getUserByID($user_id['user_id']));
+	// }
+
+	public function getProfileByUser($id)
+	{
+		$user = User::findOrFail($id);
+		$profile = $user->profile;
+
+		return view('user/perfil/', compact('profile'));
+	}
 }

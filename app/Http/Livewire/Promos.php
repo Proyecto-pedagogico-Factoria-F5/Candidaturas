@@ -33,14 +33,14 @@ class Promos extends Component
             'image' => $this->image->store('uploads', 'public'),
             'url' => $this->url,
             'code' => $this->code
-    ];}
-    public $updateMode = false;
-
+        ];
+    }
     public function dataSchool() {
         return [
             'school_id' => $this->school_id,
         ];
     }
+    public $updateMode = false;
 
     public function render()
     {

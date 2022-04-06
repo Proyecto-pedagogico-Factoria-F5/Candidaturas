@@ -90,7 +90,7 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                   {{--  <a class="dropdown-item" href="{{ url('/profile') }}">Mi perfil</a> --}}
+                    <a class="dropdown-item" href="{{ route('perfil', Auth::user()->id) }}">Mi perfil</a>
                     <a class="dropdown-item" href="{{ url('/tokens') }}">Token</a>
                     <a class="dropdown-item dropdown-last-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
