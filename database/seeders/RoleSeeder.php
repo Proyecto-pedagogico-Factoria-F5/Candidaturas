@@ -30,25 +30,25 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'perfiles.profiles.edit'])->syncRoles([$role1]);
         Permission::create(['name' => 'perfiles.profiles.destroy'])->syncRoles([$role1]);
 
-        Permission::create(['name' => 'escuelas.schools.index'])->syncRoles([$role1]);
-        Permission::create(['name' => 'escuelas.schools.create'])->syncRoles([$role1,$role2]);
-        Permission::create(['name' => 'escuelas.schools.edit'])->syncRoles([$role1]);
-        Permission::create(['name' => 'escuelas.schools.destroy'])->syncRoles([$role1]);
+        Permission::create(['name' => 'escuelas-admin.schools.index'])->syncRoles([$role1]);
+        Permission::create(['name' => 'escuelas-admin.schools.create'])->syncRoles([$role1,$role2]);
+        Permission::create(['name' => 'escuelas-admin.schools.edit'])->syncRoles([$role1]);
+        Permission::create(['name' => 'escuelas-admin.schools.destroy'])->syncRoles([$role1]);
 
-        Permission::create(['name' => 'promos.promos.index'])->syncRoles([$role1,$role2,$role3,$role4]);
-        Permission::create(['name' => 'promos.promos.create'])->syncRoles([$role1]);
-        Permission::create(['name' => 'promos.promos.edit'])->syncRoles([$role1]);
-        Permission::create(['name' => 'promos.promos.destroy'])->syncRoles([$role1]);
+        Permission::create(['name' => 'livewire.promos.index'])->syncRoles([$role1,$role2,$role3]);
+        Permission::create(['name' => 'livewire.promos.create'])->syncRoles([$role1]);
+        Permission::create(['name' => 'livewire.promos.edit'])->syncRoles([$role1]);
+        Permission::create(['name' => 'livewire.destroy'])->syncRoles([$role1]);
 
-        Permission::create(['name' => 'superadmin.tokens.index'])->syncRoles([$role1]);
-        Permission::create(['name' => 'superadmin.tokens.create'])->syncRoles([$role1]);
-        Permission::create(['name' => 'superadmin.tokens.edit'])->syncRoles([$role1]);
-        Permission::create(['name' => 'superadmin.tokens.destroy'])->syncRoles([$role1]);
+        Permission::create(['name' => 'register.index'])->syncRoles([$role1]);
+        Permission::create(['name' => 'register.create'])->syncRoles([$role1]);
+        Permission::create(['name' => 'register.edit'])->syncRoles([$role1]);
+        Permission::create(['name' => 'register.destroy'])->syncRoles([$role1]);
 
-        Permission::create(['name' => 'tokens.index'])->syncRoles([$role1]);;
-        Permission::create(['name' => 'tokens.create'])->syncRoles([$role1]);
-        Permission::create(['name' => 'tokens.edit'])->syncRoles([$role1]);
-        Permission::create(['name' => 'tokens.destroy'])->syncRoles([$role1]);
+        Permission::create(['name' => 'tokens.tokens.index'])->syncRoles([$role1]);;
+        Permission::create(['name' => 'tokens.tokens.create'])->syncRoles([$role1]);
+        Permission::create(['name' => 'tokens.tokens.edit'])->syncRoles([$role1]);
+        Permission::create(['name' => 'tokens.tokens.destroy'])->syncRoles([$role1]);
 
 
 
