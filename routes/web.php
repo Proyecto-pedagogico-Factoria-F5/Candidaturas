@@ -4,9 +4,11 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RolController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\PromoController;
-use App\Http\Controllers\CandidaturaController;
+//use App\Http\Controllers\CandidaturaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +37,11 @@ Route::get('/promos', [PromoController::class, 'index'])->name('promos');
 
 Route::get('/candidaturas-view/{id}', [PromoController::class, 'show'])->name('candidaturas-view');
 
-//Route::get('/perfil', [HomeController::class, 'profile'])->name('perfil');
+Route::group(['middleware' => ['auth']], function(){
+	Route::resource('roles', RolController::class);
+	Route::resource('users', UserController::class);
+	//Route::resource('schools', SchoolController::class);
+});
 
 //Route Hooks - Do not delete//
 	Route::view('coders', 'livewire.coders.index')->middleware('auth');
