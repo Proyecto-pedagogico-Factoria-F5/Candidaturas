@@ -4,6 +4,7 @@
             {{ config('app.name') }}
         </a>
         
-        <x-nav />
+        <livewire:nav />
+        {{-- @livewire('nav') // Old version --}}
     </div>
 </nav>

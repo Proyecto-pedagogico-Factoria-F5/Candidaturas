@@ -91,7 +91,13 @@
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                    {{--  <a class="dropdown-item" href="{{ url('/profile') }}">Mi perfil</a> --}}
-                    <a class="dropdown-item" href="{{ url('/tokens') }}">Token</a>
+
+                    @can('tokens.tokens')
+                        <a class="dropdown-item" href="{{ route('tokens.tokens') }}">Token</a>
+                    @endcan
+
+                    {{-- <a class="dropdown-item" href="{{ url('/tokens') }}">Token</a> // Old anchor --}}
+
                     <a class="dropdown-item dropdown-last-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
