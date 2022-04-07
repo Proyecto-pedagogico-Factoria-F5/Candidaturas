@@ -2,13 +2,33 @@
 
 namespace App\Http\Livewire;
 
+
+use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
+use Illuminate\Http\Request;
+
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Token;
 
+//dependencias Spatie
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\DB;
+
 class Tokens extends Component
 {
     use WithPagination;
+
+   /*  function __construct()
+    {
+        $this->middleware('permission:view-token|create-token|edit-token|delete-token', ['only'=>['index']]);
+        $this->middleware('permission:create-token', ['only'=>['create','store']]);
+        $this->middleware('permission:edit-token', ['only'=>['edit','update']]);
+        $this->middleware('permission:delete-token', ['only'=>['destroy']]);
+    } */
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $typeform_token;

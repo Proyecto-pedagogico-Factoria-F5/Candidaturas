@@ -24,6 +24,11 @@ class SeederTablePermissions extends Seeder
             'create-role',
             'edit-role',
             'delete-role',
+            // token table
+            'view-token',
+            'create-token',
+            'edit-token',
+            'delete-token',
             // schools table
             /* 'view-school',
             'create-school',

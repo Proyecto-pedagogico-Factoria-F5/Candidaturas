@@ -45,7 +45,7 @@ Route::group(['middleware' => ['auth']], function(){
 
 //Route Hooks - Do not delete//
 	Route::view('coders', 'livewire.coders.index')->middleware('auth');
-	Route::view('tokens', 'livewire.tokens.index')->middleware('auth');
+	Route::view('tokens', 'livewire.tokens.index')->middleware('permission:create-token');
 	//Route::view('candidaturas', 'livewire.candidaturas.index')->middleware('auth');
 	Route::view('promos-admin', 'livewire.promos.index')->middleware('auth');
 	Route::view('escuelas-admin', 'livewire.schools.index')->middleware('auth');
