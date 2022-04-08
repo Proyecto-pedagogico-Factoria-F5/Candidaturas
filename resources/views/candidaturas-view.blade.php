@@ -29,7 +29,7 @@
 						<table class="table table-bordered table-sm">
 							<thead class="thead">
 								<tr> 
-									<th>#</th> 
+									{{-- <th>#</th>  --}}
 									<th>Nombre</th>
 									<th>Apellidos</th>
 									<th>Fecha de nacimiento</th>
@@ -167,7 +167,8 @@ async function showCandidatures(){
 	
 	typeFormPromos.forEach(user => {   
 	
-		row = '<tr><td></td>';
+		// row = '<tr><td></td>';
+		row = '<tr>';
 		
 		user.answers.forEach(element => {  
 					

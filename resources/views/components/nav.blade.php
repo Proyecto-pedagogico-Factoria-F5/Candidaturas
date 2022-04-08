@@ -26,42 +26,43 @@
             <!--Nav Bar Hooks - Do not delete!!-->
 
             {{-- Usuarios --}}
-            <li class="nav-item dropdown">
+            {{-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="{{ url('/register') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     <i class="fas fa-users text-info"></i> Usuarios
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     
-                    {{-- <a class="dropdown-item" href="{{ url('/register') }}">
+                    <a class="dropdown-item" href="{{ url('/register') }}">
                         <i class="fas fa-user-plus text-info"></i> Dar de alta
-                    </a> --}}
+                    </a>
 
-                   {{--  <a class="dropdown-item" href="{{ url('/perfiles') }}">
+                    <a class="dropdown-item" href="{{ url('/perfiles') }}">
                         <i class="fas fa-user-edit text-info"></i> Administrar perfiles
                     </a> 
                    
                     <a class="dropdown-item" href="{{ url('/roles') }}">
                         <i class="fas fa-key text-info"></i> Administrar roles
-                    </a>  --}}
+                    </a> 
 
                 </div>
-            </li>
+            </li> --}}
 
             {{-- Usuarios --}}
            
-                <a href="{{ url('../users') }}">
-                    <i class="fas fa-school text-info"></i> Usuarios
+                <a class="nav-link" href="{{ url('../users') }}">
+                    <i class="fas fa-users text-info"></i> Usuarios
                 </a>
                
           
             {{-- Roles --}}
-            
-                <a href="{{ url('../roles') }}">
-                    <i class="fas fa-school text-info"></i> Roles
+            @can('create-role')
+                <a class="nav-link" href="{{ url('../roles') }}">
+                    <i class="fas fa-key text-info"></i> Roles
                 </a>
-            
+            @endcan
 
             {{-- Escuelas --}}
+            @can('view-school')
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="{{ url('/home') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     <i class="fas fa-school text-info"></i> Escuelas
@@ -70,9 +71,12 @@
                     <a class="dropdown-item" href="{{ url('/escuelas') }}">
                         Listado
                     </a>
+                    @can('create-school')
                     <a class="dropdown-item" href="{{ url('/escuelas-admin') }}"><i class="fas fa-edit text-info"></i> Administrar escuelas</a> 
+                    @endcan
                 </div>
             </li>
+            @endcan
 
             {{-- Promos --}}
             <li class="nav-item dropdown">
@@ -83,16 +87,11 @@
                     <a class="dropdown-item" href="{{ url('/promos') }}">
                         Listado
                     </a>
+                    @can('create-promo')
                     <a class="dropdown-item" href="{{ url('/promos-admin') }}"><i class="fas fa-edit text-info"></i> Administrar promos</a>
+                    @endcan
                 </div>
             </li>
-
-            {{-- Candidaturas --}}
-            {{-- <li class="nav-item">
-                <a href="{{ url('/candidaturas') }}" class="nav-link">
-                    <i class="fas fa-user-graduate text-info"></i> Candidaturas
-                </a> 
-            </li> --}}
 
             {{-- Coders --}}
             {{-- <li class="nav-item">
@@ -106,8 +105,11 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                   {{--  <a class="dropdown-item" href="{{ url('/profile') }}">Mi perfil</a> --}}
+                    {{--  <a class="dropdown-item" href="{{ url('/profile') }}">Mi perfil</a> --}}
+
+                    @can('create-token')
                     <a class="dropdown-item" href="{{ url('/tokens') }}">Token</a>
+                    @endcan
                     <a class="dropdown-item dropdown-last-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">

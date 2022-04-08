@@ -30,10 +30,15 @@ class SeederTablePermissions extends Seeder
             'edit-token',
             'delete-token',
             // schools table
-            /* 'view-school',
+            'view-school',
             'create-school',
             'edit-school',
-            'delete-school', */
+            'delete-school',
+            // promos table
+            'view-promo',
+            'create-promo',
+            'edit-promo',
+            'delete-promo',
         ];
         foreach($permissions as $permission){
             Permission::create(['name'=>$permission]);
