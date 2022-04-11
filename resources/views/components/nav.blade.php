@@ -48,11 +48,11 @@
             </li> --}}
 
             {{-- Usuarios --}}
-           
+            @can('create-profile')           
                 <a class="nav-link" href="{{ url('../users') }}">
                     <i class="fas fa-users text-info"></i> Usuarios
                 </a>
-               
+            @endcan
           
             {{-- Roles --}}
             @can('create-role')
