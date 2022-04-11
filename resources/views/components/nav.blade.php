@@ -48,7 +48,7 @@
             </li> --}}
 
             {{-- Usuarios --}}
-            @can('create-profile')           
+            @can('view-token')           
                 <a class="nav-link" href="{{ url('../users') }}">
                     <i class="fas fa-users text-info"></i> Usuarios
                 </a>
