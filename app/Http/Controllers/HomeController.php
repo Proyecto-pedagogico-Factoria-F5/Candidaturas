@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\School;
+use Illuminate\Support\Facades\Auth;
+
+//dependencias Spatie
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -24,7 +30,25 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('schools-view');
+
+        $user = Auth::user();
+        //$roles = Role::pluck('name', 'name')->all();
+        $userRole = $user->roles->pluck('id', 'id')->all();
+
+        $rolePermissions = DB::table('role_has_permissions')->where('role_has_permissions.role_id', $userRole)
+            ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
+            ->all();
+        
+        //$permission = Permission::find($rolePermissions);
+       
+        if (array_search(5, $rolePermissions)) {
+            return view('schools-view');
+        }
+        else
+        {
+            return view('promos-view');
+        }
+        
     }
 
     // public function register()

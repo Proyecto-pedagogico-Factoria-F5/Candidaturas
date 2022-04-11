@@ -31,7 +31,7 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home'); // Esta vista dependerá de los permisos, de momento la sustituye la siguiente
 
-Route::get('/escuelas', [SchoolController::class, 'index'])->name('escuelas');
+Route::get('/escuelas', [SchoolController::class, 'index'])->name('escuelas')->middleware('permission:view-token');;
 
 Route::get('/promos', [PromoController::class, 'index'])->name('promos');
 
