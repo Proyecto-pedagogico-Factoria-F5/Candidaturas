@@ -17,12 +17,6 @@ use Illuminate\Support\Arr;
 class UserController extends Controller
 {
 
-    public function dataSchool() {
-        return [
-            'school_id' => $this->school_id,
-        ];
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -70,29 +64,12 @@ class UserController extends Controller
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
 
-        $pepe = $input['schools'][0];
-
-        //dd($pepe);
-
-        $schoolIdDb = DB::select("SELECT id FROM schools WHERE name = '{$pepe}'");
-        //$school_id = DB::select('SELECT id FROM schools WHERE name = "Bilbao"');
-
-        //dd($schoolIdDb[0]->id);
-
-        $schoolId = $schoolIdDb[0]->id;
-
-        //dd($schoolId);
-
-
-
-       /*  $schoolName = $input['schools'];
-        dd($schoolName);
-        $schoolRow = School::where('name', $schoolName);
-        dd($schoolRow); */
+        $schoolName = $input['schools'][0];
+        $schoolData = DB::select("SELECT id FROM schools WHERE name = '{$schoolName}'");
+        $schoolId = $schoolData[0]->id;
 
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
-
         $user->addToPivotTableSchoolUser($user, $schoolId);
 
         return redirect()->route('users.index');
