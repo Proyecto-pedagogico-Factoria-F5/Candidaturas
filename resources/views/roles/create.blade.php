@@ -20,31 +20,31 @@
                 </div>
                 @endif
 
-                {!! Form::open(array('route'=>'roles.store', 'method'=>'POST')) !!}
+                <div class="card form-card">
+                    {!! Form::open(array('route'=>'roles.store', 'method'=>'POST')) !!}
 
-                <div class="card-body">
-                        <div class="row mb-3">
-                            <label for="name">{{ __('Nombre del Rol') }}</label>
-                            {!! Form::text('name', null, array('class'=>'form-control')) !!}
-                        </div>
-                        <div>
-                            <label for="">{{ __('Permisos del Rol') }}</label>
-                            <br/>
-                            @foreach($permission as $value)
-                                {!! Form::checkbox('permission[]', $value->id, false, array('class'=>'form-check-input')) !!}
-                                <label>{{ $value->name }}</label>                                    
-                                <br/>
-                            @endforeach
-                        </div>
-                       
-                        
-                        <div class="row mb-3">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                        </div>
+                    <div class="card-body form-card-body">
+                            <div class="row mb-3">
+                                <label for="name">{{ __('Nombre del Rol') }}</label>
+                                {!! Form::text('name', null, array('class'=>'form-control')) !!}
+                            </div>
+                            <div class="row mb-3 permissions-row">
+                                <label for="">{{ __('Permisos del Rol') }}</label>
+                                @foreach($permission as $value)
+                                    <div>
+                                        <span>{!! Form::checkbox('permission[]', $value->id, false, array('class'=>'form-check-input')) !!}</span>
+                                        <label>{{ $value->name }}</label> 
+                                    </div>                                   
+                                @endforeach
+                            </div>
+                            
+                            <div class="row">
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+                    </div>
+
+                    {!! Form::close() !!}
                 </div>
-
-                {!! Form::close() !!}
-
 		    </div>
 		</div>
 	</div>

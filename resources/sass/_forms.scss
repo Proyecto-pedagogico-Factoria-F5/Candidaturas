@@ -33,6 +33,43 @@ form {
     }
 }
 
+.form-card {
+    margin: 2.8rem;
+    border-radius: 15px;
+    overflow: hidden;
+    padding: 0;
+    width: 25rem;
+    box-shadow: 0.2em 0.2em 0.7em rgba($first-color-light, 0.3) !important;
+    
+    .form-card-body {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch !important;
+        justify-content: space-between;
+        text-align: left !important;
+        margin: 0 auto !important;
+        padding: 1.5rem 0 2.5rem 0;
+        width: 72%;
+        
+        > * {
+            padding-bottom: 0.8rem;
+        }
+        
+        .permissions-row {
+            display: flex;
+            flex-direction: column;
+
+            & > div {
+                margin-left: 1.3rem;
+
+                & > span {
+                    margin-right: 0.5rem
+                }
+            }
+        }
+    }
+}
+
 .admin-card {
     .btn a {
         color: $second-color !important;

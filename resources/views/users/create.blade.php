@@ -20,35 +20,38 @@
                 </div>
                 @endif
 
-                {!! Form::open(array('route'=>'users.store', 'method'=>'POST')) !!}
-
-                <div class="card-body">
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nombre') }}</label>
-                            {!! Form::text('name', null, array('class'=>'form-control')) !!}
-                        </div>
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
-                            {!! Form::text('email', null, array('class'=>'form-control')) !!}
-                        </div>
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-                            {!! Form::password('password', array('class'=>'form-control')) !!}
-                        </div>
-                        <div class="row mb-3">
-                            <label for="confirm-password" class="col-md-4 col-form-label text-md-end">{{ __('Confirmar password') }}</label>
-                            {!! Form::password('confirm-password', array('class'=>'form-control')) !!}
-                        </div>
-                        <div class="row mb-3">
-                            <label for="" class="col-md-4 col-form-label text-md-end">{{ __('Roles') }}</label>
-                            {!! Form::select('roles[]', $roles,[], array('class'=>'form-control')) !!}
-                        </div>
-                        <div class="row mb-3">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                        </div>
+                <div class="card form-card">
+                    {!! Form::open(array('route'=>'users.store', 'method'=>'POST')) !!}
+    
+                    <div class="card-body form-card-body">
+                            <div class="row">
+                                <label for="name" class="col-form-label text-md-end">{{ __('Nombre') }}</label>
+                                {!! Form::text('name', null, array('class'=>'form-control')) !!}
+                            </div>
+                            <div class="row">
+                                <label for="email" class="col-form-label text-md-end">{{ __('Email') }}</label>
+                                {!! Form::text('email', null, array('class'=>'form-control')) !!}
+                            </div>
+                            <div class="row">
+                                <label for="password" class="col-form-label text-md-end">{{ __('Password') }}</label>
+                                {!! Form::password('password', array('class'=>'form-control')) !!}
+                            </div>
+                            <div class="row">
+                                <label for="confirm-password" class="col-form-label text-md-end">{{ __('Confirmar password') }}</label>
+                                {!! Form::password('confirm-password', array('class'=>'form-control')) !!}
+                            </div>
+                            <div class="row mb-4">
+                                <label for="" class="col-form-label text-md-end">{{ __('Roles') }}</label>
+                                {!! Form::select('roles[]', $roles,[], array('class'=>'form-control')) !!}
+                            </div>
+                            <div class="row">
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+                    </div>
+    
+                    {!! Form::close() !!}
                 </div>
 
-                {!! Form::close() !!}
 
 		    </div>
 		</div>
