@@ -14,7 +14,8 @@ class Promos extends Component
 	use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
-	public $selected_id, $keyWord, $school_id, $name, $ubication, $start_date, $duration, $url, $image, $imageOld, $code; 
+	public $selected_id, $keyWord, $school_id, $name, $ubication, $start_date, $duration, $url, $image, $imageOld, $code;
+     
 	public $validationArray = [
         'name' => 'required',
         'ubication' => 'required',

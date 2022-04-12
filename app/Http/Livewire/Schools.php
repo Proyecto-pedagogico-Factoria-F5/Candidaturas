@@ -15,6 +15,7 @@ class Schools extends Component
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $name, $province, $image, $imageOld;
+    
     public $validationArray = [
         'name' => 'required',
         'province' => 'required',
