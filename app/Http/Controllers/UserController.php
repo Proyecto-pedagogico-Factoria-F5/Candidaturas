@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\School;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -15,6 +16,13 @@ use Illuminate\Support\Arr;
 
 class UserController extends Controller
 {
+
+    public function dataSchool() {
+        return [
+            'school_id' => $this->school_id,
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +43,12 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::pluck('name', 'name')->all();
-        return view('users.create', compact('roles'));
+        $schools = School::pluck('name', 'name')->all();
+
+        //dd($roles);
+        //dd($schools);
+
+        return view('users.create', compact('roles', 'schools'));
     }
 
     /**
@@ -50,14 +63,37 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
-            'roles' => 'required'
+            'roles' => 'required',
+            'schools' => 'required'
         ]);
 
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
 
+        $pepe = $input['schools'][0];
+
+        //dd($pepe);
+
+        $schoolIdDb = DB::select("SELECT id FROM schools WHERE name = '{$pepe}'");
+        //$school_id = DB::select('SELECT id FROM schools WHERE name = "Bilbao"');
+
+        //dd($schoolIdDb[0]->id);
+
+        $schoolId = $schoolIdDb[0]->id;
+
+        //dd($schoolId);
+
+
+
+       /*  $schoolName = $input['schools'];
+        dd($schoolName);
+        $schoolRow = School::where('name', $schoolName);
+        dd($schoolRow); */
+
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
+
+        $user->addToPivotTableSchoolUser($user, $schoolId);
 
         return redirect()->route('users.index');
     }

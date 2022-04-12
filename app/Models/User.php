@@ -57,12 +57,12 @@ class User extends Authenticatable
 
     static function addToPivotTableSchoolUser($user, $school_id)
     {
-        $user->school()->attach(School::getSchool($school_id['school_id']));
+        $user->school()->attach(School::getSchool($school_id));
     }
 
     static function addToPivotTablePromoUser($user, $promo_id)
     {
-        $user->promo()->attach(Promo::getPromo($promo_id['promo_id']));
+        $user->promo()->attach(Promo::getPromo($promo_id));
     }
 
 }

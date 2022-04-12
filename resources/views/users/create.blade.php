@@ -44,6 +44,10 @@
                             {!! Form::select('roles[]', $roles,[], array('class'=>'form-control')) !!}
                         </div>
                         <div class="row mb-3">
+                            <label for="" class="col-md-4 col-form-label text-md-end">{{ __('Schools') }}</label>
+                            {!! Form::select('schools[]', $schools,[], array('class'=>'form-control')) !!}
+                        </div>
+                        <div class="row mb-3">
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                 </div>
