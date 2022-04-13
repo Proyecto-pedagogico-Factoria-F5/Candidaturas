@@ -27,6 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
+        //$userSchool = $user->location;
         $userRole = $user->roles->pluck('id', 'id')->all();
 
         $rolePermissions = DB::table('role_has_permissions')->where('role_has_permissions.role_id', $userRole)
@@ -38,7 +39,8 @@ class HomeController extends Controller
         }
         else
         {
-            return view('promos-view');
+            $school = [];
+            return view('promos-view', compact('school'));
         }
     }
 

@@ -16,22 +16,18 @@ class PromoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $school = School::findOrFail($id);
-        $data = Promo::where($school->id);
-
-        return view('promos-view', compact('school', 'data'));
-        // if($id) {
-        //     return view('promos-view', compact($data));
-        // } else {
-        //     return "No has seleccionado ninguna escuela";
-        // }
-
-
-        // return view('promos-view'); // OLD
+        $school = [];
+        return view('promos-view', compact('school'));
     }
 
+    public function getPromosSchool($id)
+    {
+        $school = School::where('id', $id)->get();
+        return view('promos-view', compact('school'));
+    }
+    
     /**
      * Show the form for creating a new resource.
      *

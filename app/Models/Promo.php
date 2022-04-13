@@ -35,9 +35,6 @@ class Promo extends Model
 
     static function addToPivotTable($promo, $school_id)
     {
-        // dd($promo);
-        //dd($school_id['school_id']);
         $promo->school()->attach(School::getSchool($school_id['school_id']));
-
     }
 }
