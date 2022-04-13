@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\School;
 use App\Models\Promo;
 use App\Models\Token;
 
@@ -15,9 +16,20 @@ class PromoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        return view('promos-view');
+        $school = School::findOrFail($id);
+        $data = Promo::where($school->id);
+
+        return view('promos-view', compact('school', 'data'));
+        // if($id) {
+        //     return view('promos-view', compact($data));
+        // } else {
+        //     return "No has seleccionado ninguna escuela";
+        // }
+
+
+        // return view('promos-view'); // OLD
     }
 
     /**
