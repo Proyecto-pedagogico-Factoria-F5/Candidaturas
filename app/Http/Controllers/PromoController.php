@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\School;
 use App\Models\Promo;
 use App\Models\Token;
 
@@ -17,9 +18,16 @@ class PromoController extends Controller
      */
     public function index()
     {
-        return view('promos-view');
+        $school = [];
+        return view('promos-view', compact('school'));
     }
 
+    public function getPromosSchool($id)
+    {
+        $school = School::where('id', $id)->get();
+        return view('promos-view', compact('school'));
+    }
+    
     /**
      * Show the form for creating a new resource.
      *

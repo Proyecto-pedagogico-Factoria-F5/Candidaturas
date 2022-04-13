@@ -84,7 +84,7 @@
                     <i class="fas fa-graduation-cap text-info"></i> Promos
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="{{ url('/promos') }}">
+                    <a class="dropdown-item" href="{{ route('promos') }}">
                         Listado
                     </a>
                     @can('create-promo')

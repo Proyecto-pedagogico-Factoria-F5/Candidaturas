@@ -16,12 +16,8 @@
 		</div>
 		<div class="container cards-container">
 			<div class="row justify-content-center">
-				@if(!$school == null)
-					@livewire('components.card-promo', ["idSchool" => $school[0]->id])
-				@else
-					@livewire('components.card-promo')
-				
-				@endif
+
+				@livewire('components.card-promo')
 				
 			</div>
 		</div>

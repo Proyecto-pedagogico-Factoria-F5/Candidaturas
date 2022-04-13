@@ -14957,6 +14957,38 @@ form .form-check-input:hover, form .form-check-input:active, form .form-check-in
   padding: 0.2rem;
 }
 
+.form-card {
+  margin: 2.8rem;
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 0;
+  width: 25rem;
+  box-shadow: 0.2em 0.2em 0.7em rgba(108, 117, 125, 0.3) !important;
+}
+.form-card .form-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch !important;
+  justify-content: space-between;
+  text-align: left !important;
+  margin: 0 auto !important;
+  padding: 1.5rem 0 2.5rem 0;
+  width: 72%;
+}
+.form-card .form-card-body > * {
+  padding-bottom: 0.8rem;
+}
+.form-card .form-card-body .permissions-row {
+  display: flex;
+  flex-direction: column;
+}
+.form-card .form-card-body .permissions-row > div {
+  margin-left: 1.3rem;
+}
+.form-card .form-card-body .permissions-row > div > span {
+  margin-right: 0.5rem;
+}
+
 .admin-card .btn a {
   color: #fffafa !important;
 }

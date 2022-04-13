@@ -37,3 +37,20 @@
         <input wire:model="url" type="text" class="form-control" id="url" placeholder="Url" required>@error('url') <span class="error text-danger">{{ $message }}</span> @enderror
     </div>
 </form>
+
+{{-- <script src="moment.js"></script>
+<script src="pikaday.js"></script>  --}}
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+<script>
+    var picker = new Pikaday({
+        field: document.getElementById('datepicker'),
+        format: 'YYYY-MM-D',
+        onSelect: function() {
+            var dateFormated = document.getElementById('datepicker');
+            console.log(this.getMoment().format('YYYY-MM-DD'));
+            console.log(dateFormated.value);
+            return dateFormated.value;
+        }
+    });
+</script> --}}

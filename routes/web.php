@@ -35,6 +35,8 @@ Route::get('/escuelas', [SchoolController::class, 'index'])->name('escuelas')->m
 
 Route::get('/promos', [PromoController::class, 'index'])->name('promos')->middleware('permission:view-promo');
 
+Route::get('/promos/{id}', [PromoController::class, 'getPromosSchool'])->name('promosSchool')->middleware('permission:view-promo');
+
 Route::get('/candidaturas-view/{id}', [PromoController::class, 'show'])->name('candidaturas-view');
 
 Route::group(['middleware' => ['auth']], function(){
