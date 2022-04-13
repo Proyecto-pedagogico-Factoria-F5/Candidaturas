@@ -79,10 +79,27 @@ class Promos extends Component
 						->paginate(10),
             'schools' => School::all()
         ]);
+
+        // $promos = Promo::all();
+        // $school = School::all();
        
         // return view('livewire.promos.view', [
         //     'promos' => Promo::oldest()
-        //                 ->orWhere('school_id', 'LIKE', $keyWord)
+        //                 ->orWhere('name', 'LIKE', $keyWord)
+        //                 ->orWhere('ubication', 'LIKE', $keyWord)
+        //                 ->orWhere('start_date', 'LIKE', $keyWord)
+        //                 ->orWhere('duration', 'LIKE', $keyWord)
+        //                 ->orWhere('image', 'LIKE', $keyWord)
+        //                 ->orWhere('url', 'LIKE', $keyWord)
+        //                 ->orWhere('code', 'LIKE', $keyWord)
+		// 				->paginate(10),
+        //     'schools' => School::all()
+        // ])
+        //     ->with('promos', $promos)
+        //     ->with('school', $school);
+
+        // return view('livewire.promos.view', [
+        //     'promos' => Promo::oldest()
         //                 ->orWhere('name', 'LIKE', $keyWord)
         //                 ->orWhere('ubication', 'LIKE', $keyWord)
         //                 ->orWhere('start_date', 'LIKE', $keyWord)

@@ -33,7 +33,7 @@
 							<thead class="thead">
 								<tr> 
 									<td>#</td> 
-									{{-- <th>Escuela</th> --}}
+									<th>Escuela</th>
 									<th>Nombre</th>
 									<th>Localidad</th>
 									<th>Fecha de inicio</th>
@@ -46,28 +46,30 @@
 							</thead>
 							<tbody>
 								@foreach($promos as $row)
-								<tr>
-									<td>{{ $row->id }}</td> 
-									{{-- <td>{{ $row->pivot->school->name }}</td>  --}}
-									<td>{{ $row->name }}</td> 
-									<td>{{ $row->ubication }}</td> 
-									<td>{{ $row->start_date }}</td> 
-									<td>{{ $row->duration }}h</td>
-									<td><img class="table-img" src="{{ asset('storage').'/'.$row->image }}" alt="{{ $row->name }}"></td>
-									<td>{{ $row->url }}</td> 
-									<td>{{ $row->code }}</td> 
-									<td width="90">
-										<div class="btn-group">
-											<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												Acciones
-											</button>
-											<div class="dropdown-menu dropdown-menu-right">
-												<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a>							 
-												<a class="dropdown-item" onclick="confirm('¿Confirmas que quieres borrar la promo con id {{$row->id}}? \n¡Esta acción no se puede deshacer!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Borrar </a>   
+									@foreach($row->school as $school)
+									<tr>
+										<td>{{ $row->id }}</td> 
+										<td>{{ $school->name }}</td> 
+										<td>{{ $row->name }}</td> 
+										<td>{{ $row->ubication }}</td> 
+										<td>{{ $row->start_date }}</td> 
+										<td>{{ $row->duration }}h</td>
+										<td><img class="table-img" src="{{ asset('storage').'/'.$row->image }}" alt="{{ $row->name }}"></td>
+										<td>{{ $row->url }}</td> 
+										<td>{{ $row->code }}</td> 
+										<td width="90">
+											<div class="btn-group">
+												<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													Acciones
+												</button>
+												<div class="dropdown-menu dropdown-menu-right">
+													<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a>							 
+													<a class="dropdown-item" onclick="confirm('¿Confirmas que quieres borrar la promo con id {{$row->id}}? \n¡Esta acción no se puede deshacer!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Borrar </a>   
+												</div>
 											</div>
-										</div>
-									</td>
-								</tr>
+										</td>
+									</tr>
+									@endforeach
 								@endforeach
 							</tbody>
 						</table>						

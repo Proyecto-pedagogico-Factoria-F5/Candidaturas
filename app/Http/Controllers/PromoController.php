@@ -18,10 +18,9 @@ class PromoController extends Controller
      */
     public function index($id)
     {
-        $school = School::findOrFail($id);
-        $data = Promo::where($school->id);
+        $promos = Promo::with('school')->get();
 
-        return view('promos-view', compact('school', 'data'));
+        return view('promos-view', compact('promos'));
         // if($id) {
         //     return view('promos-view', compact($data));
         // } else {

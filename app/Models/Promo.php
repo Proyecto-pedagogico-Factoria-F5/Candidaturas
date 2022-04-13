@@ -25,7 +25,8 @@ class Promo extends Model
 
     public function school()
     {
-        return $this->belongsToMany(School::class);
+        return $this->belongsToMany(School::class)
+                    ->withPivot('school_id');
     }
 
     public function coder()
