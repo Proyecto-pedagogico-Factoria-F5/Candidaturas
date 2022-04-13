@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\School;
+use App\Models\Promo;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -37,10 +38,12 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::pluck('name', 'name')->all();
-        $schools = School::pluck('name', 'name')->all();
+        $schools = School::pluck('name', 'id')->all();
+        //$promos = Promo::pluck('name', 'id')->all();
 
         //dd($roles);
         //dd($schools);
+        //dd($promos);
 
         return view('users.create', compact('roles', 'schools'));
     }
@@ -64,9 +67,12 @@ class UserController extends Controller
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
 
-        $schoolName = $input['schools'][0];
-        $schoolData = DB::select("SELECT id FROM schools WHERE name = '{$schoolName}'");
-        $schoolId = $schoolData[0]->id;
+        //$schoolName = $input['schools'][0];
+        //$schoolData = DB::select("SELECT id FROM schools WHERE name = '{$schoolName}'");
+        //$schoolId = $schoolData[0]->id;
+        $schoolId = $input['schools'][0];
+        //dd($schoolId);
+        
 
         $user = User::create($input);
         $user->assignRole($request->input('roles'));

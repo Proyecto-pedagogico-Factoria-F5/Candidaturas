@@ -45,7 +45,11 @@
                         </div>
                         <div class="row mb-3">
                             <label for="" class="col-md-4 col-form-label text-md-end">{{ __('Schools') }}</label>
-                            {!! Form::select('schools[]', $schools,[], array('class'=>'form-control')) !!}
+                            {!! Form::select('schools[]', $schools,[], array('class'=>'form-control', 'id'=>'school-dd')) !!}
+                        </div>
+                        <div class="form-group mb-3">
+                            <select id="promo-dd" class="form-control">
+                            </select>
                         </div>
                         <div class="row mb-3">
                             <button type="submit" class="btn btn-primary">Guardar</button>
@@ -57,6 +61,39 @@
 		    </div>
 		</div>
 	</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $('#school-dd').on('change', function () 
+                var idSchool = this.value;
+                console.log(idSchool);
+                $("#promo-dd").html('');
+                $.ajax(
+                    url: "url('api/fetch-promos')",
+                    type: "POST",
+                    data: 
+                        school_id: idCountry,
+                        _token: 'csrf_token()'
+                    ,
+                    dataType: 'json',
+                    success: function (result) 
+                        $('#state-dd').html('<option value="">Select State</option>');
+                        $.each(result.states, function (key, value) 
+                            $("#state-dd").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        );
+                        $('#city-dd').html('<option value="">Select City</option>');
+                    
+                );
+            );
+          
+        });
+
+    </script>
+
 </div>
 
 @endsection
