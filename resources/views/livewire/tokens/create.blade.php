@@ -11,10 +11,13 @@
            <div class="modal-body">
 				<form>
                     <div class="form-group">
-                        <label for="typeform_token"></label>
+                        <label for="typeform_token">Token<span class="required">*</span></label>
                         <input wire:model="typeform_token" type="text" class="form-control" id="typeform_token" placeholder="Token de Typeform">@error('typeform_token') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                 </form>
+                <div>
+                    <span class="required">* Campos requeridos</span>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Cancelar</button>

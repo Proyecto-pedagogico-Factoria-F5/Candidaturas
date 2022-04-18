@@ -14976,7 +14976,7 @@ form .form-check-input:hover, form .form-check-input:active, form .form-check-in
   width: 72%;
 }
 .form-card .form-card-body > * {
-  padding-bottom: 0.8rem;
+  padding-bottom: 0.8rem !important;
 }
 .form-card .form-card-body .permissions-row {
   display: flex;
@@ -15014,6 +15014,10 @@ form .form-check-input:hover, form .form-check-input:active, form .form-check-in
 .create-container .form-container form .border:focus {
   border-color: #FC4702;
   box-shadow: 0 0 0 0.25rem rgba(252, 71, 2, 0.25);
+}
+
+.required {
+  color: #ff0000;
 }
 
 /* ---- Datepicker ---- */

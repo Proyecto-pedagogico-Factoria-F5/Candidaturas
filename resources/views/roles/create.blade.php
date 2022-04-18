@@ -24,11 +24,11 @@
                     {!! Form::open(array('route'=>'roles.store', 'method'=>'POST')) !!}
 
                     <div class="card-body form-card-body">
-                            <div class="row mb-3">
-                                <label for="name">{{ __('Nombre del Rol') }}</label>
+                            <div class="row">
+                                <label for="name">{{ __('Nombre del Rol') }}<span class="required">*</span></label>
                                 {!! Form::text('name', null, array('class'=>'form-control')) !!}
                             </div>
-                            <div class="row mb-3 permissions-row">
+                            <div class="row permissions-row">
                                 <label for="">{{ __('Permisos del Rol') }}</label>
                                 @foreach($permission as $value)
                                     <div>
@@ -41,9 +41,14 @@
                             <div class="row">
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                             </div>
+
+                            <div class="row">
+                                <span class="required">* Campos requeridos</span>
+                            </div>
                     </div>
 
                     {!! Form::close() !!}
+                    
                 </div>
 		    </div>
 		</div>

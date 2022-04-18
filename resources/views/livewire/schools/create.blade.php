@@ -11,18 +11,21 @@
            <div class="modal-body">
 				<form>
                     <div class="form-group">
-                        <label for="name">Nombre</label>
+                        <label for="name">Nombre<span class="required">*</span></label>
                         <input wire:model="name" type="text" class="form-control" id="name" placeholder="Nombre" required>@error('name') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="province">Provincia</label>
+                        <label for="province">Provincia<span class="required">*</span></label>
                         <input wire:model="province" type="text" class="form-control" id="province" placeholder="Provincia" required>@error('province') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="image">Imagen</label>
+                        <label for="image">Imagen<span class="required">*</span></label>
                         <input wire:model="image" type="file" class="form-control" id="image" name="image" placeholder="Imagen" required>@error('image') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                 </form>
+                <div>
+                    <span class="required">* Campos requeridos</span>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Cancelar</button>
