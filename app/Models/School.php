@@ -28,4 +28,22 @@ class School extends Model
     {
         return School::findOrFail($id);
     }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProvince()
+    {
+        return $this->province;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
 }

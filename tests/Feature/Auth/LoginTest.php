@@ -5,6 +5,8 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\User;
+use GuzzleHttp\Promise\Create;
+use Illuminate\Support\Facades\App;
 
 class LoginTest extends TestCase
 {   
@@ -15,27 +17,32 @@ class LoginTest extends TestCase
     * @return void
     */
 
-    public function test_user_can_login()
-    {
-        //Given
-            // faker user register data
-            $new_user = factory(User::class)->create([
-                'name' => 'Peter',
-                'email' => 'peter@example.com',
-                'password' => '00000000'
-            ]);
+    
 
-        //When
-            // post route registered
-            post('/user/register', $new_user);
-            // post route login
-            $response = get('/user/login', $new_user);
+    // //public function test_user_can_login()
+    // {
+    //     //Given
+    //         // faker user register data
+    //         //$new_user = factory(User::class)->create([
+    //             $user = new User([
+    //             'name' => 'Peter',
+    //             'email' => 'peter@example.com',
+    //             'password' => '00000000'
+    //         ]);
 
-        //Then
-            // return view home / Promos
-            // check user registration in table
-            $response->assertStatus(200)
-                     ->assertView('/user/login');
+    //     //When
+    //         // post route registered
+    //         //post('/user/register', $new_user);
+    //         // post route login
+    //         //$response = get('/user/login', $new_user);
+
+    //     //Then
+    //         // return view home / Promos
+    //         // check user registration in table
+    //         $response->assertStatus(200)
+    //                  ->assertView('/user/login');
         
-    }
-}
+    // }
+
+    
+ }

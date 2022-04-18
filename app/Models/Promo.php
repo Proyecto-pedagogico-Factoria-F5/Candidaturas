@@ -40,4 +40,20 @@ class Promo extends Model
         $promo->school()->attach(School::getSchool($school_id['school_id']));
 
     }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    public function getDuration()
+    {
+        return $this->duration;
+    }
+
 }
