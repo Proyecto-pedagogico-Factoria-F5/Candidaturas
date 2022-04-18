@@ -30,7 +30,7 @@ npm install && npm run dev
     - Al añadir Promociones, es necesario introducir un código válido para conectar con cada formulario de TypeForm. Estos códigos aparecen en la sección de gestión de formularios de TypeForm. Cada formulario tiene su código único.
 
 
-### By
+## By
 - Rubén Bertólez Chicote
 - Emma Fernández Corte
 - Elena Garzón Mieres

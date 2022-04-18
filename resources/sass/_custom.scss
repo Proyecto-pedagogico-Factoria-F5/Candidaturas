@@ -9,8 +9,22 @@ body {
         letter-spacing: 0.15rem;
     }
 
+    a, .nav-link {
+        color: $brand-color;
+        text-decoration: none;
+
+        &:hover, &:focus {
+            color: $brand-color-dark;
+            text-decoration: none;
+        }
+    }
+
+    .text-info {
+        color: $brand-color !important;
+    }
+
     .section-title {
-        border-bottom: 1px solid $second-color; 
+        border-bottom: 1px solid $first-color-light; 
         font-size: 2rem;
         font-weight: 100;
         text-transform: uppercase;
@@ -19,92 +33,8 @@ body {
         word-spacing: 0.4rem;
     
         .section-title-line {
-            background: $first-color;
+            background: $body-bg;
             padding: 0 10px 0 0; 
-        }
-    }
-
-    a, .nav-link {
-        color: $brand-color;
-
-        &:hover, &:focus {
-            color: $brand-color-dark;
-        }
-    }
-
-    .form-control:focus {
-        color: $first-color;
-        background-color: $second-color;
-        border-color: rgba($brand-color, 0.25);
-        outline: 0;
-        box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
-    }
-
-    .btn-primary {
-        color: $second-color;
-        background-color: $brand-color;
-        border-color: $brand-color;
-
-        &:hover, &:active {
-            color: $second-color;
-            background-color: $brand-color-dark;
-            border-color: $brand-color-dark;
-        }
-
-        &:focus {
-            background-color: $brand-color-dark;
-            border-color: rgba($brand-color, 0.25);
-            box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
-        }
-
-        &:active:focus {
-            box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
-        }
-    }
-    .btn-check:focus + .btn, .btn:focus {
-        box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
-    }
-
-    .btn-link {
-        color: $brand-color;
-
-        &:hover {
-            color: $brand-color-dark;
-        }
-    }
-
-    footer {
-        background: $brand-color;
-        color: $second-color;
-
-        .footer-container {
-            #credits {
-
-                & > h6 {
-                    line-height: inherit;
-                    margin: 0 0.5rem 0 0;
-                }
-
-                & > a {
-                    color: $second-color;
-                    text-decoration: none;
-                    display: inline-flex;
-                    align-items: center;
-
-                    & > svg {
-                        fill: $second-color;
-                        stroke: $second-color;
-                        margin: 0 0.2rem 0 0;
-                    }
-                }
-            }
-
-            .social-media {
-
-                & > :not(last-child) {
-                    margin: 0 1.2rem 0 0;
-                }
-            }
         }
     }
 }

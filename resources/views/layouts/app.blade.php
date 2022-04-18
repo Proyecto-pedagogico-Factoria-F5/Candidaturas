@@ -5,6 +5,7 @@
 </head>
 <body>
     <div id="app">
+        
         <x-header />
 
         <main>
@@ -12,6 +13,13 @@
         </main>
 
         <x-footer />
+
     </div>
+    @livewireScripts
+    <script type="text/javascript">
+        window.livewire.on('closeModal', () => {
+            $('#createDataModal').modal('hide');
+        });
+    </script>
 </body>
 </html>

@@ -8,9 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+//spatie
+use Spatie\Permission\Traits\HasRoles;
+
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -41,4 +44,34 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function school()
+    {
+        return $this->belongsToMany(School::class);
+    }
+
+    public function promo()
+    {
+        return $this->belongsToMany(Promo::class);
+    }
+
+    static function addToPivotTableSchoolUser($user, $school_id)
+    {
+        $user->school()->attach(School::getSchool($school_id));
+    }
+
+    static function addToPivotTablePromoUser($user, $promo_id)
+    {
+        $user->promo()->attach(Promo::getPromo($promo_id));
+    }
+    
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
 }
