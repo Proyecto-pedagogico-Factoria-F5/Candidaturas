@@ -48,4 +48,20 @@ class Promo extends Model
     {
         return Promo::findOrFail($id);
     }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    public function getDuration()
+    {
+        return $this->duration;
+    }
+
 }

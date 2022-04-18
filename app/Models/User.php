@@ -64,5 +64,14 @@ class User extends Authenticatable
     {
         $user->promo()->attach(Promo::getPromo($promo_id));
     }
+    
+    public function getEmail()
+    {
+        return $this->email;
+    }
 
+    public function getName()
+    {
+        return $this->name;
+    }
 }
