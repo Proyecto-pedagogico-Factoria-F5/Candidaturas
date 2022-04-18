@@ -45,4 +45,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function school()
+    {
+        return $this->belongsToMany(School::class);
+    }
+
+    public function promo()
+    {
+        return $this->belongsToMany(Promo::class);
+    }
+
+    static function addToPivotTableSchoolUser($user, $school_id)
+    {
+        $user->school()->attach(School::getSchool($school_id));
+    }
+
+    static function addToPivotTablePromoUser($user, $promo_id)
+    {
+        $user->promo()->attach(Promo::getPromo($promo_id));
+    }
+
 }

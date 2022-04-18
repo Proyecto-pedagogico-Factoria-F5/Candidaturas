@@ -20,42 +20,79 @@
                 </div>
                 @endif
 
-                <div class="card form-card">
-                    {!! Form::open(array('route'=>'users.store', 'method'=>'POST')) !!}
-    
-                    <div class="card-body form-card-body">
-                            <div class="row">
-                                <label for="name" class="col-form-label text-md-end">{{ __('Nombre') }}</label>
-                                {!! Form::text('name', null, array('class'=>'form-control')) !!}
-                            </div>
-                            <div class="row">
-                                <label for="email" class="col-form-label text-md-end">{{ __('Email') }}</label>
-                                {!! Form::text('email', null, array('class'=>'form-control')) !!}
-                            </div>
-                            <div class="row">
-                                <label for="password" class="col-form-label text-md-end">{{ __('Password') }}</label>
-                                {!! Form::password('password', array('class'=>'form-control')) !!}
-                            </div>
-                            <div class="row">
-                                <label for="confirm-password" class="col-form-label text-md-end">{{ __('Confirmar password') }}</label>
-                                {!! Form::password('confirm-password', array('class'=>'form-control')) !!}
-                            </div>
-                            <div class="row mb-4">
-                                <label for="" class="col-form-label text-md-end">{{ __('Roles') }}</label>
-                                {!! Form::select('roles[]', $roles,[], array('class'=>'form-control')) !!}
-                            </div>
-                            <div class="row">
-                                <button type="submit" class="btn btn-primary">Guardar</button>
-                            </div>
-                    </div>
-    
-                    {!! Form::close() !!}
+                {!! Form::open(array('route'=>'users.store', 'method'=>'POST')) !!}
+
+                <div class="card-body">
+                        <div class="row mb-3">
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nombre') }}</label>
+                            {!! Form::text('name', null, array('class'=>'form-control')) !!}
+                        </div>
+                        <div class="row mb-3">
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
+                            {!! Form::text('email', null, array('class'=>'form-control')) !!}
+                        </div>
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                            {!! Form::password('password', array('class'=>'form-control')) !!}
+                        </div>
+                        <div class="row mb-3">
+                            <label for="confirm-password" class="col-md-4 col-form-label text-md-end">{{ __('Confirmar password') }}</label>
+                            {!! Form::password('confirm-password', array('class'=>'form-control')) !!}
+                        </div>
+                        <div class="row mb-3">
+                            <label for="" class="col-md-4 col-form-label text-md-end">{{ __('Roles') }}</label>
+                            {!! Form::select('roles[]', $roles,[], array('class'=>'form-control')) !!}
+                        </div>
+                        <div class="row mb-3">
+                            <label for="" class="col-md-4 col-form-label text-md-end">{{ __('Schools') }}</label>
+                            {!! Form::select('schools[]', $schools,[], array('class'=>'form-control', 'id'=>'school-dd')) !!}
+                        </div>
+                        <div class="form-group mb-3">
+                            <select id="promo-dd" class="form-control">
+                            </select>
+                        </div>
+                        <div class="row mb-3">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
                 </div>
 
 
 		    </div>
 		</div>
 	</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $('#school-dd').on('change', function () 
+                var idSchool = this.value;
+                console.log(idSchool);
+                $("#promo-dd").html('');
+                $.ajax(
+                    url: "url('api/fetch-promos')",
+                    type: "POST",
+                    data: 
+                        school_id: idCountry,
+                        _token: 'csrf_token()'
+                    ,
+                    dataType: 'json',
+                    success: function (result) 
+                        $('#state-dd').html('<option value="">Select State</option>');
+                        $.each(result.states, function (key, value) 
+                            $("#state-dd").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        );
+                        $('#city-dd').html('<option value="">Select City</option>');
+                    
+                );
+            );
+          
+        });
+
+    </script>
+
 </div>
 
 @endsection

@@ -18,6 +18,11 @@ class School extends Model
         'province',
         'image'
     ];
+
+    public function user()
+    {
+        return $this->belongsToMany(User::class);
+    }
 	
     public function promo()
     {

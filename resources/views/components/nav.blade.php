@@ -26,28 +26,6 @@
             <!--Nav Bar Hooks - Do not delete!!-->
 
             {{-- Usuarios --}}
-            {{-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="{{ url('/register') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    <i class="fas fa-users text-info"></i> Usuarios
-                </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    
-                    <a class="dropdown-item" href="{{ url('/register') }}">
-                        <i class="fas fa-user-plus text-info"></i> Dar de alta
-                    </a>
-
-                    <a class="dropdown-item" href="{{ url('/perfiles') }}">
-                        <i class="fas fa-user-edit text-info"></i> Administrar perfiles
-                    </a> 
-                   
-                    <a class="dropdown-item" href="{{ url('/roles') }}">
-                        <i class="fas fa-key text-info"></i> Administrar roles
-                    </a> 
-
-                </div>
-            </li> --}}
-
-            {{-- Usuarios --}}
             @can('view-token')           
                 <a class="nav-link" href="{{ url('../users') }}">
                     <i class="fas fa-users text-info"></i> Usuarios
@@ -84,7 +62,7 @@
                     <i class="fas fa-graduation-cap text-info"></i> Promos
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="{{ url('/promos') }}">
+                    <a class="dropdown-item" href="{{ route('promos') }}">
                         Listado
                     </a>
                     @can('create-promo')

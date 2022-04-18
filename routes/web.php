@@ -27,23 +27,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Route::get('/register', [HomeController::class, 'register'])->name('register');
-
-Route::get('/home', [HomeController::class, 'index'])->name('home'); // Esta vista dependerá de los permisos, de momento la sustituye la siguiente
+Route::get('/home', [HomeController::class, 'index'])->name('home'); 
 
 Route::get('/escuelas', [SchoolController::class, 'index'])->name('escuelas')->middleware('permission:view-school');
 
-// Route::get('/promos', [PromoController::class, 'index'])->name('promos')->middleware('permission:view-promo');
+Route::get('/promos', [PromoController::class, 'index'])->name('promos')->middleware('permission:view-promo');
 
-Route::get('/escuela/{id}/promos', [PromoController::class, 'index'])->name('promos')->middleware('permission:view-promo');
-
-// Route::get('/escuela/{id}/promos', function ($id) {
-// 	if($id) {
-// 		[PromoController::class, 'index'];
-// 	} else {
-// 		return "No has seleccionado ninguna escuela";
-// 	}
-// })->name('promos')->middleware('permission:view-promo');
+Route::get('/promos/{id}', [PromoController::class, 'getPromosSchool'])->name('promosSchool')->middleware('permission:view-promo');
 
 Route::get('/candidaturas-view/{id}', [PromoController::class, 'show'])->name('candidaturas-view');
 

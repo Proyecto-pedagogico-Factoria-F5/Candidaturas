@@ -23,6 +23,11 @@ class Promo extends Model
         'code'
     ];
 
+    public function user()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
     public function school()
     {
         return $this->belongsToMany(School::class)
@@ -36,9 +41,11 @@ class Promo extends Model
 
     static function addToPivotTable($promo, $school_id)
     {
-        // dd($promo);
-        //dd($school_id['school_id']);
         $promo->school()->attach(School::getSchool($school_id['school_id']));
+    }
 
+    static function getPromo($id)
+    {
+        return Promo::findOrFail($id);
     }
 }

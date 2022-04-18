@@ -14,7 +14,8 @@ class Promos extends Component
 	use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
-	public $selected_id, $keyWord, $school_id, $name, $ubication, $start_date, $duration, $url, $image, $imageOld, $code; 
+	public $selected_id, $keyWord, $school_id, $name, $ubication, $start_date, $duration, $url, $image, $imageOld, $code;
+     
 	public $validationArray = [
         'name' => 'required',
         'ubication' => 'required',
@@ -80,36 +81,6 @@ class Promos extends Component
             'schools' => School::all()
         ]);
 
-        // $promos = Promo::all();
-        // $school = School::all();
-       
-        // return view('livewire.promos.view', [
-        //     'promos' => Promo::oldest()
-        //                 ->orWhere('name', 'LIKE', $keyWord)
-        //                 ->orWhere('ubication', 'LIKE', $keyWord)
-        //                 ->orWhere('start_date', 'LIKE', $keyWord)
-        //                 ->orWhere('duration', 'LIKE', $keyWord)
-        //                 ->orWhere('image', 'LIKE', $keyWord)
-        //                 ->orWhere('url', 'LIKE', $keyWord)
-        //                 ->orWhere('code', 'LIKE', $keyWord)
-		// 				->paginate(10),
-        //     'schools' => School::all()
-        // ])
-        //     ->with('promos', $promos)
-        //     ->with('school', $school);
-
-        // return view('livewire.promos.view', [
-        //     'promos' => Promo::oldest()
-        //                 ->orWhere('name', 'LIKE', $keyWord)
-        //                 ->orWhere('ubication', 'LIKE', $keyWord)
-        //                 ->orWhere('start_date', 'LIKE', $keyWord)
-        //                 ->orWhere('duration', 'LIKE', $keyWord)
-        //                 ->orWhere('image', 'LIKE', $keyWord)
-        //                 ->orWhere('url', 'LIKE', $keyWord)
-        //                 ->orWhere('code', 'LIKE', $keyWord)
-		// 				->paginate(10),
-        //     'schools' => School::all()
-        // ]);
     }
 	
     public function cancel()
